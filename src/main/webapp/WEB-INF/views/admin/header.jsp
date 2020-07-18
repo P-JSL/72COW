@@ -17,4 +17,7 @@
     <link rel="stylesheet" href="/resources/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/resources/assets/images/favicon.png" />
+    <script src="https://kit.fontawesome.com/38e102e947.js"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   </head>

@@ -31,4 +31,21 @@ public class AjaxController {
 		
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
+	
+	
+	@ResponseBody
+	@PostMapping(value = "/admin/codefind", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Object> UserCodeInfo(@RequestBody String code) {
+
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(code).getAsJsonObject().get("code");
+		String scode = element.getAsString();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("code", scode);
+		
+		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+	
 }
