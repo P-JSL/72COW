@@ -56,7 +56,7 @@
 								<h4 class="card-title">全体情報・状態</h4>
 								<table class="table table-hover">
 									<thead>
-										<tr>
+										<tr style="text-align: center;">
 											<th>ユーザーコード</th>
 											<th>商品コード</th>
 											<th>商品写真</th>
@@ -65,49 +65,15 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr style="text-align: center;">
 											<td><a href="#" id="trigger" onclick="openmodal(this);"
 												style="border: 0; margin: 0; display: inherit;">A0000124</a></td>
+											<td>C002471</td>
 											<td></td>
-											<td></td>
-											<td class="text-danger">28.76% <i
-												class="mdi mdi-arrow-down"></i></td>
+											<td class="text-danger">1,400￥</td>
 											<td><label class="badge badge-danger">Pending</label></td>
 										</tr>
-										<tr>
-											<td>Messsy</td>
-											<td>Flash</td>
-											<td></td>
-											<td class="text-danger">21.06% <i
-												class="mdi mdi-arrow-down"></i></td>
-											<td><label class="badge badge-warning">In
-													progress</label></td>
-										</tr>
-										<tr>
-											<td>John</td>
-											<td>Premier</td>
-											<td></td>
-											<td class="text-danger">35.00% <i
-												class="mdi mdi-arrow-down"></i></td>
-											<td><label class="badge badge-info">Fixed</label></td>
-										</tr>
-										<tr>
-											<td>Peter</td>
-											<td>After effects</td>
-											<td></td>
-											<td class="text-success">82.00% <i
-												class="mdi mdi-arrow-up"></i></td>
-											<td><label class="badge badge-success">Completed</label></td>
-										</tr>
-										<tr>
-											<td>Dave</td>
-											<td>53275535</td>
-											<td></td>
-											<td class="text-success">98.05% <i
-												class="mdi mdi-arrow-up"></i></td>
-											<td><label class="badge badge-warning">In
-													progress</label></td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -373,7 +339,6 @@
 		series.columns.template.tooltipY = 0;
 		series.columns.template.strokeOpacity = 0;
 
-		// as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
 		series.columns.template.adapter.add("fill", function(fill, target) {
 		  return chart.colors.getIndex(target.dataItem.index);
 		});

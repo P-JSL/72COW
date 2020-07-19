@@ -32,7 +32,7 @@
 				class="nav-link dropdown-toggle" id="profileDropdown" href="#"
 				data-toggle="dropdown" aria-expanded="false">
 					<div class="nav-profile-text">
-						<p class="mb-1 text-black">白石様</p>
+						<p class="mb-1 text-black">山田様</p>
 					</div>
 			</a>
 				<div class="dropdown-menu navbar-dropdown"
