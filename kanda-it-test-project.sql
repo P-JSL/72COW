@@ -1,6 +1,13 @@
 --------------------------------------------------------
---  ÆÄÀÏÀÌ »ý¼ºµÊ - ¿ù¿äÀÏ-7¿ù-20-2020   
+--  íŒŒì¼ì´ ìƒì„±ë¨ - ì›”ìš”ì¼-7ì›”-20-2020   
 --------------------------------------------------------
+create user kanda_test
+identified by 1234;
+
+grant connect, resource, dba to kanda_test;
+
+alter user kanda_test account unlock;
+
 --------------------------------------------------------
 --  DDL for Sequence SEQ_USERS
 --------------------------------------------------------
@@ -79,31 +86,31 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "USERS"."NUM" IS '¹øÈ£'
+   COMMENT ON COLUMN "USERS"."NUM" IS 'ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "USERS"."SID" IS '°íÀ¯¹øÈ£'
+   COMMENT ON COLUMN "USERS"."SID" IS 'ê³ ìœ ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "USERS"."F_NAME" IS '¼º'
+   COMMENT ON COLUMN "USERS"."F_NAME" IS 'ì„±'
  
-   COMMENT ON COLUMN "USERS"."L_NAME" IS 'ÀÌ¸§'
+   COMMENT ON COLUMN "USERS"."L_NAME" IS 'ì´ë¦„'
  
-   COMMENT ON COLUMN "USERS"."F_E_NAME" IS '¿µ¾î ¼º'
+   COMMENT ON COLUMN "USERS"."F_E_NAME" IS 'ì˜ì–´ ì„±'
  
-   COMMENT ON COLUMN "USERS"."L_E_NAME" IS '¿µ¾î ÀÌ¸§'
+   COMMENT ON COLUMN "USERS"."L_E_NAME" IS 'ì˜ì–´ ì´ë¦„'
  
-   COMMENT ON COLUMN "USERS"."PASSWORD" IS 'ºñ¹Ð¹øÈ£'
+   COMMENT ON COLUMN "USERS"."PASSWORD" IS 'ë¹„ë°€ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "USERS"."EMAIL" IS 'ÀÌ¸ÞÀÏ'
+   COMMENT ON COLUMN "USERS"."EMAIL" IS 'ì´ë©”ì¼'
  
-   COMMENT ON COLUMN "USERS"."PHONE" IS 'ÇÚµåÆù'
+   COMMENT ON COLUMN "USERS"."PHONE" IS 'í•¸ë“œí°'
  
-   COMMENT ON COLUMN "USERS"."NICKNAME" IS '´Ð³×ÀÓ'
+   COMMENT ON COLUMN "USERS"."NICKNAME" IS 'ë‹‰ë„¤ìž„'
  
-   COMMENT ON COLUMN "USERS"."ADDRESS" IS 'ÁÖ¼Ò'
+   COMMENT ON COLUMN "USERS"."ADDRESS" IS 'ì£¼ì†Œ'
  
-   COMMENT ON COLUMN "USERS"."SCORE" IS 'Æò°¡Å×ÀÌºí'
+   COMMENT ON COLUMN "USERS"."SCORE" IS 'í‰ê°€í…Œì´ë¸”'
  
-   COMMENT ON COLUMN "USERS"."RDATE" IS 'È¸¿ø µî·Ï ³¯Â¥'
+   COMMENT ON COLUMN "USERS"."RDATE" IS 'íšŒì› ë“±ë¡ ë‚ ì§œ'
 --------------------------------------------------------
 --  DDL for Table USERS_AUTH
 --------------------------------------------------------
@@ -116,10 +123,10 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "USERS_AUTH"."SID" IS 'È¸¿ø µî·Ï¹øÈ£
+   COMMENT ON COLUMN "USERS_AUTH"."SID" IS 'íšŒì› ë“±ë¡ë²ˆí˜¸
 '
  
-   COMMENT ON COLUMN "USERS_AUTH"."AUTH" IS 'À¯Àú/°ü¸®ÀÚ ¿©ºÎ'
+   COMMENT ON COLUMN "USERS_AUTH"."AUTH" IS 'ìœ ì €/ê´€ë¦¬ìž ì—¬ë¶€'
 --------------------------------------------------------
 --  DDL for Table TREAD_MSG
 --------------------------------------------------------
@@ -135,15 +142,15 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "TREAD_MSG"."NUM" IS '¹øÈ£'
+   COMMENT ON COLUMN "TREAD_MSG"."NUM" IS 'ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "TREAD_MSG"."E_MSG" IS '¸Þ½ÃÁö'
+   COMMENT ON COLUMN "TREAD_MSG"."E_MSG" IS 'ë©”ì‹œì§€'
  
-   COMMENT ON COLUMN "TREAD_MSG"."SEND_TO" IS 'º¸³¾ »ç¶÷'
+   COMMENT ON COLUMN "TREAD_MSG"."SEND_TO" IS 'ë³´ë‚¼ ì‚¬ëžŒ'
  
-   COMMENT ON COLUMN "TREAD_MSG"."SEND_FROM" IS 'º¸³»´Â »ç¶÷'
+   COMMENT ON COLUMN "TREAD_MSG"."SEND_FROM" IS 'ë³´ë‚´ëŠ” ì‚¬ëžŒ'
  
-   COMMENT ON COLUMN "TREAD_MSG"."MDATE" IS 'º¸³½ ³¯Â¥'
+   COMMENT ON COLUMN "TREAD_MSG"."MDATE" IS 'ë³´ë‚¸ ë‚ ì§œ'
 --------------------------------------------------------
 --  DDL for Table SHUT_USER
 --------------------------------------------------------
@@ -157,11 +164,11 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "SHUT_USER"."NUM" IS '¹øÈ£'
+   COMMENT ON COLUMN "SHUT_USER"."NUM" IS 'ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "SHUT_USER"."SID" IS 'È¸¿ø °íÀ¯ ¹øÈ£'
+   COMMENT ON COLUMN "SHUT_USER"."SID" IS 'íšŒì› ê³ ìœ  ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "SHUT_USER"."SDATE" IS '½Å°í¿¡ ÀÇÇØ Â÷´Ü µÈ ³¯Â¥'
+   COMMENT ON COLUMN "SHUT_USER"."SDATE" IS 'ì‹ ê³ ì— ì˜í•´ ì°¨ë‹¨ ëœ ë‚ ì§œ'
 --------------------------------------------------------
 --  DDL for Table SEND_MAIL
 --------------------------------------------------------
@@ -175,9 +182,9 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "SEND_MAIL"."BUYER" IS '»óÇ°±¸ÀÔÀÚ'
+   COMMENT ON COLUMN "SEND_MAIL"."BUYER" IS 'ìƒí’ˆêµ¬ìž…ìž'
  
-   COMMENT ON COLUMN "SEND_MAIL"."MSG" IS '»óÇ° ¹ß¼Û ¸Þ½ÃÁö'
+   COMMENT ON COLUMN "SEND_MAIL"."MSG" IS 'ìƒí’ˆ ë°œì†¡ ë©”ì‹œì§€'
 --------------------------------------------------------
 --  DDL for Table RECEIVE_MAIL
 --------------------------------------------------------
@@ -191,9 +198,9 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "RECEIVE_MAIL"."BUYER" IS '±¸ÀÔÀÚ/À¯Àú'
+   COMMENT ON COLUMN "RECEIVE_MAIL"."BUYER" IS 'êµ¬ìž…ìž/ìœ ì €'
  
-   COMMENT ON COLUMN "RECEIVE_MAIL"."MSG" IS '±¸ÀÔ ¿Ï·á ¸Þ½ÃÁö'
+   COMMENT ON COLUMN "RECEIVE_MAIL"."MSG" IS 'êµ¬ìž… ì™„ë£Œ ë©”ì‹œì§€'
 --------------------------------------------------------
 --  DDL for Table PRODUCT
 --------------------------------------------------------
@@ -215,25 +222,25 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "PRODUCT"."SID" IS 'È¸¿ø °íÀ¯ ¹øÈ£'
+   COMMENT ON COLUMN "PRODUCT"."SID" IS 'íšŒì› ê³ ìœ  ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "PRODUCT"."PSID" IS '»óÇ° °íÀ¯ ¹øÈ£'
+   COMMENT ON COLUMN "PRODUCT"."PSID" IS 'ìƒí’ˆ ê³ ìœ  ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "PRODUCT"."NAME" IS '»óÇ° ÀÌ¸§'
+   COMMENT ON COLUMN "PRODUCT"."NAME" IS 'ìƒí’ˆ ì´ë¦„'
  
-   COMMENT ON COLUMN "PRODUCT"."CATEGORY" IS 'Ä«Å×°í¸®'
+   COMMENT ON COLUMN "PRODUCT"."CATEGORY" IS 'ì¹´í…Œê³ ë¦¬'
  
-   COMMENT ON COLUMN "PRODUCT"."PRICE" IS '°¡°Ý'
+   COMMENT ON COLUMN "PRODUCT"."PRICE" IS 'ê°€ê²©'
  
-   COMMENT ON COLUMN "PRODUCT"."AMOUNT" IS '»óÇ° °¹¼ö'
+   COMMENT ON COLUMN "PRODUCT"."AMOUNT" IS 'ìƒí’ˆ ê°¯ìˆ˜'
  
-   COMMENT ON COLUMN "PRODUCT"."PICTURE" IS '»óÇ° »çÁø'
+   COMMENT ON COLUMN "PRODUCT"."PICTURE" IS 'ìƒí’ˆ ì‚¬ì§„'
  
-   COMMENT ON COLUMN "PRODUCT"."PDATE" IS '»óÇ° µî·Ï ³¯Â¥'
+   COMMENT ON COLUMN "PRODUCT"."PDATE" IS 'ìƒí’ˆ ë“±ë¡ ë‚ ì§œ'
  
-   COMMENT ON COLUMN "PRODUCT"."VIEWS" IS '»óÇ° Á¶È¸¼ö'
+   COMMENT ON COLUMN "PRODUCT"."VIEWS" IS 'ìƒí’ˆ ì¡°íšŒìˆ˜'
  
-   COMMENT ON COLUMN "PRODUCT"."DIBS" IS 'ÂòÇÑ ¹°Ç° ¼±ÅÃ'
+   COMMENT ON COLUMN "PRODUCT"."DIBS" IS 'ì°œí•œ ë¬¼í’ˆ ì„ íƒ'
 --------------------------------------------------------
 --  DDL for Table FEES
 --------------------------------------------------------
@@ -252,21 +259,21 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "FEES"."NUM" IS '¹øÈ£'
+   COMMENT ON COLUMN "FEES"."NUM" IS 'ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "FEES"."PSID" IS '»óÇ° °íÀ¯ ¹øÈ£'
+   COMMENT ON COLUMN "FEES"."PSID" IS 'ìƒí’ˆ ê³ ìœ  ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "FEES"."TDATE" IS '»óÇ°ÀÌ ÆÇ¸Å µÈ ³¯Â¥'
+   COMMENT ON COLUMN "FEES"."TDATE" IS 'ìƒí’ˆì´ íŒë§¤ ëœ ë‚ ì§œ'
  
-   COMMENT ON COLUMN "FEES"."CATEGORY" IS 'Ä«Å×°í¸®'
+   COMMENT ON COLUMN "FEES"."CATEGORY" IS 'ì¹´í…Œê³ ë¦¬'
  
-   COMMENT ON COLUMN "FEES"."PRICE" IS 'ÆÇ¸Å »óÇ° °¡°Ý'
+   COMMENT ON COLUMN "FEES"."PRICE" IS 'íŒë§¤ ìƒí’ˆ ê°€ê²©'
  
-   COMMENT ON COLUMN "FEES"."MANY" IS 'ÆÇ¸Å »óÇ° °¹¼ö'
+   COMMENT ON COLUMN "FEES"."MANY" IS 'íŒë§¤ ìƒí’ˆ ê°¯ìˆ˜'
  
-   COMMENT ON COLUMN "FEES"."SUM_PRICE" IS 'ÃÑ ÆÇ¸Å ±Ý¾×'
+   COMMENT ON COLUMN "FEES"."SUM_PRICE" IS 'ì´ íŒë§¤ ê¸ˆì•¡'
  
-   COMMENT ON COLUMN "FEES"."SEPARATE" IS 'À¯Àú : 0 / °ü¸®ÀÚ : 1'
+   COMMENT ON COLUMN "FEES"."SEPARATE" IS 'ìœ ì € : 0 / ê´€ë¦¬ìž : 1'
 --------------------------------------------------------
 --  DDL for Table P_STATUS
 --------------------------------------------------------
@@ -285,21 +292,21 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "P_STATUS"."NUM" IS '¹øÈ£'
+   COMMENT ON COLUMN "P_STATUS"."NUM" IS 'ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "P_STATUS"."PSID" IS '»óÇ° °íÀ¯ ¹øÈ£'
+   COMMENT ON COLUMN "P_STATUS"."PSID" IS 'ìƒí’ˆ ê³ ìœ  ë²ˆí˜¸'
  
-   COMMENT ON COLUMN "P_STATUS"."SDATE" IS '¹®ÀÇ ³¯Â¥ -»óÇ° ±¸ÀÔ ³¯Â¥'
+   COMMENT ON COLUMN "P_STATUS"."SDATE" IS 'ë¬¸ì˜ ë‚ ì§œ -ìƒí’ˆ êµ¬ìž… ë‚ ì§œ'
  
-   COMMENT ON COLUMN "P_STATUS"."MANY" IS '±âº»°ª :1 / ±â½º ¹× ÇÏÀÚ°¹¼ö'
+   COMMENT ON COLUMN "P_STATUS"."MANY" IS 'ê¸°ë³¸ê°’ :1 / ê¸°ìŠ¤ ë° í•˜ìžê°¯ìˆ˜'
  
-   COMMENT ON COLUMN "P_STATUS"."TIMES" IS '±âº»°ª :1 / »ç¿ë È½¼ö'
+   COMMENT ON COLUMN "P_STATUS"."TIMES" IS 'ê¸°ë³¸ê°’ :1 / ì‚¬ìš© íšŸìˆ˜'
  
-   COMMENT ON COLUMN "P_STATUS"."EXPLAN" IS 't»óÅÂ ¼³¸í/ÄÚ¸àÆ®'
+   COMMENT ON COLUMN "P_STATUS"."EXPLAN" IS 'tìƒíƒœ ì„¤ëª…/ì½”ë©˜íŠ¸'
  
-   COMMENT ON COLUMN "P_STATUS"."ADDRESS" IS 'ÁÖ¼Ò'
+   COMMENT ON COLUMN "P_STATUS"."ADDRESS" IS 'ì£¼ì†Œ'
  
-   COMMENT ON COLUMN "P_STATUS"."REPORT" IS '½Å°í È½¼ö'
+   COMMENT ON COLUMN "P_STATUS"."REPORT" IS 'ì‹ ê³  íšŸìˆ˜'
 --------------------------------------------------------
 --  DDL for Table CONTACT_USER
 --------------------------------------------------------
@@ -315,13 +322,13 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "CONTACT_USER"."MESSAGE" IS '¸Þ½ÃÁö'
+   COMMENT ON COLUMN "CONTACT_USER"."MESSAGE" IS 'ë©”ì‹œì§€'
  
-   COMMENT ON COLUMN "CONTACT_USER"."SEND_TO" IS 'À¯Àú'
+   COMMENT ON COLUMN "CONTACT_USER"."SEND_TO" IS 'ìœ ì €'
  
-   COMMENT ON COLUMN "CONTACT_USER"."SEND_FROM" IS '°ü¸®ÀÚ'
+   COMMENT ON COLUMN "CONTACT_USER"."SEND_FROM" IS 'ê´€ë¦¬ìž'
  
-   COMMENT ON COLUMN "CONTACT_USER"."SDATE" IS '¹®ÀÇ ³¯Â¥'
+   COMMENT ON COLUMN "CONTACT_USER"."SDATE" IS 'ë¬¸ì˜ ë‚ ì§œ'
 --------------------------------------------------------
 --  DDL for Table CONTACT_ADMIN
 --------------------------------------------------------
@@ -337,12 +344,12 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "CONTACT_ADMIN"."MESSAGE" IS '¸Þ½ÃÁö
+   COMMENT ON COLUMN "CONTACT_ADMIN"."MESSAGE" IS 'ë©”ì‹œì§€
 '
  
-   COMMENT ON COLUMN "CONTACT_ADMIN"."SEND_FROM" IS '°ü¸®ÀÚ'
+   COMMENT ON COLUMN "CONTACT_ADMIN"."SEND_FROM" IS 'ê´€ë¦¬ìž'
  
-   COMMENT ON COLUMN "CONTACT_ADMIN"."SDATE" IS 'ÀÀ´ä ³¯Â¥'
+   COMMENT ON COLUMN "CONTACT_ADMIN"."SDATE" IS 'ì‘ë‹µ ë‚ ì§œ'
 --------------------------------------------------------
 --  DDL for Table CHAT
 --------------------------------------------------------
@@ -356,9 +363,9 @@
   TABLESPACE "USERS" 
  
 
-   COMMENT ON COLUMN "CHAT"."TEXT" IS 'Ã¤ÆÃ ¸Þ½ÃÁö'
+   COMMENT ON COLUMN "CHAT"."TEXT" IS 'ì±„íŒ… ë©”ì‹œì§€'
  
-   COMMENT ON COLUMN "CHAT"."NICKNAME" IS '´Ð³×ÀÓ'
+   COMMENT ON COLUMN "CHAT"."NICKNAME" IS 'ë‹‰ë„¤ìž„'
 REM INSERTING into USERS
 SET DEFINE OFF;
 REM INSERTING into USERS_AUTH
