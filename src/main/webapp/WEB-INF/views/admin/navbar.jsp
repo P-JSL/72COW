@@ -5,11 +5,11 @@
 	<div
 		class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
 		<a class="navbar-brand brand-logo" href="/admin/index"><img
-			src="/resources/logoss.png" alt="logo"
-			style="width: 100% !important; height: 100%; position: relative; top: 45px" /></a>
+			src="/resources/cowlogo.png" alt="logo"
+			style="width: 80% !important; height: 100%; position: relative; top: 46px" /></a>
 		<a class="navbar-brand brand-logo-mini" href="/admin/index"><img
-			src="/resources/logoss.png" alt="logo"
-			style="width: 100% !important; height: 100%; position: relative; top: -5px;"/></a>
+			src="/resources/cowlogo.png" alt="logo"
+			style="width: 100% !important; height: 100%; position: relative; top: 2px;"/></a>
 	</div>
 	<div class="navbar-menu-wrapper d-flex align-items-stretch">
 		<button class="navbar-toggler navbar-toggler align-self-center"

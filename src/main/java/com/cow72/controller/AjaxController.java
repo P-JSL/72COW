@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonElement;
@@ -17,7 +16,6 @@ import com.google.gson.JsonParser;
 @RestController
 public class AjaxController {
 
-	@ResponseBody
 	@PostMapping(value = "/admin/info", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> UserInfo(@RequestBody String userid) {
 
@@ -33,7 +31,6 @@ public class AjaxController {
 	}
 	
 	
-	@ResponseBody
 	@PostMapping(value = "/admin/codefind", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> UserCodeInfo(@RequestBody String code) {
 
