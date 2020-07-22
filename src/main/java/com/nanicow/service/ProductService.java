@@ -42,4 +42,8 @@ public class ProductService {
 		
 		return mapper.productList();
 	}
+	public List<ProductVO> Allproduct() {
+
+		return mapper.Allproduct();
+	}
 }

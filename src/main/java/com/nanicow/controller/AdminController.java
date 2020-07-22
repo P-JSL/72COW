@@ -85,6 +85,7 @@ public class AdminController {
 	public void admin_product(Model model) {
 		log.info("welcome Allproduct");
 		// 1) 상품 이미지 , 상품 코드, 상품 가격, 상품 제목
+		model.addAttribute("pvo",pser.Allproduct());
 	
 	}
 

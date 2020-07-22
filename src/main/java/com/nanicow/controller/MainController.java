@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nanicow.domain.UsersVO;
 import com.nanicow.service.UsersService;
@@ -28,12 +29,12 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 @Controller
-public class HomeController {
+public class MainController {
 
 	@Setter(onMethod_ = { @Autowired })
 	private UsersService service;
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -63,13 +64,15 @@ public class HomeController {
 	}
 
 	@PostMapping("/login")
-	public String login_confirm(UsersVO users,HttpServletRequest req) {
+	public String login_confirm(UsersVO users,HttpServletRequest req,RedirectAttributes attr) {
 		String auth = service.read(users, req);
 		if(auth.equals("ADMIN")){
 			return "redirect:/admin/index";
-		}else {			
+		}else if(auth.equals("USERS")){			
 			return "redirect:/";
 		}
+		attr.addFlashAttribute("error","IDやパスワードが間違いました。");
+		return "redirect:/login";
 	}
 	
 	@PostMapping("/signup")

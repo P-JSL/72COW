@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="header.jsp"%>
 <style type="text/css">
-body {
-    font-size: 1rem;
-    font-family: "ubuntu-regular", sans-serif;
-    font-weight: initial;
-    line-height: normal;
-    -webkit-font-smoothing: antialiased;
-}
 .card .card-body {
 	padding: 1.5rem 1.5rem !important;
 }
@@ -42,67 +36,37 @@ td {
 		<div class="main-panel">
 			<div class="content-wrapper">
 				<div class="row">
-					<div class="col-md-6 grid-margin stretch-card">
-						<div class="card"
-							style="border: 1px solid; box-shadow: 1px 3px 3px 2px rgba(0, 0, 0, 0.3);">
-							<div class="card-body">
-								<h4 class="card-title" style="text-align: center;">スーパーコンピューター</h4>
-								<div class="media">
-									<div class="media-body">
-										<div class="card col-md-12">
-											<table class="table">
-												<tbody>
-													<tr>
-														<td>code</td>
-														<td class="code">C0123742</td>
-													</tr>
-													<tr>
-														<td>price</td>
-														<td>134727￥</td>
-													</tr>
-												</tbody>
-											</table>
+					<c:forEach items="${pvo }" var="p">
+						<div class="col-md-5 grid-margin stretch-card">
+							<div class="card"
+								style="border: 1px solid; box-shadow: 1px 3px 3px 2px rgba(0, 0, 0, 0.3);">
+								<div class="card-body">
+									<h4 class="card-title" style="text-align: center;">${p.name}</h4>
+									<div class="media">
+										<div class="media-body">
+											<div class="card col-md-12">
+												<table class="table">
+													<tbody>
+														<tr>
+															<td>code</td>
+															<td class="code">${p.psid }</td>
+														</tr>
+														<tr>
+															<td>price</td>
+															<td>${p.price }</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="media-left-content" id='img'>
-									<img src="/resources/images/quantom.jpg"
+									<img src="/resources/upload/${p.picture }"
 										style="margin-top: 15px;">
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="col-md-6 grid-margin stretch-card">
-						<div class="card"
-							style="border: 1px solid; box-shadow: 1px 3px 3px 2px rgba(0, 0, 0, 0.3);">
-							<div class="card-body">
-								<h4 class="card-title" style="text-align: center;">スーパーコンピューター</h4>
-								<div class="media">
-									<div class="media-body">
-										<div class="card col-md-12">
-											<table class="table">
-												<tbody>
-													<tr>
-														<td>code</td>
-														<td class="code">C0123742</td>
-													</tr>
-													<tr>
-														<td>price</td>
-														<td>134727￥</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								<div class="media-left-content" id='img'>
-									<img src="/resources/images/quantom.jpg"
-										style="margin-top: 15px;">
-								</div>
-							</div>
-						</div>
-					</div>
+						<div class="media-left-content" id='img'></div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

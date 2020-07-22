@@ -9,15 +9,33 @@
 		]]>
 	</select>
 	<select id="list" resultType="com.nanicow.domain.FeesVO">
-	select psid, count(price) as price, sum_price, tdate from fees where userid = #{userid} group by #{userid},psid, sum_price, tdate
+		select psid, count(price) as price, sum_price, tdate from fees where userid
+		= #{userid} group by #{userid},psid, sum_price, tdate
 	</select>
 	<select id="SellerList" resultType="com.nanicow.domain.UsersVO">
-		select us.userid,us.f_name,us.l_name, us.rdate,us.email from users us, product pros 
+		select
+		us.userid,us.f_name,us.l_name, us.rdate,us.email from users us,
+		product pros
 	</select>
 	<select id="productcount" resultType="int">
-		select count(*) from product where userid = #{userid}
+		select count(*) from
+		product where userid = #{userid}
 	</select>
-	<select id="productList" resultType="com.nanicow.domain.ProductVO">
-	select psid, price, category, amount, pdate from product
+	<select id="productList"
+		resultType="com.nanicow.domain.ProductVO">
+		select psid, price, category, amount, pdate from product
+	</select>
+	<resultMap type="com.nanicow.domain.ProductVO" id="product">
+		<id property="name" column="name"></id>
+		<id property="psid" column="psid"></id>
+		<id property="picture" column="picture"></id>
+		<id property="price" column="price"></id>
+	</resultMap>
+	<select id="Allproduct" resultMap="product">
+	<![CDATA[	
+       select /*+ index_desc (product product_pk )*/
+		rownum rn , name, psid, PICTURE,price 
+		 from product
+       ]]>
 	</select>
 </mapper>

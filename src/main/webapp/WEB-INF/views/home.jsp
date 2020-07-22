@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -1085,6 +1085,7 @@ rotate
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <header class="">
 	<div class="bar hide"></div>
 	<div class="menu">
@@ -1173,7 +1174,6 @@ rotate
 			</div>
 		</div>
 	</section>
-	
 	<section class="header_cat">
 		<div class="header_wrapper">
 			<div>

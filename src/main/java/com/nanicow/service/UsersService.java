@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.nanicow.domain.UsersVO;
 import com.nanicow.mapper.UserMapper;
@@ -40,17 +41,17 @@ public class UsersService {
 		if (confirm) {
 			uvo.getAuthlist().stream().forEach(auth -> roleNames.add(auth.getAuth()));
 		}
-
+		
+		log.info("Authentication : " + roleNames);
 		if (roleNames.contains("ADMIN")) {
-			System.out.println("ADMIN");
 			session.setAttribute("user", uvo);
 			return "ADMIN";
 		} 
 		if (roleNames.contains("USER")) {
-			System.out.println("USER");
 			session.setAttribute("user", uvo);
+			return "USERS";
 		}
-		return "USERS";
+		return "/login";
 	}
 	
 	//

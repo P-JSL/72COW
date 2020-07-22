@@ -10,6 +10,7 @@
 			<div id="qnb" class="quick-navigation"></div>
 			<div class="section_login">
 				<h3 class="tit_login">ログイン</h3>
+				<h3 class="error" style="text-align: center;">${error }</h3>
 				<div class="write_form">
 					<div class="write_view login_view">
 						<form method="post" name="form" id="form"

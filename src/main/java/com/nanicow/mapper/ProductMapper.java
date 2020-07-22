@@ -18,4 +18,7 @@ public interface ProductMapper {
 	public int productcount(String userid);
 	
 	public List<ProductVO> productList();
+	
+	//관리자 이미지
+	public List<ProductVO> Allproduct();
 }
