@@ -8,7 +8,7 @@
 			src="/resources/cowlogo.png" alt="logo"
 			style="width: 80% !important; height: 100%; position: relative; top: 46px" /></a>
 		<a class="navbar-brand brand-logo-mini" href="/admin/index"><img
-			src="/resources/cowlogo.png" alt="logo"
+			src="/resources/cowlogo.png" alt="logo" id="mini"
 			style="width: 100% !important; height: 100%; position: relative; top: 2px;"/></a>
 	</div>
 	<div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -32,7 +32,7 @@
 				class="nav-link dropdown-toggle" id="profileDropdown" href="#"
 				data-toggle="dropdown" aria-expanded="false">
 					<div class="nav-profile-text">
-						<p class="mb-1 text-black">山田様</p>
+						<p class="mb-1 text-black">${user.f_name }${user.l_name }様</p>
 					</div>
 			</a>
 				<div class="dropdown-menu navbar-dropdown"

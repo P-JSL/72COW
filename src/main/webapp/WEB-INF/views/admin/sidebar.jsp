@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<nav class="sidebar sidebar-offcanvas" id="sidebar"
-	style="position: relative; top: 80px;">
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
 	<ul class="nav">
 		<li class="nav-item nav-profile"><a href="#" class="nav-link">
 				<div class="nav-profile-text d-flex flex-column">
-					<span class="font-weight-bold mb-2">山田様</span> <span
-						class="text-secondary text-small">Project Manager<i
+					<span class="font-weight-bold mb-2">${user.f_name} ${user.l_name }</span>
+					<span class="text-secondary text-small">Project Manager<i
 						class="mdi mdi-bookmark-check text-success nav-profile-badge"></i></span>
 
 				</div>
@@ -34,8 +34,8 @@
 						href="/admin/AllProduct"> 全ての商品 </a></li>
 				</ul>
 			</div></li>
-		<li class="nav-item"><a class="nav-link" href="/admin/userRef">
-				<span class="menu-title">お問い合わせ対応</span> <i
+		<li class="nav-item"><a class="nav-link" href="/admin/reflist">
+				<span class="menu-title">送信お問合せリスト</span> <i
 				class="mdi mdi-help menu-icon"></i>
 		</a></li>
 	</ul>

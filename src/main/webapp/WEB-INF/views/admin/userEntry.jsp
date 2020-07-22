@@ -30,7 +30,7 @@
 									<h4 class="font-weight-normal mb-3">
 										総販売価格 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
-									<h2>￥ 15,000</h2>
+									<h2 id="sales"></h2>
 									<a href="#" class="btn trigger" style="padding: 0;"><button
 											type="button" class="btn btn-inverse-info btn-fw">手数料を見る</button></a>
 								</div>
@@ -44,38 +44,51 @@
 									<h4 class="font-weight-normal mb-3">
 										一番売った人 <i class="mdi mdi-cash-usd mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">林様 ・ 27個売り</h2>
+									<h2 class="mb-5" id="uri"></h2>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- 수수료 -->
-					<div class="col-lg-12 grid-margin stretch-card">
-						<div class="card">
+					<div class="col-lg-9 stretch-card"
+						style="margin-bottom: 1rem; margin-left: auto; margin-right: auto;">
+						<div class="card"
+							style="box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);">
+							<div class="card-body"
+								style="text-align: center; padding: 0.5rem;">
+								<h4 class="card-title"
+									style="font-size: 2rem; font-weight: bold; margin-bottom: 0;">全体情報・状態</h4>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-9 stretch-card"
+						style="margin: 0 auto;">
+						<div class="card"
+							style="box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);">
 							<div class="card-body">
-								<h4 class="card-title">全体情報・状態</h4>
-								<table class="table table-hover">
-									<thead>
-										<tr style="text-align: center;">
-											<th>ユーザーコード</th>
-											<th>商品コード</th>
-											<th>商品写真</th>
-											<th>価格</th>
-											<th>登録日</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr style="text-align: center;">
-											<td><a href="#" id="trigger" onclick="openmodal(this);"
-												style="border: 0; margin: 0; display: inherit;">A0000124</a></td>
-											<td>C002471</td>
-											<td></td>
-											<td class="text-danger">1,400￥</td>
-											<td><label class="badge badge-danger">Pending</label></td>
-										</tr>
-										
-									</tbody>
-								</table>
+								<c:forEach items="${seller }" var="p">
+									<table class="table table-hover">
+										<thead>
+											<tr style="text-align: center;">
+												<th>ユーザーID</th>
+												<th>名前</th>
+												<th>メール</th>
+												<th>登録日</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr style="text-align: center;">
+												<td><a href="#" id="trigger" onclick="openmodal(this);"
+													style="border: 0; margin: 0;">${p.userid}</a></td>
+												<td>${p.f_name}${p.l_name}</td>
+												<td>${p.email }</td>
+												<td><label class="badge badge-danger"><fmt:formatDate
+															value="${p.rdate }" pattern="YYYY年MM月dd日" /></label></td>
+											</tr>
+										</tbody>
+									</table>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -83,6 +96,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<!-- Modal -->
 	<div class="modal-wrapper">
@@ -102,7 +116,7 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h2 style="display: inline-block;">
-										<strong>総手数料：</strong>￥<span>24,144</span>
+										<strong>総手数料：</strong>￥<span id="comms"></span>
 									</h2>
 									<i class="mdi mdi-chart-line mdi-24px float-right"></i>
 								</div>
@@ -140,7 +154,7 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h2 style="display: inline-block;">
-										<strong>取引回数：</strong><span>214回</span>
+										<strong>取引回数：</strong><span id="counter"></span>
 									</h2>
 
 									<i class="mdi mdi-chart-line mdi-24px float-right"></i>
@@ -151,11 +165,12 @@
 						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">A0000124様の情報</h4>
+									<h4 class="card-title">
+										<span id="userid"></span>様の情報
+									</h4>
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>名前</th>
 												<th>コード</th>
 												<th>商品登録数</th>
 												<th>売り上げ</th>
@@ -164,11 +179,10 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td>小林</td>
-												<td>A0000124</td>
-												<td>15回</td>
-												<td>26万円</td>
-												<td><label class="badge badge-danger">2万6千円</label></td>
+												<td id="code">A0000124</td>
+												<td id="times">15回</td>
+												<td id="income">26万円</td>
+												<td><label class="badge badge-danger" id="comm">2万6千円</label></td>
 											</tr>
 										</tbody>
 									</table>
@@ -185,8 +199,12 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.trigger').on('click', function() {
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}	
+	$(document).ready(function() {
+			$('.trigger').on('click', function(e) {
+				e.preventDefault();
 				$('.modal-wrapper').toggleClass('open');
 				$('.page-wrapper').toggleClass('blur-it');
 				return false;
@@ -201,7 +219,7 @@
 		});
 		
 		$(function(){
-			$('#trigger').on('click', function() {
+			$('.card-body table #trigger').on('click', function() {
 				$('.modal-wrapper2').toggleClass('open');
 				$('.page-wrapper').toggleClass('blur-it');
 				return false;
@@ -214,10 +232,12 @@
 			})
 		})
 		
-	
-		
+		function numberWithCommas(x) {
+		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
 			function openmodal(usercode){
 				var userid = usercode.innerText;
+				$("#userid").text(userid);
 				$.ajax({
 					url : "/admin/info",
 					type : 'POST',
@@ -227,8 +247,22 @@
 					contentType : "application/json; charset=UTF-8",
 					processData : false,
 					success : function(res) {
-						
-						console.log(res.info);
+						if($.isEmptyObject(res)){
+							$("#counter").text("0回");
+							$("#income").text("0円");
+							$("#comm").text("0円");
+							$("#times").text("0回");
+						}else{
+						$("#code").text(res.psid);
+						if($.isEmptyObject(res.pcount)){
+							$('#times').text("0回");
+						}else{							
+						$("#times").text(res.pcount+"回");
+						}
+						$("#income").text(numberWithCommas(res.sumprice+"円"));
+						$("#comm").text(numberWithCommas(Math.floor(res.sumprice*0.1))+"円");
+						$("#counter").text(res.count+"回");							
+						}
 					},
 					error : function(req, status, error) {
 						console.log(error);
@@ -236,15 +270,56 @@
 				})
 				
 			}	
-		
 	</script>
-	<!-- Resources -->
 	<script src="https://www.amcharts.com/lib/4/core.js"></script>
 	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
 	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-	<script>
+	<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url : "/admin/entry_uri",
+			type : 'POST',
+			contentType : "application/json; charset=UTF-8",
+			processData : false,
+			async:false,
+			success : function(res) {
+				console.log(res);
+				$("#uri").text(res.uriichi[0].name +"・"+res.uriichi[0].many+"回");
+				$("#sales").text("￥"+numberWithCommas(res.sales));
+				$("#comms").text(numberWithCommas(Math.floor(res.sales*0.1)));
+			},
+			error : function(req, status, error) {
+				console.log(error);
+			}
+		})
+	})
 	am4core.ready(function() {
-
+		var jsondata;
+		var name = new Array();
+		var comm = new Array();
+	
+		$.ajax({
+			url : "/admin/chart",
+			type : 'POST',
+			contentType : "application/json; charset=UTF-8",
+			processData : false,
+			async:false,
+			success : function(res) {
+				for(var i=0; i<res.uriichi.length;i++){				
+					name[i] = res.uriichi[i].name;
+					comm[i] = res.uriichi[i].comm;
+				}
+				jsondata = res.uriichi;
+				//name, price ---> price --> sumprice ==> price *.1;
+				
+			},
+			error : function(req, status, error) {
+				console.log(error);
+			}
+		})
+		
+		console.log(jsondata);
+		
 		// Themes begin
 		am4core.useTheme(am4themes_animated);
 		// Themes end
@@ -252,56 +327,23 @@
 		var chart = am4core.create("chartdiv", am4charts.XYChart);
 		chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-		chart.data = [
-		  {
-		    country: "小林",
-		    visits: 10000
-		  },
-		  {
-		    country: "石上",
-		    visits: 7082
-		  },
-		  {
-		    country: "紅葉",
-		    visits: 1809
-		  },
-		  {
-		    country: "林",
-		    visits: 1322
-		  },
-		  {
-		    country: "八幡",
-		    visits: 1122
-		  },
-		  {
-		    country: "雪ノ下",
-		    visits: 1114
-		  },
-		  {
-		    country: "山田",
-		    visits: 984
-		  },
-		  {
-		    country: "肺一郎",
-		    visits: 711
-		  }
-		];
+		chart.data = jsondata;
 
 		var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 		categoryAxis.renderer.grid.template.location = 0;
-		categoryAxis.dataFields.category = "country";
+		categoryAxis.dataFields.category = "name";
 		categoryAxis.renderer.minGridDistance = 40;
 		categoryAxis.fontSize = 11;
 
 		var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 		valueAxis.min = 0;
-		valueAxis.max = 15000;
+		valueAxis.max = Math.max.apply(null,comm)+comm[0]*0.5;
 		valueAxis.strictMinMax = true;
 		valueAxis.renderer.minGridDistance = 30;
 		// axis break
 		var axisBreak = valueAxis.axisBreaks.create();
-		axisBreak.startValue = 2100;
-		axisBreak.endValue = 6000;
+		axisBreak.startValue = 1000;
+		axisBreak.endValue = 2500;
 		//axisBreak.breakSize = 0.005;
 
 		// fixed axis break
@@ -333,8 +375,8 @@
 		});*/
 
 		var series = chart.series.push(new am4charts.ColumnSeries());
-		series.dataFields.categoryX = "country";
-		series.dataFields.valueY = "visits";
+		series.dataFields.categoryX = "name";
+		series.dataFields.valueY = "comm";
 		series.columns.template.tooltipText = "{valueY.value}";
 		series.columns.template.tooltipY = 0;
 		series.columns.template.strokeOpacity = 0;

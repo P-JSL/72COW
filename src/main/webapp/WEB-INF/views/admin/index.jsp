@@ -35,10 +35,9 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h4 class="font-weight-normal mb-3">
-										今月の売り上げ <i
-											class="mdi mdi-chart-line mdi-24px float-right"></i>
+										今月の売り上げ <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">$ 15,0000</h2>
+									<h2 class="mb-5">￥ <span id="price"></span></h2>
 									<h6 class="card-text">前月に比べ20%増</h6>
 								</div>
 							</div>
@@ -49,10 +48,9 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h4 class="font-weight-normal mb-3">
-										今月の手数料 <i
-											class="mdi mdi-cash-usd mdi-24px float-right"></i>
+										今月の手数料 <i class="mdi mdi-cash-usd mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">45,6334</h2>
+									<h2 class="mb-5">￥ <span id="comm"></span></h2>
 									<h6 class="card-text">前月に比べ 10%増</h6>
 								</div>
 							</div>
@@ -66,7 +64,7 @@
 										会員数 <i
 											class="mdi mdi-account-multiple-plus mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">95,5741</h2>
+									<h2 class="mb-5">${usercount }名</h2>
 									<h6 class="card-text">前月に比べ 5%増</h6>
 								</div>
 							</div>
@@ -87,51 +85,6 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-12 grid-margin">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Recent Tickets</h4>
-									<div class="table-responsive">
-										<table class="table">
-											<thead>
-												<tr>
-													<th>＃</th>
-													<th>ユーザー数</th>
-													<th>商品の数</th>
-													<th>売り上げ</th>
-													<th>手数料</th>
-													<th>取引回数</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<th>6月</th>
-													<td>121名</td>
-													<td>70個</td>
-													<td><label class="badge badge-gradient-info">13,220￥</label>
-													</td>
-													<td><label class="badge badge-gradient-danger">942￥</label></td>
-													<td><label class="badge badge-gradient-success">91回</label></td>
-
-												</tr>
-												<tr>
-													<td>7月</td>
-													<td>327名</td>
-													<td>214個</td>
-													<td><label class="badge badge-gradient-info">32,473￥</label>
-													</td>
-													<td><label class="badge badge-gradient-danger">2,417￥</label></td>
-													<td><label class="badge badge-gradient-success">471回</label></td>
-												</tr>
-
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
 						<div class="col-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
@@ -143,18 +96,20 @@
 										</div>
 									</div>
 									<div class="row mt-3">
+									<c:forEach items="${plist }" var="p" begin="0" step="1" end="2">
 										<div class="col-6 pr-1">
-											<img src="/resources/assets/images/dashboard/img_1.jpg"
-												class="mb-2 mw-100 w-100 rounded" alt="image"> <img
-												src="/resources/assets/images/dashboard/img_4.jpg"
-												class="mw-100 w-100 rounded" alt="image">
+											<img src="/upload/${p.picture }"
+												class="mb-2 mw-100 w-100 rounded"> 
 										</div>
+									</c:forEach>
+									<c:forEach items="${plist }" var="p" begin="2" step="1" end="4">
 										<div class="col-6 pl-1">
 											<img src="/resources/assets/images/dashboard/img_2.jpg"
 												class="mb-2 mw-100 w-100 rounded" alt="image"> <img
 												src="/resources/assets/images/dashboard/img_3.jpg"
 												class="mw-100 w-100 rounded" alt="image">
 										</div>
+									</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -199,14 +154,87 @@
 		<!-- page-body-wrapper ends -->
 	</div>
 	<!-- container-scroller -->
-
 	<!-- Resources -->
 	<script src="https://www.amcharts.com/lib/4/core.js"></script>
 	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
 	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+	<script type="text/javascript">
+		//날짜 관련 함수
+		function distributeDate(day) {
+			let year = day.substring(0, 4);
+			let month = day.substring(5, 7);
+			let days = day.substring(8);
+			if (day != null || day != "") {
+				return new Date(year, month, days);
+			} else {
+				return new Date(null);
+			}
+		}
+		function transNowDate(year, month, day) {
+			return new Date(year, month, day);
+		}
 
+		function now() {
+			return new Date();
+		}
+		function years() {
+			if (now().getFullYear() < 10) {
+				return "0" + now().getFullYear();
+			} else {
+
+				return now().getFullYear();
+			}
+		}
+		function mon() {
+			if (now().getMonth() < 10) {
+				return "0" + (now().getMonth() + 1);
+			} else {
+				return (now().getMonth() + 1);
+			}
+		}
+		function date() {
+			if (now().getDate() < 10) {
+				return "0" + now().getDate();
+			} else {
+				return now().getDate();
+			}
+		}
+		function numberWithCommas(x) {
+		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+
+		$(function() {
+			$.ajax({
+				url : "/admin/month",
+				type : 'POST',
+				contentType : "application/json; charset=UTF-8",
+				processData : false,
+				success : function(res) {
+					console.log(res);
+					if(res.price0 == 0 || res.price0 ==null){
+						$("#price").text(0);
+					}
+					if(res.price1 == 0 || res.price1 ==null){
+						$("#comm").text(0);
+					}
+					$("#price").text(numberWithCommas(res.price0));
+					$("#comm").text(numberWithCommas(Math.floor(res.price1*0.1)));
+				},
+				error : function(req, status, error) {
+					console.log(error);
+				}
+			})
+		})
+	</script>
 	<!-- Chart code -->
 	<script>
+	var Data = ${data}
+	var date = new Array();
+	var price = new Array();
+	for(var i=0; i<Data.length; i++){
+		date[i] = Data[i].tdate;
+		price[i] = Data[i].sum_price;
+	}
 		am4core
 				.ready(function() {
 
@@ -221,12 +249,11 @@
 					var previousValue;
 
 					for (var i = 0; i < 100; i++) {
-						visits += Math.round((Math.random() < 0.5 ? 1 : -1)
-								* Math.random() * 10); //visit 데이터
+						visits += price[i]; //visit 데이터
 
 						if (i > 0) {
 							// add color to previous data item depending on whether current value is less or more than previous value
-							if (previousValue <= visits) {
+							if (previousValue <= price[i-1]) {
 								data[i - 1].color = chart.colors.getIndex(0);
 							} else {
 								data[i - 1].color = chart.colors.getIndex(5);
@@ -234,8 +261,8 @@
 						}
 
 						data.push({
-							date : new Date(2018, 0, i + 1),
-							value : visits
+							date : new Date(years(),mon(),i),
+							value : price
 						}); // 날짜
 						previousValue = visits;
 					}
@@ -257,7 +284,7 @@
 					series.dataFields.dateX = "date"; //날짜 X측 변수
 					series.dataFields.valueY = "value"; //Y축 값
 					series.strokeWidth = 2;
-					series.tooltipText = "value: {valueY}, day change: {valueY.previousChange}";
+					series.tooltipText = "金額: {valueY}";
 
 					// set stroke property field
 					series.propertyFields.stroke = "color";

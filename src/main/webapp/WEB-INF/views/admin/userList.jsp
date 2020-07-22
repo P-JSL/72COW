@@ -33,24 +33,28 @@
 							<div class="card-body" style="text-align: center;">
 								<h4 class="card-title">ユーザー検索</h4>
 								<!-- 검색 폼 -->
-								<form class="form-inline" action="/admin/userList" method="post" style="justify-content: center;">
+								<form class="form-inline" action="/admin/userList" method="get"
+									style="justify-content: center;">
+									<input type="hidden" name="pageNum" value="${pageMaker.pageNum }">
+									<input type="hidden" name="amount" value="${pageMaker.amount }">
 									<div class="input-group mb-2 mr-sm-2">
 										<div class="input-group-prepend">
 											<div class="input-group-text">検索条件</div>
 										</div>
 										<div class="form-group">
-											<select class="form-control form-control-lg" id="selected">
-												<option value="code">コード</option>
-												<option value="name">お名前</option>
+											<select class="form-control form-control-lg" id="selected" name="type">
+												<option>選択</option>
+												<option value="i">コード</option>
+												<option value="n">お名前</option>
 											</select>
 										</div>
 									</div>
 									<label class="sr-only" for="inlineFormInputName2">Name</label>
 									<input type="text" class="form-control mb-2 mr-sm-2"
-										id="inlineFormInputName2" placeholder="Jane Doe"> <label
+										id="inlineFormInputName2" name="keyword" placeholder="名前の場合、名字と名前の間に空白をつけてください。" style="width: 60%;"> <label
 										class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
 
-									<button type="submit" class="btn btn-gradient-primary mb-2">Submit</button>
+									<button type="submit" class="btn btn-gradient-primary mb-2">検索</button>
 								</form>
 							</div>
 						</div>
@@ -58,40 +62,35 @@
 					<div class="col-lg-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title" style="text-align: center; border-bottom: 3px double" >ユーザー</h4>
+								<h4 class="card-title"
+									style="text-align: center; border-bottom: 3px double">ユーザー</h4>
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th>会員コード</th>
-											<th>お名前</th>
+											<th>会員名（漢字）</th>
+											<th>会員名（ひらがな）</th>
 											<th>購入回数</th>
 											<th>登録日</th>
 											<th>お問合せ</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td class="py-1" id="code">A0016723</td>
-											<td>小日向</td>
-											<td>
-												<!--<div class="progress-bar bg-success" role="progressbar"
-														style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-														aria-valuemax="100"></div>  --> 24回
+										<c:forEach items="${list }" var="i">
+											<tr>
+												<input type="hidden" name="userid" value="${i.userid }">
+												<td class="py-1" id="code">${i.f_name }</td>
+												<td>${i.l_name }</td>
+												<td>${i.count }回</td>
+												<td><fmt:formatDate value="${i.rdate }"
+														pattern="YYYY-MM-dd" /></td>
+												<td class="ari" id="bar"><label id="inquired">${i.o }</label></td>
+											</tr>
+										</c:forEach>
 
-											</td>
-											<td>2020/07/04</td>
-											<td class="ari" id="bar"><label id="inquired">有</label></td>
-										</tr>
-										<tr>
-											<td class="py-1" id="code">A00422123</td>
-											<td>いちご</td>
-											<td>81回</td>
-											<td>2020/06/07</td>
-											<td class="ari" id="bar"><label id="inquired">無</label></td>
-										</tr>
 									</tbody>
 								</table>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -119,19 +118,15 @@
 										<div class="form-group">
 											<label for="exampleInputName1">Name</label> <input
 												type="text" class="form-control" id="exampleInputName1"
-												placeholder="Name">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputEmail3">Email address</label> <input
-												type="email" class="form-control" id="exampleInputEmail3"
-												placeholder="Email">
+												placeholder="Name" readonly>
 										</div>
 										<div class="form-group">
 											<label for="exampleTextarea1">Textarea</label>
-											<textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+											<textarea readonly class="form-control" id="exampleTextarea1"
+												rows="4"></textarea>
 										</div>
 										<button type="button" class="btn btn-gradient-success"
-											id="comment">応答</button>
+											onclick="moveContact(this)">応答</button>
 										<button type="button" class="btn btn-gradient-danger"
 											id="close2">閉める</button>
 									</form>
@@ -151,6 +146,7 @@
 		data-auto-replace-svg="nest"></script>
 	<script type="text/javascript">
 		$(function() {
+
 			$(".table tr").css("text-align", "center");
 			var arion = $(".table").find("#inquired");
 			var ari = $(".table tbody tr").find(".ari");
@@ -168,45 +164,46 @@
 		})
 	</script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.trigger').on('click', function() {
-				$('.modal-wrapper').toggleClass('open');
-				$('.page-wrapper').toggleClass('blur-it');
-				var code = $(this).parent().find("#code").text();
-				console.log(code);
-				$.ajax({
-					url : "/admin/codefind",
-					type : 'POST',
-					data : JSON.stringify({
-						"code" : code,
-					}),
-					contentType : "application/json; charset=UTF-8",
-					processData : false,
-					success : function(res) {
-						console.log(res);
-						$("#username").text(res.code + "様の質問");
-					},
-					error : function(req, status, error) {
-						console.log(error);
-					}
-				})
-				return false;
-			});
-			$("#close").on("click", function() {
-				$(".modal-wrapper").removeClass("open");
-			})
-			$("#close2").on("click", function() {
-				$(".modal-wrapper").removeClass("open");
-			})
+		$(document)
+				.ready(
+						function() {
+							$('.trigger').on('click',function() {$('.modal-wrapper').toggleClass('open');
+							$('.page-wrapper').toggleClass('blur-it');
+							var userid = $(this).parent().find("input[name='userid']").val();
+							$.ajax({
+								url : "/admin/codefind",
+								type : 'POST',
+								data : JSON.stringify({
+										"userid" : userid
+										}),
+										contentType : "application/json; charset=UTF-8",
+										processData : false,
+										success : function(res) {
+											console.log(res.otoi);
+											$("#username").text(res.otoi[0].send_to+ "様からのお問合せ");
+											$("#exampleInputName1").val(res.otoi[0].send_to);
+											$("#exampleTextarea1").val(res.otoi[0].message);
+										},
+										error : function(req,status,error) {
+											console.log(error);
+										}
+									})
+							return false;
+						});
+							$("#close").on("click", function() {
+								$(".modal-wrapper").removeClass("open");
+							})
+							$("#close2").on("click", function() {
+								$(".modal-wrapper").removeClass("open");
+							})
 
-		});
+						});
 	</script>
 	<script type="text/javascript">
-		$(function() {
-			$("#comment").on("click", function() {
-				location.href = "/admin/userRef";
-			})
-		})
+			function moveContact(values) {
+				var To_user = $(values).parent().find("#exampleInputName1").val();
+					location.href = "/admin/userRef?userid="+To_user;
+			}
 	</script>
 </body>
 </html>

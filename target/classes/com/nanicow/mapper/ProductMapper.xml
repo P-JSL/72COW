@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nanicow.mapper.ProductMapper">
+	<select id="product_top4"
+		resultType="com.nanicow.domain.ProductVO">
+		<![CDATA[
+		select /*+index_desc(product product_pk)*/ picture from product where rownum
+		<= 4
+		]]>
+	</select>
+	<select id="list" resultType="com.nanicow.domain.FeesVO">
+	select psid, count(price) as price, sum_price, tdate from fees where userid = #{userid} group by #{userid},psid, sum_price, tdate
+	</select>
+	<select id="SellerList" resultType="com.nanicow.domain.UsersVO">
+		select us.userid,us.f_name,us.l_name, us.rdate,us.email from users us, product pros 
+	</select>
+	<select id="productcount" resultType="int">
+		select count(*) from product where userid = #{userid}
+	</select>
+	<select id="productList" resultType="com.nanicow.domain.ProductVO">
+	select psid, price, category, amount, pdate from product
+	</select>
+</mapper>

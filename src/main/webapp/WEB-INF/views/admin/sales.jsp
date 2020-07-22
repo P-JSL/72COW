@@ -17,9 +17,9 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h4 class="font-weight-normal mb-3">
-										今月の売り上げ <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+										総売り上げ <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">￥ 15,000</h2>
+									<h2 class="mb-5" id="price"></h2>
 								</div>
 							</div>
 						</div>
@@ -29,9 +29,9 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h4 class="font-weight-normal mb-3">
-										今月の手数料 <i class="mdi mdi-cash-usd mdi-24px float-right"></i>
+										総手数料 <i class="mdi mdi-cash-usd mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">￥ 4,534</h2>
+									<h2 class="mb-5" id="comm"></h2>
 								</div>
 							</div>
 						</div>
@@ -40,7 +40,7 @@
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Recent Tickets</h4>
+									<h4 class="card-title">私の登録商品</h4>
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
@@ -53,38 +53,17 @@
 												</tr>
 											</thead>
 											<tbody>
+												<c:forEach items="${product }" var="p">												
 												<tr>
 												<!-- 상품 상세 화면으로 이동 링크 -->
-													<td><a href="#">A01023142</a></td>
-													<td>13,000￥</td>
-													<td><label class="badge badge-gradient-success">取引完</label>
+													<td><a href="#">${p.psid }</a></td>
+													<td><fmt:formatNumber pattern="##,###" value="${p.price }"/>￥</td>
+													<td><label class="badge badge-gradient-success">${p.amount !=0 ? '販売中' : '在庫無し'}</label>
 													</td>
-													<td>20/07/02</td>
-													<td>20/06/29</td>
+													<td>${p.category}</td>
+													<td><fmt:formatDate value="${p.pdate }" pattern="YY/MM/dd"/></td>
 												</tr>
-												<tr>
-													<td><a>A00023142</a></td>
-													<td>8,000￥</td>
-													<td><label class="badge badge-gradient-warning">配送中</label>
-													</td>
-													<td>20/06/21</td>
-													<td>20/06/19</td>
-												</tr>
-												<tr>
-													<td><a>A0122142</a></td>
-													<td>20,000￥</td>
-													<td><label class="badge badge-gradient-info">未配送</label></td>
-													<td>20/07/10</td>
-													<td>20/07/02</td>
-												</tr>
-												<tr>
-													<td><a>B00013142</a></td>
-													<td>800￥</td>
-													<td><label class="badge badge-gradient-danger">払い戻し</label>
-													</td>
-													<td>20/07/25</td>
-													<td>20/07/17</td>
-												</tr>
+												</c:forEach>
 											</tbody>
 										</table>
 									</div>
@@ -97,5 +76,33 @@
 		</div>
 	</div>
 	<%@include file="footer.jsp" %>
+	<script type="text/javascript">
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	$(function() {
+		$.ajax({
+			url : "/admin/month",
+			type : 'POST',
+			contentType : "application/json; charset=UTF-8",
+			processData : false,
+			success : function(res) {
+				console.log(res);
+				if(res.price0 == 0 || res.price0 ==null){
+					$("#price").text(0);
+				}
+				if(res.price1 == 0 || res.price1 ==null){
+					$("#comm").text(0);
+				}
+				$("#price").text("￥ "+numberWithCommas(res.price0));
+				$("#comm").text("￥ "+numberWithCommas(Math.floor(res.price1*0.1)));
+			},
+			error : function(req, status, error) {
+				console.log(error);
+			}
+		})
+	})
+	</script>
 </body>
 </html>

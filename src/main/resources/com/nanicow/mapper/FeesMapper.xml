@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nanicow.mapper.FeesMapper">
+	<select id="list" resultType="com.nanicow.domain.FeesVO">
+		select /*+index_desc(fees
+		fees_pk)*/ sum_price, tdate from fees where separate = 1 order by
+		tdate
+	</select>
+	<select id="SalesComm" parameterType="map"
+		resultType="com.nanicow.domain.FeesVO">
+		select sum(sum_price) as sum_price, separate
+		from fees
+		where
+		tdate BETWEEN substr(#{tdate}, 0, 7) || '-01' and
+		last_day(TO_DATE(TO_CHAR(#{tdate},'YYYY-MM-DD')))
+		group by separate
+	</select>
+	<!-- 관리자 : 1. 유저 : 0 그룹화되어 한번에 나옴, 총 매상에서는 두개 더해야함. -->
+	<!-- 수수료는 여기 나온 값에 10%만 해주면 됨. -->
+
+	<select id="uriage" resultType="com.nanicow.domain.UserEntry">
+	<![CDATA[	
+	select count(f.userid) as many, concat(u.f_name, u.l_name) as name, sum(sum_price) as price, round(sum(sum_price*0.1),0) as comm
+	from FEES f ,  USERS u where f.userid = u.userid group by u.f_name, u.l_name, concat(u.f_name, u.l_name) order by many desc , price desc	]]>
+	</select>
+
+	<select id="AllSales" resultType="int">
+		select sum(sum_price) from fees
+	</select>
+
+	<select id="UserFeesList"
+		resultType="com.nanicow.domain.FeesUsersVO">
+		<![CDATA[
+	 select B.* from(
+	 select rownum rn , A.* from(
+	 select search(fees.userid) as o , concat(users.f_name,users.l_name) as F_name, concat(users.f_e_name,users.l_e_name) as L_name, count(fees.userid) as count, fees.userid , users.rdate 
+	 from fees, users
+	 ]]>
+	 where 
+	<include refid="criteria"></include>
+	 <![CDATA[
+	 users.userid = fees.userid 
+	 group by fees.userid, fees.userid, concat(users.f_name,users.l_name), users.f_name, users.l_name, 
+	 search(fees.userid), users.f_name, users.l_name, users.f_name, users.l_name, 
+	 concat(users.f_e_name,users.l_e_name), users.f_e_name, users.l_e_name, users.f_e_name, users.l_e_name, 
+	 users.f_e_name, users.l_e_name, users.rdate, users.userid order by  count desc) A where rownum < #{pageNum} * #{amount} ) B where rn >=(#{pageNum}-1) * #{amount}
+	]]>
+	</select>
+	
+	
+	
+	<!-- 검색기능 -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") and " prefixOverrides="or">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="or">
+					<choose>
+						<when test="type == 'i'.toString()">
+							userid like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'n'.toString()">
+							f_name like '%' || substr('中村 一郎',0,instr('中村 一郎',' ')) || '%'  or l_name like '%' || trim(substr('中村 一郎',instr('中村 一郎',' ')+1))|| '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nanicow.mapper.UserMapper">
+	<insert id="insert">
+		insert into USERS (num, userid, f_name,l_name,
+		f_e_name, l_e_name, password, email, phone, address, rdate)
+		values
+		(seq_users.nextval, #{userid}, #{f_name}, #{l_name}, #{f_e_name},
+		#{l_e_name},
+		#{password}, #{email}, #{phone}, #{address}, sysdate)
+	</insert>
+	<insert id="AuthInsert">
+		insert into USERS_AUTH (userid, auth)
+		values
+		(#{userid}, 'USER')
+	</insert>
+	<resultMap type="com.nanicow.domain.UsersVO" id="UserMap">
+		<id property="userid" column="userid" />
+		<id property="f_name" column="f_name" />
+		<id property="l_name" column="l_name" />
+		<id property="f_e_name" column="f_e_name" />
+		<id property="l_e_name" column="l_e_name" />
+		<id property="password" column="password" />
+		<id property="email" column="email" />
+		<id property="phone" column="phone" />
+		<id property="address" column="address" />
+		<collection property="authlist" resultMap="authMap"></collection>
+	</resultMap>
+
+	<resultMap type="com.nanicow.domain.Users_AuthVO"
+		id="authMap">
+		<result property="userid" column="userid" />
+		<result property="auth" column="auth" />
+	</resultMap>
+
+	<select id="read" resultMap="UserMap">
+		select
+		users.userid,
+		f_name,l_name,f_e_name,l_e_name,password,email,phone,address, auth
+		from users users left outer join users_auth auth on users.userid =
+		auth.userid
+		where users.userid = #{userid}
+	</select>
+
+	<select id="list" resultType="int">
+		select count(*) as count from users
+		where 'USER' in (select au.auth from users u left outer join
+		users_auth au on u.userid=au.userid)
+	</select>
+</mapper>

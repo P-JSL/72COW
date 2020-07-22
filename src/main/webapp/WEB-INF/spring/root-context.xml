@@ -11,11 +11,11 @@
 
 	<!-- MyBatis Mapper Setting -->
 	<mybatis-spring:scan
-		base-package="com.rental.mapper" />
+		base-package="com.nanicow.mapper" />
 
 	<!-- Service Setting in Spring -->
 	<context:component-scan
-		base-package="com.rental.service" />
+		base-package="com.nanicow.service" />
 
 	<!-- Gmail 설정 -->
 	<bean id="mailSender"

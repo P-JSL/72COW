@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <style type="text/css">
+body {
+    font-size: 1rem;
+    font-family: "ubuntu-regular", sans-serif;
+    font-weight: initial;
+    line-height: normal;
+    -webkit-font-smoothing: antialiased;
+}
 .card .card-body {
 	padding: 1.5rem 1.5rem !important;
 }

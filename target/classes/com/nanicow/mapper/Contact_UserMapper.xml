@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nanicow.mapper.Contact_UserMapper">
+	<select id="getUserContactList" parameterType="map"
+		resultType="com.nanicow.domain.Contact_UserVO">
+		select * from contact_user where send_to = #{userid}
+	</select>
+	<insert id="insert">
+		insert into contact_admin (num,send_to, send_from,
+		message, sdate )
+		values (seq_cont_admin.nextval, #{send_to},
+		#{send_from}, #{message}, sysdate)
+	</insert>
+	<select id="AllContList"
+		resultType="com.nanicow.domain.Contact_UserVO">
+		select /*+index_desc(contact_admin contact_admin_pk)*/ *
+		from contact_admin
+	</select>
+	<select id="contusermsg" resultType="com.nanicow.domain.Contact_UserVO" parameterType="map">
+		select isfu(#{userid}).sendto as send_to, isfu(#{userid}).sendfrom as
+		send_from, isfu(#{userid}).msg as message from dual
+	</select>
+</mapper>
