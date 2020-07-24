@@ -2,6 +2,7 @@ package com.nanicow.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.nanicow.domain.UsersVO;
 import com.nanicow.mapper.UserMapper;
@@ -59,5 +59,10 @@ public class UsersService {
 	public int UserCount() {
 		
 		return mapper.list();
+	}
+	
+	public boolean idchk(Map<String, String> map) {
+		
+		return mapper.idchk(map);
 	}
 }

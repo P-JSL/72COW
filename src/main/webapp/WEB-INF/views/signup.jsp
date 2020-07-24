@@ -7,6 +7,10 @@
 <head>
 <meta charset="utf-8">
 <title>会員登録</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/modal.css">
 </head>
 <body>
 
@@ -14,6 +18,7 @@
 		<div id="content">
 
 			<div id="qnb" class="quick-navigation" style="top: 70px;">
+
 				<style>
 #qnb {
 	position: absolute;
@@ -230,10 +235,7 @@
 									<th>ID<span class="ico">*<span class="screen_out"></span></span></th>
 									<td><input type="text" name="userid" value=""
 										maxlength="16" required="" fld_esssential="" option="regId"
-										label="ID" placeholder="6文字以上の英文と数字を組み合わせる"> <input
-										type="hidden" name="chk_id" required="" fld_esssential=""
-										label="아이디중복체크" value=""> <a class="btn default"
-										href="javascript:chkId()" style="float: right; width: 100px;">重複確認</a>
+										label="ID" placeholder="6文字以上の英文と数字を組み合わせる">
 										<p class="txt_guide square">
 											<span class="txt txt_case1">6자 이상의 영문 혹은 영문과 숫자를 조합</span> <span
 												class="txt txt_case2">아이디 중복확인</span>
@@ -299,18 +301,11 @@
 								</tr>
 								<tr>
 									<th>住所<span class="ico">*<span class="screen_out">필수항목</span></span></th>
-									<td class="field_address"><input type="hidden"
-										name="zonecode" id="zonecode" size="5" value=""> <input
-										type="hidden" name="zipcode[]" id="zipcode0" size="3" value="">
-										<input type="hidden" name="zipcode[]" id="zipcode1" size="3"
-										value=""> <input type="hidden" name="deliPoli"
-										id="deliPoli" size="1" value="">
+									<td class="field_address">
 										<div id="selectAddress">
-											<input type="text" name="address" id="address" value=""
-												required="" readonly="readonly" label="주소">
-										</div> <a href="#none" id="addressSearch" class="search"
-										onclick="popup('../proc/popup_address.php',530,500)"> <span
-											id="addressNo" class="address_no" data-text="재검색">ご住所検索
+											<input type="text" name="address" id="address" label="주소">
+										</div> <a href="#none" id="addressSearch" class="search trigger">
+											<span id="addressNo" class="address_no" data-text="재검색">ご住所検索
 										</span>
 									</a>
 										<div id="selectAddressSub">
@@ -338,6 +333,170 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal -->
+	<div class="modal-wrapper">
+		<div class="modal" style="overflow: scroll;">
+			<div class="head" style="position: relative;">
+				<div class="container"
+					style="text-align: right; position: absolute; top: -2px; right: 3px;">
+					<i class="fa fa-times fa-fw fa-2x" id="close"></i>
+				</div>
+			</div>
+			<div class="content">
+				<div class="good-job">
+					<div class="row">
+						<!-- 내용 -->
+						<div class="col-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title" id="username"></h4>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="input-group">
+												<span class="input-group-addon">우편번호</span> <input
+													type="text" class="form-control" id="zip_code"
+													name="zip_code"> <span class="input-group-addon"><a
+													href="#" id="zip_codeBtn" data-toggle="modal"
+													data-target="#zip_codeModal">검색하기</a></span>
+											</div>
+											<div style="width: 100%; height: 500px; overflow: auto">
+												<table class="table text-center">
+													<thead>
+														<tr>
+															<th style="width: 150px;">우편번호</th>
+															<th style="width: 600px;">주소</th>
+														</tr>
+													</thead>
+													<tbody id="zip_codeList"></tbody>
+												</table>
+											</div>
+											<div class="col-md-12" style="text-align: right;">
+												<button class="btn btn-dangerous" onclick="closed()">닫기</button>
+											</div>
 
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.trigger').on('click', function() {
+				$('.modal-wrapper').toggleClass('open')
+				$('.page-wrapper').toggleClass('blur-it');
+			});
+			$("#close").on("click", function() {
+				$(".modal-wrapper").removeClass("open");
+			})
+			$("#close2").on("click", function() {
+				$(".modal-wrapper").removeClass("open");
+			})
+
+		});
+		function closed() {
+			$(".modal-wrapper").removeClass("open");
+		}
+
+		$("#zip_codeBtn").on(
+				"click",
+				function() {
+					var zip_code = $("#zip_code").val();
+					$.ajax({
+						url : "/zip_code_find",
+						type : 'POST',
+						data : JSON.stringify({
+							"zip_code" : zip_code
+						}),
+						contentType : "application/json; charset=UTF-8",
+						processData : false,
+						success : function(result) {
+							console.log(result);
+							$("#zip_codeList").empty();
+							var html = "";
+							if (result.errorCode != null
+									&& result.errorCode != "") {
+								html += "<tr>";
+								html += "    <td colspan='2'>";
+								html += result.errorMessage;
+								html += "    </td>";
+								html += "</tr>";
+							} else {
+								// 검색결과를 list에 담는다.
+								var list = result.list;
+
+								for (var i = 0; i < list.length; i++) {
+									html += "<tr>";
+									html += "    <td>";
+									// 현
+									var state = list[i].state;
+									// 주소
+									var addr = list[i].address;
+									//구
+									var city = list[i].city
+									//?
+									var company = "";
+									if (list[i].company != 'none') {
+
+										company = list[i].company
+									} else {
+										company = " ";
+									}
+									
+									html += zip_code;
+									html += "    </td>";
+									html += "    <td>";
+									html += '<a href="#" onclick="put(\''
+											+ state + '\',\'' + city + '\',\''
+											+ addr + '\')">'+ state+" "+ company + " "
+											+ city + " " + addr + '</a>';
+									html += "    </td>";
+									html += "</tr>";
+								}
+							}
+							$("#zip_codeList").append(html);
+						},
+						error : function(req, status, error) {
+							console.log(error);
+						}
+					})
+				})
+		function put(a, b, c) {
+			$("#address").val(a +" "+ b +" "+ c);
+			$("#close").click();
+		}
+		
+		$("input[name='userid']").on("change",function(){
+			console.log(this.value);
+			var id = $(this).val();
+			$.ajax({
+				url : "/idconfirm",
+				type : 'POST',
+				data : JSON.stringify({
+						"id" : id
+						}),
+						contentType : "application/json; charset=UTF-8",
+						processData : false,
+						success : function(res) {
+							console.log(res);
+							if(!res){
+								alert("중복된 아이디가 존재하지 않습니다.");
+							}else{
+								alert("아이디가 중복입니다. 다시 작성해주시길 바랍니다.");
+								$("input[name='userid']").val("");
+								return false;
+							}
+						},
+						error : function(req,status,error) {
+							console.log(error);
+						}
+					})
+		})
+	</script>
 </body>
 </html>

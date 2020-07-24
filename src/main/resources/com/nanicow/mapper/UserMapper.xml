@@ -47,4 +47,8 @@
 		where 'USER' in (select au.auth from users u left outer join
 		users_auth au on u.userid=au.userid)
 	</select>
+	
+	<select id="idchk" resultType="_boolean" parameterType="map">
+	select nvl(idchk(#{id}),0) as bool from dual
+	</select>
 </mapper>

@@ -91,5 +91,58 @@ public class MainController {
 		
 		return "/login";
 	}
-
+	
+	//유저측
+	@RequestMapping("/sellproduct")
+	public String sellproduct() {
+		return "sellproduct";
+	}
+	
+	@RequestMapping("/productdetail")
+	public String productDetail() {
+		return "productdetail";
+	}
+	
+	@RequestMapping("/buyproduct")
+	public String buyproduct() {
+		return "buyproduct";
+	}
+	
+	@RequestMapping("/sellerinfo")
+	public String sellerinfo() {
+		return "sellerinfo";
+	}
+	
+	@RequestMapping("/categoryex")
+	public String categoryex() {
+		return "categoryex";
+	}
+	@RequestMapping("faq")
+	public String faq() {
+		return "faq";
+	}
+	
+	@RequestMapping("myfaq")
+	public String myfaq() {
+		return "myfaq";
+	}
+	
+	@RequestMapping("chat")
+	public String chat() {
+		return "chat";
+	}
+	
+	@RequestMapping("profileModify")
+	public String profileModify() {
+		return "profileModify";
+	}
+	@RequestMapping("notice")
+	public String notice() {
+		return "notice";
+	}
+	
+	@RequestMapping("pay")
+	public String pay() {
+		return "pay";
+	}
 }

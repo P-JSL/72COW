@@ -148,7 +148,7 @@
 		$(function() {
 
 			$(".table tr").css("text-align", "center");
-			var arion = $(".table").find("#inquired");
+			var arion = $(".table tbody tr").find("#inquired");
 			var ari = $(".table tbody tr").find(".ari");
 			for (var i = 0; i < ari.length; i++) {
 				if (ari[i].innerText == '有') {
@@ -199,6 +199,7 @@
 
 						});
 	</script>
+	
 	<script type="text/javascript">
 			function moveContact(values) {
 				var To_user = $(values).parent().find("#exampleInputName1").val();

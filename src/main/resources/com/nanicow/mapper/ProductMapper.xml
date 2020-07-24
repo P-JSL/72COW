@@ -38,4 +38,22 @@
 		 from product
        ]]>
 	</select>
+	
+	<!-- 유저측 -->
+		<select id="list2" resultType="com.nanicow.domain.ProductVO">
+		<![CDATA[
+		select title,price from product where num > 0  order by num desc
+		]]>
+	</select>
+	<insert id="register">
+		<selectKey keyProperty="num" order="BEFORE" resultType="int">
+			select seq_product.nextval from dual
+		</selectKey>
+		insert into product (num,title,userid,name,contents,picture,category,status,price,amount,addr,pdate) 
+values (seq_product.nextval,#{title},#{userid},#{name},#{contents},#{picture},#{category},#{status},#{price},#{amount},#{addr},sysdate)
+	</insert>
+	<select id="read" resultType="com.nanicow.domain.ProductVO">
+		select * from product where
+		num=#{num}
+	</select>
 </mapper>
