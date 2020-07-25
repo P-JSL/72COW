@@ -13,10 +13,11 @@
    > - 출품자 정보 일람  
    > - 모든 상품 일람 
       
- 4 문의대응 페이지
-   
- ----
+ 4 문의대응 페이지     
  
+ ----
+ 전체 테이블 변경 : [KANDA_TEST_TABLE](https://github.com/P-JSL/72COW/blob/master/KANDA_TEST_DB_ALL_TABLE) ←클릭하면 전체 테이블 DDL/DML 보는 곳 이동  
+ --
 #관리자쪽 변경점
 ---
 ```
