@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 
 <div class="main_area_center">
@@ -15,88 +22,18 @@
 								class="swiper-container swiper-container-initialized swiper-container-horizontal">
 								<div class="swiper-wrapper"
 									style="transform: translate3d(0px, 0px, 0px);">
-									<div class="swiper-slide thumbnail_wrapper swiper-slide-active"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 1"
-													class="view thumbnail_img" src="/resources/img/3333.png"
-													style="background: black;">
+									<c:forTokens items="${pdto.picture }" delims="*" var="pic">
+										<div
+											class="swiper-slide thumbnail_wrapper swiper-slide-active"
+											style="width: 460px;">
+											<div class="badeagle">
+												<div class="centered">
+													<img src="/upload/${pic }" alt="에어팟 3세대 프로"
+														class="thumbnail_img">
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="swiper-slide thumbnail_wrapper swiper-slide-next"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 2"
-													class="view thumbnail_img" src="/resources/img/3333.png">
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide thumbnail_wrapper"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 3"
-													class="view thumbnail_img" src="/resources/img/3333.png"
-													data-src="#">
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide thumbnail_wrapper"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 4"
-													class="view thumbnail_img" src="/resources/img/3333.png"
-													data-src="#">
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide thumbnail_wrapper"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 5"
-													class="view thumbnail_img" src="/resources/img/3333.png"
-													data-src="#">
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide thumbnail_wrapper"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 6"
-													class="view thumbnail_img"
-													src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-													data-src="#">
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide thumbnail_wrapper"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 7"
-													class="view thumbnail_img"
-													src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-													data-src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904664_4845353_7.jpg?size=s6">
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide thumbnail_wrapper"
-										style="width: 460px;">
-										<div class="badeagle">
-											<div class="centered">
-												<img alt="LG G패드4 8.0 블랙 32G 판매합니다!의 상세 이미지 8"
-													class="view thumbnail_img"
-													src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png"
-													data-src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904671_4845353_8.jpg?size=s6">
-											</div>
-										</div>
-									</div>
+									</c:forTokens>
 								</div>
 								<div
 									class="swiper-pagination swiper-pagination-white auto_item_image_pagination swiper-pagination-fraction">
@@ -125,54 +62,13 @@
 							<div class="als_prev"></div>
 							<div class="als_container">
 								<div class="als_viewport" style="transform: translateX(0px);">
-									<div class="als_item als_normal_item">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904618_4845353_1.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_normal_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904628_4845353_2.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_normal_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904635_4845353_3.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_normal_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904642_4845353_4.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_normal_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904650_4845353_5.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_normal_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904657_4845353_6.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_normal_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904664_4845353_7.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_normal_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimg.hellomarket.com/images/2020/item/07/13/18/2904671_4845353_8.jpg?size=s6"></a>
-									</div>
-									<div class="als_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimage.hellomarket.com/web/2019/item/img_itemdetails_thumbnail_noimage50x50_x2.png"></a>
-									</div>
-									<div class="als_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimage.hellomarket.com/web/2019/item/img_itemdetails_thumbnail_noimage50x50_x2.png"></a>
-									</div>
-									<div class="als_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimage.hellomarket.com/web/2019/item/img_itemdetails_thumbnail_noimage50x50_x2.png"></a>
-									</div>
-									<div class="als_item als_item_other">
-										<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
-											src="https://ccimage.hellomarket.com/web/2019/item/img_itemdetails_thumbnail_noimage50x50_x2.png"></a>
-									</div>
+									<c:forTokens items="${pdto.picture }" delims="*" var="pic">
+										<div class="als_item als_normal_item" style="width: 60px">
+											<a><img alt="작은 썸네일 이미지" class="thumbnail_img"
+												width="100%" height="100%" src="/upload/${pic }"></a>
+										</div>
+									</c:forTokens>
+
 								</div>
 							</div>
 							<div class="als_next"></div>
@@ -184,42 +80,37 @@
 								class="delivery_tag used_type_tag_active active used_type_tag_active">無料配送</span><span
 								class="share_box item_share_box"><img
 									src="https://ccimage.hellomarket.com/web/2018/item/btn_share_16x16_x2.png"
-									alt="공유이미지" class="share_icon"></span><span class="wish_box"><img
-									src="https://ccimage.hellomarket.com/web/2020/item/ico_zzim_24x23_s_x2.png"
-									alt="찜하기이미지" class="wish_icon"><label>6</label></span></span>
+									alt="공유이미지" class="share_icon"></span></span>
 						</div>
-						<span class="item_title">タイトルになります!</span>
+						<span class="item_title">${pdto.title }</span>
 						<div class="item_price_box item_price_box_bottom">
 							<div class="item_price_box_bottom_low">
-								<div class="item_price item_price_bottom">10,000円</div>
-								<div class="item_coupon_download">
-									<div class="download_title">割引クーポン</div>
-									<div class="download_image">
-										<img
-											src="https://ccimage.hellomarket.com/web/2019/item/ico_download_white_x2.png"
-											alt="다운로드 이미지">
-									</div>
-								</div>
+								<div class="item_price item_price_bottom">¥${pdto.price }</div>
+
 							</div>
 							<div class="description_hellopay  only_hellopay_area">
 
 								<table>
 									<tbody>
-										<tr class="first">
-											<td class="title">取引方法</td>
-											<td class="description">72COW仲介</td>
+										<tr>
+											<td class="title">出品者</td>
+											<td class="description">${pdto.name }</td>
+										</tr>
+										<tr>
+											<td class="title">カテゴリー</td>
+											<td class="description">${pdto.category }</td>
+										</tr>
+										<tr>
+											<td class="title">商品の状態</td>
+											<td class="description">${pdto.status }</td>
+										</tr>
+										<tr>
+											<td class="title">配送元地域</td>
+											<td class="description">${pdto.addr }</td>
 										</tr>
 										<tr>
 											<td class="title">配送料</td>
 											<td class="description">無料配送</td>
-										</tr>
-										<tr>
-											<td class="title">配送方法</td>
-											<td class="description">宅配、そのた</td>
-										</tr>
-										<tr>
-											<td class="title">配送期間</td>
-											<td class="description">2日以内配送</td>
 										</tr>
 									</tbody>
 								</table>
@@ -227,19 +118,9 @@
 							</div>
 							<div class="item_sns item_detail_sns">
 								<div class="item_hello_box">
-									<div class="item_hello_box_talk">
-										<div class="wish_img_box" style="padding-top: 15px;">
-											<img
-												src="https://ccimage.hellomarket.com/web/2018/item/ico_zzim.png"
-												alt="찜하기이미지" class="wish_icon">
-										</div>
-										<a href="#">
-											<button type="button"
-												class="hello_talk_btn canpayment_hello_talk_btn">取引チャット</button>
-										</a>
-									</div>
-									<div class="item_hello_box_pay item_hello_box_chat_pay">
-										<a href="/buyproduct">
+									<div class="item_hello_box_pay item_hello_box_chat_pay"
+										style="float: left; width: 100%; padding: 15px 0;">
+										<a href="/buyproduct?num=${pdto.num }">
 											<button type="button" class="hello_pay_btn">購入</button>
 										</a>
 									</div>
@@ -254,8 +135,8 @@
 						<div class="main_auto_item_section">
 							<div class="main_auto_item_title">
 								<span class="common_text"></span><span class="bold_text">
-									出品者の出品 </span><a href="/sellerinfo"><span class="all_data">全部見る
-										&gt;</span></a>
+									どうぶつの森さんのその他の出品 </span><a href="/sellerinfo"><span
+									class="all_data">もっと見る &gt;</span></a>
 								<div class="hide">
 									<img
 										src="https://ccimage.hellomarket.com/web/2020/item/btn_detail_arrow_box_left_50x50.png"
@@ -273,126 +154,24 @@
 									<ul>
 										<div class="more_traslate">
 
+											<c:forEach items="${selpic }" var="ps">
+												<c:forTokens items="${ps }" delims="*" var="d">
+													<li><a href="/item/167465407">
+															<div class="wrap_auto_item_wrapper">
+																<div class="image_wrapper">
+																	<div class="image_outside">
+																		<div class="image_centerbox" style="width: 130px">
 
-											<li><a href="/item/167465407">
-													<div class="wrap_auto_item_wrapper">
-														<div class="image_wrapper">
-															<div class="image_outside">
-																<div class="image_centerbox">
-																	<img alt="LG G패드 4 8.0 블랙 32G 정상해지 판매합니다!"
-																		src="/resources/img/3333.png">
+																			<img alt="LG G패드 4 8.0 블랙 32G 정상해지 판매합니다!"
+																				src="/upload/${d }" width="100%" height="100%">
+																		</div>
+																	</div>
 																</div>
 															</div>
-														</div>
-													</div>
-													<div class="item_upper">
-														<div class="item_title">
-															<span>販売しています。</span>
-														</div>
-													</div>
-													<div class="item_bottom">
-														<div class="item_price">
-															<span class="price">9,000円</span>
-														</div>
-													</div>
-											</a></li>
 
-											<li><a href="/item/167465407">
-													<div class="wrap_auto_item_wrapper">
-
-														<div class="image_wrapper">
-															<div class="image_outside">
-																<div class="image_centerbox">
-																	<img alt="LG G패드 4 8.0 블랙 32G 정상해지 판매합니다!"
-																		src="/resources/img/3333.png">
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="item_upper">
-														<div class="item_title">
-															<span>販売しています。</span>
-														</div>
-													</div>
-													<div class="item_bottom">
-														<div class="item_price">
-															<span class="price">9,000円</span>
-														</div>
-													</div>
-											</a></li>
-
-											<li><a href="/item/167465407">
-													<div class="wrap_auto_item_wrapper">
-
-														<div class="image_wrapper">
-															<div class="image_outside">
-																<div class="image_centerbox">
-																	<img alt="LG G패드 4 8.0 블랙 32G 정상해지 판매합니다!"
-																		src="/resources/img/3333.png">
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="item_upper">
-														<div class="item_title">
-															<span>販売しています。</span>
-														</div>
-													</div>
-													<div class="item_bottom">
-														<div class="item_price">
-															<span class="price">9,000円</span>
-														</div>
-													</div>
-											</a></li>
-
-											<li><a href="/item/167465407">
-													<div class="wrap_auto_item_wrapper">
-
-														<div class="image_wrapper">
-															<div class="image_outside">
-																<div class="image_centerbox">
-																	<img alt="LG G패드 4 8.0 블랙 32G 정상해지 판매합니다!"
-																		src="/resources/img/3333.png">
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="item_upper">
-														<div class="item_title">
-															<span>販売しています。</span>
-														</div>
-													</div>
-													<div class="item_bottom">
-														<div class="item_price">
-															<span class="price">9,000円</span>
-														</div>
-													</div>
-											</a></li>
-
-											<li><a href="/item/167465407">
-													<div class="wrap_auto_item_wrapper">
-
-														<div class="image_wrapper">
-															<div class="image_outside">
-																<div class="image_centerbox">
-																	<img alt="LG G패드 4 8.0 블랙 32G 정상해지 판매합니다!"
-																		src="/resources/img/3333.png">
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="item_upper">
-														<div class="item_title">
-															<span>販売しています。</span>
-														</div>
-													</div>
-													<div class="item_bottom">
-														<div class="item_price">
-															<span class="price">9,000円</span>
-														</div>
-													</div>
-											</a></li>
-
+													</a></li>
+												</c:forTokens>
+											</c:forEach>
 
 
 										</div>
@@ -402,19 +181,68 @@
 						</div>
 						<div class="pc_item_user_info">
 							<div class="profile_img">
-								<a href="/sellerinfo"><img class="profile"
-									src="/resources/72cowlogo2.png" alt="모바일 상품 회원 프로필 이미지"><img
+							<c:choose>
+									<c:when test="${uri < 10 }">
+										<a href="/sellerinfo"><img class="profile"
+									src="/resources/cowlogo.png" alt="모바일 상품 회원 프로필 이미지"><img
+									class="profile_img_level"
+									src="https://ccimage.hellomarket.com/web/2020/item/img_level_1.png"
+									alt="뱃지 이미지"></a>
+									</c:when>
+									<c:when test="${uri  < 30}">
+										<a href="/sellerinfo"><img class="profile"
+									src="/resources/cowlogo.png" alt="모바일 상품 회원 프로필 이미지"><img
+									class="profile_img_level"
+									src="https://ccimage.hellomarket.com/web/2020/item/img_level_2.png"
+									alt="뱃지 이미지"></a>
+									</c:when>
+									<c:when test="${uri  < 70}">
+										<a href="/sellerinfo"><img class="profile"
+									src="/resources/cowlogo.png" alt="모바일 상품 회원 프로필 이미지"><img
+									class="profile_img_level"
+									src="https://ccimage.hellomarket.com/web/2020/item/img_level_3.png"
+									alt="뱃지 이미지"></a>
+									</c:when>
+									<c:when test="${uri < 100} ">
+										<a href="/sellerinfo"><img class="profile"
+									src="/resources/cowlogo.png" alt="모바일 상품 회원 프로필 이미지"><img
+									class="profile_img_level"
+									src="https://ccimage.hellomarket.com/web/2020/item/img_level_4.png"
+									alt="뱃지 이미지"></a>
+									</c:when>
+									<c:otherwise>
+										<a href="/sellerinfo"><img class="profile"
+									src="/resources/cowlogo.png" alt="모바일 상품 회원 프로필 이미지"><img
 									class="profile_img_level"
 									src="https://ccimage.hellomarket.com/web/2020/item/img_level_5.png"
 									alt="뱃지 이미지"></a>
+									</c:otherwise>
+								</c:choose>
+								
 							</div>
 							<div class="nick">
 								<a href="/sellerinfo">どうぶつの森</a>
-								<div class="detail_member_level">Lv 5 GOLD</div>
+								<c:choose>
+									<c:when test="${uri < 10 }">
+										<div class="detail_member_level">Lv 1 Nomal</div>
+									</c:when>
+									<c:when test="${uri  < 30}">
+										<div class="detail_member_level">Lv 2 Basic</div>
+									</c:when>
+									<c:when test="${uri  < 70}">
+										<div class="detail_member_level">Lv 3 Bronze</div>
+									</c:when>
+									<c:when test="${uri < 100} ">
+										<div class="detail_member_level">Lv 4 Silver</div>
+									</c:when>
+									<c:otherwise>
+										<div class="detail_member_level">Lv 5 GOLD</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="item_count">
-								<a href="/sellerinfo"><span class="item_count_title">出品</span><span
-									class="item_count_number">150</span></a>
+								<a href="/sellerinfo"><span class="item_count_title">出品数</span><span
+									class="item_count_number">${uri }</span></a>
 							</div>
 							<div class="detail_profile_review">
 								<a href="/s/@15956464?tab=review"><span class="review_label">取引評価</span><span
@@ -438,13 +266,7 @@
 						<div class="description">
 							<div class="description_title">詳細説明</div>
 							<div class="detail_item_description">
-								<div class="description_text">
-									ここに詳細説明を書きます。 <br>ここに詳細説明を書きます。 <br> ここに詳細説明を書きます。 <br>
-									ここに詳細説明を書きます。 <br> ここに詳細説明を書きます。 <br> ここに詳細説明を書きます。 <br>
-									ここに詳細説明を書きます。 <br> ここに詳細説明を書きます。 <br> ここに詳細説明を書きます。 <br>
-									ここに詳細説明を書きます。 <br> ここに詳細説明を書きます。 <br> ここに詳細説明を書きます。 <br>
-
-								</div>
+								<div class="description_text">${pdto.contents }</div>
 							</div>
 						</div>
 						<div class="detail_bottom_box">
@@ -456,8 +278,7 @@
 							<div class="detail_bottom_area">
 								<img
 									src="https://ccimage.hellomarket.com/web/2020/item/ico_detail_info_location_x2.png"
-									alt="지도아이콘" class="item_location_img"><span>東京都千代田区大手町
-								</span>
+									alt="지도아이콘" class="item_location_img"><span>東京都 </span>
 							</div>
 							<div class="detail_bottom_area detail_bottom_tag_area">
 								<img
@@ -523,19 +344,55 @@
 							<span class="item_count_number mw_item_count_number">상품
 								972개</span>
 						</div>
+
+
+
 						<div class="comment_title">
 							<div class="comment_title_comment">コメント</div>
 							<span>(0)</span>
 						</div>
-						<div class="input_custorm">
-							<div class="cm_in_box">
-								<textarea type="text" placeholder="コメントを入力してください"
-									class="input_txt" ></textarea>
+						<form name="commentInsertForm" method="post">
+
+							<div class="input_custorm">
+								<div class="cm_in_box input-group">
+									<input type="hidden" name="num" value="${detail.num}" />
+									<textarea type="text" placeholder="コメントを入力してください"
+										class="input_txt form-control" id="content" name="content"
+										style="width: 482%";
+										></textarea>
+								</div>
+								<div class="cms_btn_box">
+									<div class="comment_send_btn" style="margin-top: -50px";>
+										<button class="btn btn-default" type="button"
+											name="commentInsertBtn" data-id="${user.userid }"
+											data-num="1" onclick="submitcom(this)"
+											style="color: white; background: #0484F6; border: none;">登録</button>
+									</div>
+									<%--<%=request.getParameter("num") %  --%>
+								</div>
 							</div>
-							<div class="cms_btn_box">
-								<div class="comment_send_btn" data-id="${user.userid }" data-num="1" onclick="submitcom(this)">登録</div>
+						</form>
+
+						<div class="container">
+							<div>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>コメント番号</th>
+											<th>作成者</th>
+											<th>内容</th>
+										</tr>
+									</thead>
+									<tbody class="commentList">
+
+
+									</tbody>
+								</table>
 							</div>
 						</div>
+
+
+
 					</div>
 				</div>
 			</div>
@@ -556,35 +413,69 @@
 	</li>
 	</ul>
 </div>
-<script
-  src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-	function submitcom(th){
+	function submitcom(th) {
 		console.log(th);
-		var id = $(th).attr("data-id");
+		var userid = $(th).attr("data-id");
 		var num = $(th).attr("data-num");
-		var comm = $(th).parent().parent().find(".input_txt").val();
-		console.log(id);
+		var content = $(th).parent().parent().parent().find(".input_txt").val();
+		console.log(userid);
 		console.log(num);
-		console.log(comm);
-		
+		console.log(content);
+
 		$.ajax({
-			url: "/comment",
-			type:"post",
-			data:JSON.stringify({
-				"id" : id,
+			url : "/comment",
+			type : "post",
+			data : JSON.stringify({
+				"userid" : userid,
 				"num" : num,
-				"comm" : comm
+				"content" : content
 			}),
 			contentType : "application/json; charset=UTF-8",
 			processData : false,
-			success : function(res){
+			success : function(res) {
 				console.log(res);
+				var html = "";
+				html += "<tr>";
+				html += "<th scope='row'>" + res.list[0].cno + "</th>";
+				html += "<td>" + res.list[0].userid + "</td>";
+				html += "<td>" + res.list[0].content + "</td>";
+				html += "</tr>";
+				$(".commentList").prepend(html);
 			},
-			error : function(req,status,error){
-				console.log(req+" : " +status + " : "+error);
+			error : function(req, status, error) {
+				console.log(req + " : " + status + " : " + error);
 			}
 		})
 	}
+</script>
+
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : "/commread",
+			type : "post",
+			contentType : "application/json; charset=UTF-8",
+			processData : false,
+			success : function(res) {
+				console.log(res);
+				var html = "";
+				for (var i = 0; i < res.list.length; i++) {
+
+					html += "<tr>";
+					html += "<th scope='row'>" + res.list[i].cno + "</th>";
+					html += "<td>" + res.list[i].userid + "</td>";
+					html += "<td>" + res.list[i].content + "</td>";
+					html += "</tr>";
+
+				}
+				$(".commentList").append(html);
+			},
+			error : function(req, status, error) {
+				console.log(req + " : " + status + " : " + error);
+			}
+		})
+	})
 </script>
 <%@ include file="footer.jsp"%>

@@ -24,6 +24,7 @@ public interface ProductMapper {
 	public List<ProductVO> Allproduct();
 	
 	//유저측
+	public List<ProductVO> productlist();
 	public List<ProductVO> list2(Criteria cri);
 	public void register(ProductVO product);
 	public ProductVO read(Criteria cri);
@@ -31,4 +32,23 @@ public interface ProductMapper {
 	public boolean remove(int num); 
 	public void viewCount(int num);
 	public int count(Criteria cri);
+	
+	//유저 카테고리
+	public List<ProductVO> getMainAllList();//전체
+	public List<ProductVO> getsofaList();//가구
+	public List<ProductVO> getlivingList();//생활용품
+	public List<ProductVO> getfoodList();//음식
+	public List<ProductVO> getclothList();//의류
+	public List<ProductVO> getbookList();//책
+	public List<ProductVO> getotherList();//소노타
+	public List<ProductVO> getAllList(String path); //모든리스트
+	
+	
+	public List<ProductVO> getSearchList(String search);
+	
+	public List<String> getSellerList(Map<String,Object> map);
+	
+	public int numsel(Map<String, Object> map);
+	
+	public ProductVO oneList(int num);
 }

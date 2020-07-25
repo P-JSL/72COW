@@ -24,6 +24,7 @@ public class UsersVO{
 	private String Address; //주소
 	private int score; //평가 점수
 	private Date rdate; //회원 등록 날짜
+	private int point;
 	
 	private List<Users_AuthVO> authlist;
 }

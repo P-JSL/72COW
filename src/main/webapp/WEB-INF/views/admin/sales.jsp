@@ -45,7 +45,7 @@
 										<table class="table">
 											<thead>
 												<tr>
-													<th>商品コード</th>
+													<th>商品名</th>
 													<th>価格</th>
 													<th>状態</th>
 													<th>発送日</th>
@@ -56,7 +56,7 @@
 												<c:forEach items="${product }" var="p">												
 												<tr>
 												<!-- 상품 상세 화면으로 이동 링크 -->
-													<td><a href="#">${p.psid }</a></td>
+													<td><a href="#">${p.name }</a></td>
 													<td><fmt:formatNumber pattern="##,###" value="${p.price }"/>￥</td>
 													<td><label class="badge badge-gradient-success">${p.amount !=0 ? '販売中' : '在庫無し'}</label>
 													</td>

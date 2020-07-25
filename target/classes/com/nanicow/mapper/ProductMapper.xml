@@ -9,13 +9,14 @@
 		]]>
 	</select>
 	<select id="list" resultType="com.nanicow.domain.FeesVO">
-		select psid, count(price) as price, sum_price, tdate from fees where userid
-		= #{userid} group by #{userid},psid, sum_price, tdate
+		select psid, count(price) as price,
+		sum_price, tdate from fees where userid
+		= #{userid} group by
+		#{userid},psid, sum_price, tdate
 	</select>
 	<select id="SellerList" resultType="com.nanicow.domain.UsersVO">
-		select
-		us.userid,us.f_name,us.l_name, us.rdate,us.email from users us,
-		product pros
+		select distinct
+		us.userid,us.f_name,us.l_name, us.rdate,us.email from users us , product pt  where us.userid = pt.userid 
 	</select>
 	<select id="productcount" resultType="int">
 		select count(*) from
@@ -23,7 +24,7 @@
 	</select>
 	<select id="productList"
 		resultType="com.nanicow.domain.ProductVO">
-		select psid, price, category, amount, pdate from product
+		select name, price, category, amount, pdate from product
 	</select>
 	<resultMap type="com.nanicow.domain.ProductVO" id="product">
 		<id property="name" column="name"></id>
@@ -34,13 +35,13 @@
 	<select id="Allproduct" resultMap="product">
 	<![CDATA[	
        select /*+ index_desc (product product_pk )*/
-		rownum rn , name, psid, PICTURE,price 
+		rownum rn , name, category, PICTURE,price 
 		 from product
        ]]>
 	</select>
-	
+
 	<!-- 유저측 -->
-		<select id="list2" resultType="com.nanicow.domain.ProductVO">
+	<select id="list2" resultType="com.nanicow.domain.ProductVO">
 		<![CDATA[
 		select title,price from product where num > 0  order by num desc
 		]]>
@@ -49,11 +50,41 @@
 		<selectKey keyProperty="num" order="BEFORE" resultType="int">
 			select seq_product.nextval from dual
 		</selectKey>
-		insert into product (num,title,userid,name,contents,picture,category,status,price,amount,addr,pdate) 
-values (seq_product.nextval,#{title},#{userid},#{name},#{contents},#{picture},#{category},#{status},#{price},#{amount},#{addr},sysdate)
+		insert into product
+		(num,title,userid,name,contents,picture,category,status,price,amount,addr,pdate)
+		values
+		(seq_product.nextval,#{title},#{userid},#{name},#{contents},#{picture},#{category},#{status},#{price},#{amount},#{addr},sysdate)
 	</insert>
 	<select id="read" resultType="com.nanicow.domain.ProductVO">
 		select * from product where
 		num=#{num}
+	</select>
+	<select id="productlist"
+		resultType="com.nanicow.domain.ProductVO">
+   <![CDATA[   
+       select /*+ index_desc (product product_pk )*/
+      *
+       from product
+       ]]>
+	</select>
+	<select id="getAllList" resultType="com.nanicow.domain.ProductVO">
+		 SELECT * FROM product where category=#{path}
+	</select>
+	
+	<select id="getMainAllList" resultType="com.nanicow.domain.ProductVO">
+		 SELECT * FROM product
+	</select>
+	
+	<select id="getSearchList" resultType="com.nanicow.domain.ProductVO">
+		 select * from product where name like '%'||#{search}||'%'
+	</select>	
+	<select id="getSellerList" parameterType="hashMap" resultType="string">
+	select picture from product where userid = #{userid}
+	</select>
+	<select id="numsel" parameterType="hashMap" resultType="int">
+	select count(*) from product where userid = #{userid} 
+	</select>
+	<select id="oneList" resultType="com.nanicow.domain.ProductVO">
+	select * from product where num = #{num}
 	</select>
 </mapper>

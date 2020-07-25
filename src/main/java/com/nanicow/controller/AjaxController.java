@@ -21,17 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.nanicow.domain.Contact_UserVO;
 import com.nanicow.domain.FeesVO;
 import com.nanicow.domain.zip_codeVO;
+import com.nanicow.service.CommentService;
 import com.nanicow.service.Contact_Service;
 import com.nanicow.service.FeesService;
 import com.nanicow.service.ProductService;
 import com.nanicow.service.UsersService;
 
+import lombok.extern.log4j.Log4j;
+
 @RestController
+@Log4j
 public class AjaxController {
 
 	@Autowired
@@ -45,6 +48,10 @@ public class AjaxController {
 
 	@Autowired
 	private Contact_Service cser;
+
+
+	@Autowired
+	private CommentService cmer;
 
 	@PostMapping(value = "/admin/info", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> UserInfo(@RequestBody String userid) {
@@ -62,7 +69,7 @@ public class AjaxController {
 		Map<String, Object> hmap = new HashMap<String, Object>();
 
 		for (int i = 0; i < p.size(); i++) {
-			hmap.put("psid", p.get(i).getPsid());
+			hmap.put("psid", p.get(i).getUserid());
 			hmap.put("sumprice", p.get(i).getSum_price());
 			hmap.put("count", p.get(i).getPrice());
 			hmap.put("pdate", p.get(i).getTdate());
@@ -216,19 +223,44 @@ public class AjaxController {
 		return new ResponseEntity<>(ok, HttpStatus.OK);
 	}
 	
-	
+
 	@PostMapping(value = "/comment", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Boolean> comment(@RequestBody String data) {
-		
+	public ResponseEntity<Object> comment(@RequestBody String data) throws Exception {
+
 		JsonParser parser = new JsonParser();
-		String id = parser.parse(data).getAsJsonObject().get("id").getAsString();
+		String userid = parser.parse(data).getAsJsonObject().get("userid").getAsString(); // 댓글
+		String content = parser.parse(data).getAsJsonObject().get("content").getAsString(); // 댓글
 		int num = parser.parse(data).getAsJsonObject().get("num").getAsInt();
-		String comm = parser.parse(data).getAsJsonObject().get("comm").getAsString();
-		System.out.println("id : " + id + ", num : " + num + ", comm : " +comm);
-		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", id);
-		
-		return new ResponseEntity<>(true, HttpStatus.OK);
+
+		log.info("id : " + userid + ", content : " + content + ", num : " + num);
+
+		Map<String, Object> rep = new HashMap<String, Object>();
+		rep.put("userid", userid);
+		rep.put("content", content);
+		rep.put("num", num);
+		// 댓글 DB 넣기
+		cmer.commentInsertService(rep);
+
+		// 댓글 DB에 넣은거 뽑아오기
+		Map<String, Object> maps = new HashMap<String, Object>();
+		List<?> list = cmer.commentListService();
+
+		maps.put("list", list);
+
+		return new ResponseEntity<>(maps, HttpStatus.OK);
+
+	}
+
+	@PostMapping(value = "/commread", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Object> commread() throws Exception {
+
+		// 댓글 DB에 넣은거 뽑아오기
+		Map<String, Object> maps = new HashMap<String, Object>();
+		List<?> list = cmer.commentListService();
+
+		maps.put("list", list);
+
+		return new ResponseEntity<>(maps, HttpStatus.OK);
+
 	}
 }

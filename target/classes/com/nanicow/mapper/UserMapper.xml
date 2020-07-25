@@ -51,4 +51,14 @@
 	<select id="idchk" resultType="_boolean" parameterType="map">
 	select nvl(idchk(#{id}),0) as bool from dual
 	</select>
+	<insert id="insertQna">
+		insert into contact_user (num, content, send_to, send_from, sdate, name, title )
+		values
+		(seq_cont_user.nextval,#{content}, #{send_to},#{send_from},sysdate,#{name},#{title})
+	</insert>
+	
+	<select id="getQnaList" resultType="com.nanicow.domain.QuestionDTO">
+		select * from contact_user
+	
+	</select>
 </mapper>

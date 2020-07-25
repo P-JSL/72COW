@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.nanicow.domain.Criteria;
 import com.nanicow.domain.FeesUsersVO;
 import com.nanicow.domain.FeesVO;
+import com.nanicow.domain.Send_addr;
 import com.nanicow.domain.UserEntry;
 import com.nanicow.mapper.FeesMapper;
 
@@ -32,14 +33,24 @@ public class FeesService {
 
 		return mapper.uriage();
 	}
-	
+
 	public int AllSales() {
-		
+
 		return mapper.AllSales();
 	}
-	
-	public List<FeesUsersVO> UserFeesList(Criteria cri){
-		
+
+	public List<FeesUsersVO> UserFeesList(Criteria cri) {
+
 		return mapper.UserFeesList(cri);
+	}
+
+	public int sels(Map<String, Object> map) {
+		return mapper.sels(map);
+	}
+	public void insertFee(FeesVO fvo) {
+		mapper.insertFee(fvo);
+	}
+	public void insertAddr(Send_addr sdvo) {
+		mapper.insertAddr(sdvo);
 	}
 }

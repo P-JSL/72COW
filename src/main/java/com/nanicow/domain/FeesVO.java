@@ -10,7 +10,7 @@ import lombok.ToString;
 public class FeesVO {
 
 	private int num;
-	private String psid, tdate, category;
+	private String userid, tdate, category,picture;
 	private int price, many, sum_price;
 	private int separate;
 

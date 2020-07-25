@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.nanicow.mapper.CommentMapper">
+ 
+   
+    <select id="commentList" resultType="com.nanicow.domain.CommentVO">
+        SELECT * FROM PCOMMENT order by cno desc
+    </select>
+    
+    <insert id="commentInsert"  parameterType="map">
+        INSERT INTO PCOMMENT (CNO,num,CONTENT,userid, REG_DATE) VALUES(seq_comment.nextval,#{num},#{content},#{userid},sysdate) 
+    </insert>
+  
+</mapper>

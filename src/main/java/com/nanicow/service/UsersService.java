@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import com.nanicow.domain.QuestionDTO;
 import com.nanicow.domain.UsersVO;
 import com.nanicow.mapper.UserMapper;
 
@@ -64,5 +65,13 @@ public class UsersService {
 	public boolean idchk(Map<String, String> map) {
 		
 		return mapper.idchk(map);
+	}
+	public void question(QuestionDTO question) {
+		mapper.insertQna(question);
+	
+	}
+	
+	public List<QuestionDTO> getQnaList() {
+		return mapper.getQnaList();
 	}
 }

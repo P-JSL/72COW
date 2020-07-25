@@ -485,9 +485,9 @@
 						success : function(res) {
 							console.log(res);
 							if(!res){
-								alert("중복된 아이디가 존재하지 않습니다.");
+								alert("重複のIDが存在しません。.");
 							}else{
-								alert("아이디가 중복입니다. 다시 작성해주시길 바랍니다.");
+								alert("重複のIDが存在します。書き直してください。");
 								$("input[name='userid']").val("");
 								return false;
 							}

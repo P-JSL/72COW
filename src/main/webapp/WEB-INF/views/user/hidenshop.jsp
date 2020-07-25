@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../lheader.jsp"%>
+<%@ include file="../header.jsp"%>
 
 <section class="content">
 	<div class="item_list_area">

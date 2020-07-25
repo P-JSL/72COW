@@ -66,4 +66,17 @@
 			</foreach>
 		</trim>
 	</sql>
+	
+	<select id="sels" resultType="int" parameterType="hashMap">
+	select count(*) from fees where userid = #{userid}
+	</select>
+	
+	<insert id="insertFee">
+	insert into Fees (num, tdate, category, price, many, sum_price,separate,userid,picture)
+	values (#{num}, sysdate, #{category}, #{price}, #{many}, #{sum_price},#{separate},#{userid},#{picture})
+	</insert>
+	<insert id="insertAddr">
+	insert into Send_addr (num, sname, phone,addr)
+	values (${num}, #{sname},#{phone},concat(#{address1},#{address2}))
+	</insert>
 </mapper>

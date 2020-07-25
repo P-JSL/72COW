@@ -92,15 +92,17 @@
 									<div class="d-flex">
 										<div
 											class="d-flex align-items-center text-muted font-weight-light">
-											<i class="mdi mdi-clock icon-sm mr-2"></i> <span>2020年6月</span>
+											<i class="mdi mdi-clock icon-sm mr-2"></i> <span>2020年7月</span>
 										</div>
 									</div>
 									<div class="row mt-3">
-									<c:forEach items="${plist }" var="p" begin="0" step="1" end="2">
+									<c:forEach items="${plist }" var="p">
+									<c:forTokens items="${p.picture }" delims="*" var="i" begin="1" end="1">
 										<div class="col-6 pr-1">
-											<img src="/upload/${p.picture }"
+											<img src="/upload/${i }" width="200px" height="300px"
 												class="mb-2 mw-100 w-100 rounded"> 
 										</div>
+									</c:forTokens>
 									</c:forEach>
 									<c:forEach items="${plist }" var="p" begin="2" step="1" end="4">
 										<div class="col-6 pl-1">

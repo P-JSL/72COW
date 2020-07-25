@@ -48,8 +48,8 @@ td {
 												<table class="table">
 													<tbody>
 														<tr>
-															<td>code</td>
-															<td class="code">${p.psid }</td>
+															<td>category</td>
+															<td class="code">${p.category }</td>
 														</tr>
 														<tr>
 															<td>price</td>
@@ -60,8 +60,10 @@ td {
 											</div>
 										</div>
 									</div>
-									<img src="/resources/upload/${p.picture }"
-										style="margin-top: 15px;">
+									<c:forTokens items="${p.picture }" delims="*" var="pt" begin="1" end="1">
+									<img src="/upload/${pt }"
+										style="margin-top: 15px; width: 100%;">
+									</c:forTokens>
 								</div>
 							</div>
 						</div>

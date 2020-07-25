@@ -1,15 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="true"%>
 <html>
 <head>
 <meta charset="utf-8">
 <!-- <link rel="canonical" href="https://www.hellomarket.com/"> -->
 <title>72Cow</title>
-	<!-- <meta name="description"
+<!-- <meta name="description"
 		content="누구나 쉽게 중고거래를 할 수 있는 모바일 중고나라 입니다. 중고 휴대폰, 중고차 등 다양한 중고 물건을 안전하게 거래하세요!">
 	<meta name="keywords"
 		content="헬로마켓은 누구나 사고 팔 수 있는 가장 쉽고 안전한 개인간 중고거래 마켓 입니다. 안 쓰는 물건, 중고물건은 누구나 거래할 수 있으며 특히 물물교환과 무료나눔이 많은 중고장터 입니다. 전국에서 등록되는 다양한 중고물건을 편의점택배를 통한 택배거래, 직거래 할 수 있고, 헬로페이 에스크로 안전거래서비스를 통해 사기 걱정없는 거래를 할 수 있습니다. 매월 전국에서 열리는 플리마켓 벼룩시장 정보를 제공합니다.">
@@ -173,13 +171,30 @@
 }
 
 100
+
+
 %
-{-webkit-transform:
+{
+-webkit-transform
+:
+
+
 rotate
+
+
 (
+
+
 360
+
+
 deg
-);
+
+
+)
+;
+
+
 }
 }
 @
@@ -190,19 +205,45 @@ deg
 }
 
 100
+
+
 %
 {
--webkit-transform:
-rotate
-(
-360
-deg
-);
--ms-transform
+-webkit-transform
 :
+
+
 rotate
+
+
 (
+
+
 360
+
+
+deg
+
+
+)
+;
+
+
+-ms-transform
+
+
+:
+
+
+rotate
+
+
+(
+
+
+360
+
+
 deg
 
 
@@ -212,7 +253,12 @@ deg
 
 
 
-);
+
+
+)
+;
+
+
 transform
 
 
@@ -222,7 +268,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -238,8 +288,14 @@ rotate
 
 
 
+
+
 (
+
+
 360
+
+
 deg
 
 
@@ -249,7 +305,12 @@ deg
 
 
 
-);
+
+
+)
+;
+
+
 }
 }
 @
@@ -259,6 +320,8 @@ keyframes nprogress-spinner { 0%{
 	transform: rotate(0deg);
 }
 100
+
+
 %
 {
 -webkit-transform
@@ -270,7 +333,11 @@ keyframes nprogress-spinner { 0%{
 
 
 
+
+
 :
+
+
 
 
 
@@ -286,8 +353,14 @@ rotate
 
 
 
+
+
 (
+
+
 360
+
+
 deg
 
 
@@ -297,8 +370,15 @@ deg
 
 
 
-);
+
+
+)
+;
+
+
 -ms-transform
+
+
 
 
 
@@ -316,10 +396,27 @@ deg
 
 
 
+
+
 rotate
-(360deg);
-transform:rotate
-(360deg);
+
+
+(
+360deg
+)
+;
+
+
+transform
+:rotate
+
+
+(
+360deg
+)
+;
+
+
 }
 }
 </style>
@@ -392,9 +489,13 @@ transform:rotate
 }
 
 100
+
+
 %
 {
 -webkit-transform
+
+
 
 
 
@@ -412,6 +513,8 @@ transform:rotate
 
 
 
+
+
 rotate
 
 
@@ -419,8 +522,14 @@ rotate
 
 
 
+
+
 (
+
+
 360
+
+
 deg
 
 
@@ -430,7 +539,12 @@ deg
 
 
 
-);
+
+
+)
+;
+
+
 }
 }
 @
@@ -441,6 +555,8 @@ deg
 }
 
 100
+
+
 %
 {
 -webkit-transform
@@ -452,7 +568,11 @@ deg
 
 
 
+
+
 :
+
+
 
 
 
@@ -468,8 +588,14 @@ rotate
 
 
 
+
+
 (
+
+
 360
+
+
 deg
 
 
@@ -479,7 +605,12 @@ deg
 
 
 
-);
+
+
+)
+;
+
+
 -ms-transform
 
 
@@ -489,7 +620,11 @@ deg
 
 
 
+
+
 :
+
+
 
 
 
@@ -505,8 +640,14 @@ rotate
 
 
 
+
+
 (
+
+
 360
+
+
 deg
 
 
@@ -516,7 +657,12 @@ deg
 
 
 
-);
+
+
+)
+;
+
+
 transform
 
 
@@ -526,7 +672,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -542,8 +692,14 @@ rotate
 
 
 
+
+
 (
+
+
 360
+
+
 deg
 
 
@@ -553,25 +709,36 @@ deg
 
 
 
-);
+
+
+)
+;
+
+
 }
 }
-
-
-
-
 @
 keyframes nprogress-spinner { 0%{
 	-webkit-transform: rotate(0deg);
 	-ms-transform: rotate(0deg);
 	transform: rotate(0deg);
 }
-100%
+100
+%
 {
--webkit-transform:rotate
+-webkit-transform
+:
+rotate
+(
+360deg
+);
+-ms-transform
+:
+rotate(
+360deg
+);
+transformrotate
 (360deg);
--ms-transform:rotate(360deg);
-transformrotate(360deg);
 }
 }
 </style>
@@ -607,15 +774,16 @@ transformrotate(360deg);
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f115ba77258dc118bee6a9d/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+	var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+	(function() {
+		var s1 = document.createElement("script"), s0 = document
+				.getElementsByTagName("script")[0];
+		s1.async = true;
+		s1.src = 'https://embed.tawk.to/5f115ba77258dc118bee6a9d/default';
+		s1.charset = 'UTF-8';
+		s1.setAttribute('crossorigin', '*');
+		s0.parentNode.insertBefore(s1, s0);
+	})();
 </script>
 <!--End of Tawk.to Script-->
 
@@ -645,15 +813,31 @@ s0.parentNode.insertBefore(s1,s0);
 		<div class="header_logo header_logo_s">
 			<div class="log_box"
 				style="max-width: 115px; height: 28px; position: relative; top: -45px;">
-				<a href="/">
-				<img src="/resources/cowlogo.png" class="logo" alt="헬로마켓">
-				<img src="/resources/LOGOS.png" class="mobile_logo" alt="헬로마켓"></a>
+				<a href="/"> <img src="/resources/cowlogo.png" class="logo"
+					alt="헬로마켓"> <img src="/resources/LOGOS.png"
+					class="mobile_logo" alt="헬로마켓"></a>
 			</div>
-			<div class="btn_box">
-				<a class="btn_login_box"><button class="login_btn">ログイン</button></a><a
-					class="btn_signup_box"><button class="signup_btn">会員登録</button></a>
-					<a href="/msearch"><div class="notification_box"></div></a>
-			</div>
+			<!--여기부터   -->
+			<c:choose>
+				<c:when test="${user == null}">
+					<div class="btn_box">
+						<a class="btn_login_box" href="/login"><button
+								class="login_btn">ログイン</button></a><a class="btn_signup_box"
+							href="/signup"><button class="signup_btn">会員登録</button></a><a
+							href="/msearch"><div class="notification_box"></div></a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="btn_box">
+						<a class="btn_login_box"
+							href="/mypage/myshop?userid=${user.userid}"><button
+								class="login_btn">マイページ</button></a> <a class="btn_signup_box"
+							href="/logout"><button class="signup_btn">ログアウト</button></a> <a
+							　href="/msearch"><div class="notification_box"></div></a>
+					</div>
+				</c:otherwise>
+			</c:choose>
+			<!--여기까지 수정해주세요  -->
 			<div class="header_search" id="tebas">
 				<div class="com_search_box">
 					<div>
@@ -690,7 +874,8 @@ s0.parentNode.insertBefore(s1,s0);
 										<i class="fa fa-times" aria-hidden="true"></i>
 									</button>
 								</div>
-								<a href="https://account.hellomarket.com/login?continue_url=https://www.hellomarket.com/">
+								<a
+									href="https://account.hellomarket.com/login?continue_url=https://www.hellomarket.com/">
 									<div class="member_info">
 										<div class="profile_wrapper">
 											<img alt="프로필사진" id="loginProfileImg" class="profile_img"
@@ -707,7 +892,7 @@ s0.parentNode.insertBefore(s1,s0);
 										<li><a>近い順 &gt;</a></li>
 									</ul>
 								</div>
-									<nav>
+								<nav>
 									<ul class="cat_list mobile_cat_list_none">
 										<li class="cat_space"></li>
 										<li class="cat_space"></li>
@@ -773,20 +958,22 @@ s0.parentNode.insertBefore(s1,s0);
 			</div>
 			<div class="sellimg_sub_box header_wrapper_sub">
 				<div class="selling_bot">
-				<a href="/sellproduct">
-					<img
+					<a href="/sellproduct"> <img
 						src="https://ccimage.hellomarket.com/web/2019/header/ico_sell_camera_x2.png"
 						alt="판매하기 이미지" class="selling_bot_img"><span
 						class="selling_bot_text">出品</span>
-						</a>
+					</a>
 				</div>
 			</div>
 			<div class="link_box header_wrapper_sub">
 				<ul>
 					<li><a href="/myfaq">お問い合わせ</a></li>
-					<li><a href="/notice"><img
+					<!--여기부터  -->
+					<li><a href="/yeeun/notice" target="_blank"
+						rel="noopener noreferrer"><img
 							src="https://ccimage.hellomarket.com/web/2019/header/ico_category_AD_x2.png"
 							alt="광고센터 아이콘이미지">お知らせ</a></li>
+					<!--여기까지 수정해주세요 -->
 				</ul>
 			</div>
 		</div>
@@ -795,15 +982,15 @@ s0.parentNode.insertBefore(s1,s0);
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-var modals ="";
-$(function() {
-   $(".header_wrapper_sub").removeClass("active");
-   $(".header_category").removeClass("active");
-   //header_category active
-    modals= $(".w_search_modal").html();
-    $(".w_search_modal").hide();
-   console.log(modals);
-})
+	var modals = "";
+	$(function() {
+		$(".header_wrapper_sub").removeClass("active");
+		$(".header_category").removeClass("active");
+		//header_category active
+		modals = $(".w_search_modal").html();
+		$(".w_search_modal").hide();
+		console.log(modals);
+	})
 
 	$(".selectbox").on("click", function() {
 		var category = $(".header_category").attr("class");

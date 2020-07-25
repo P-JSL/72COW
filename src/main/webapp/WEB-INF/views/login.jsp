@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-
 <link href="/resources/login.css" rel="stylesheet">
 
 <html>

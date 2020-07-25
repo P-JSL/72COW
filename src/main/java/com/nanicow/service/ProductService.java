@@ -14,73 +14,116 @@ import com.nanicow.mapper.ProductMapper;
 
 @Service
 public class ProductService {
-	
+
 	@Autowired
 	private ProductMapper mapper;
-	
-	public List<ProductVO> product_top4(){
-		
+
+	public List<ProductVO> product_top4() {
+
 		return mapper.product_top4();
 	}
-	
-	public List<FeesVO> list(Map<String, Object> map){
-		
+
+	public List<FeesVO> list(Map<String, Object> map) {
+
 		return mapper.list(map);
 	}
-	
-	
-	public List<UsersVO> SellerList(){
-		
+
+	public List<UsersVO> SellerList() {
+
 		return mapper.SellerList();
 	}
-	
+
 	public int productcount(String userid) {
-		
+
 		return mapper.productcount(userid);
 	}
-	
-	public List<ProductVO> productList(){
-		
+
+	public List<ProductVO> productList() {
+
 		return mapper.productList();
 	}
+
 	public List<ProductVO> Allproduct() {
 
 		return mapper.Allproduct();
 	}
-	
-	
-	//유저측
-	public List<ProductVO> list(Criteria cri){
+
+	// 유저측
+	public List<ProductVO> list(Criteria cri) {
 		return mapper.list2(cri);
 	}
-	
+
 	public void register(ProductVO product) {
 		mapper.register(product);
 
 	}
+	public List<ProductVO> productlist() {
 
-	public ProductVO read(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.productlist();
 	}
 
-	public boolean modify(ProductVO product) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	 
+	public List<ProductVO> getMainAllList() {
+		return mapper.getMainAllList() ;
 	}
 
-	public boolean remove(int num) {
+	 
+	public List<ProductVO> getsofaList() {
 		// TODO Auto-generated method stub
-		return false;
+		return mapper.getsofaList();
 	}
 
-	public void viewCount(int num) {
+	 
+	public List<ProductVO> getlivingList() {
 		// TODO Auto-generated method stub
-
+		return mapper.getlivingList();
 	}
 
-	public int count(Criteria cri) {
+	 
+	public List<ProductVO> getfoodList() {
 		// TODO Auto-generated method stub
-		return 0;
+		return mapper.getfoodList();
+	}
+
+	 
+	public List<ProductVO> getclothList() {
+		// TODO Auto-generated method stub
+		return mapper.getclothList();
+	}
+
+	 
+	public List<ProductVO> getbookList() {
+		// TODO Auto-generated method stub
+		return mapper.getbookList();
+	}
+
+	 
+	public List<ProductVO> getotherList() {
+		// TODO Auto-generated method stub
+		return mapper.getotherList();
+	}
+
+	 
+	public List<ProductVO> getAllList(String path) {
+		// TODO Auto-generated method stub
+		return mapper.getAllList(path);
+	}
+
+	 
+	public List<ProductVO> getSearchList(String search) {
+		// TODO Auto-generated method stub
+		return mapper.getSearchList(search);
+	}
+	
+	public List<String> getSellerList(Map<String, Object> map){
+		return mapper.getSellerList(map);
+	}
+	public int numsel(Map<String, Object> map) {
+		return mapper.numsel(map);
+	}
+	
+	public ProductVO oneList(int num) {
+		return mapper.oneList(num);
 	}
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.nanicow.mapper.NoticeMapper">
+
+<insert id="insert">	
+insert into notice (num, title, content, regdate , writer)
+ values(SEQ_NOTICE.nextval,#{title},#{content}, SYSDATE ,'관리자')
+</insert>
+
+<select id="getNotice" resultType="com.nanicow.domain.NoticeDTO">
+ select * from notice order by rownum
+</select>
+ 
+ <select id="NoticeModify" resultType="com.nanicow.domain.NoticeDTO" >
+ select * from notice where num=#{num}
+ </select>
+ 
+ <update id="noticeModifyOK">
+ update notice set title = #{title} ,content=#{content},regdate = sysdate where num = #{num}
+ </update>
+ 
+ <delete id="NoticeDelete">
+ delete from notice where num=#{num}
+ </delete>
+ 
+  
+</mapper>

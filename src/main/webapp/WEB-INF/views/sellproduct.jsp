@@ -35,7 +35,6 @@
 
 		<form name="product" action="/register" id="product" method="post"
 			enctype="multipart/form-data">
-			<input type="hidden" name="name" value="${user.f_name }${user.l_name}">
 			<input type="hidden" name="userid" value="${user.userid }">
 			<div class="regist_box">
 				<div class="description">
@@ -46,6 +45,14 @@
 						<dd>
 							<input type="text" name="title" class="title_input"
 								placeholder="商品のタイトルを入力してください" value="">
+							<ul class="item_recommend_box"></ul>
+						</dd>
+						<dt>
+							<label style="color: rgb(51, 51, 51);">商品名</label>
+						</dt>
+						<dd>
+							<input type="text" name="name" class="title_input"
+								placeholder="商品名を入力してください" value="">
 							<ul class="item_recommend_box"></ul>
 						</dd>
 					</dl>

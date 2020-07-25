@@ -15,11 +15,11 @@ import lombok.ToString;
 public class ProductVO {
 
 	private int num;
-	private String userid, name, category;
+	private String userid, psid,name, category;
 	private int price, amount;
 	private String picture;
 	private Date pdate;
 	private int views, DIBS;
-	private String title, contents, addr, status;
+	private String title, contents, addr, status,separate;
 	private List<MultipartFile> uploadfile; // ?
 }

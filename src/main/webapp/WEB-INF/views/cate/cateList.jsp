@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+
 <%@include file="../header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 
 <div class="main_area_center" style="margin-top: 200px">
 	<div class="main">
@@ -33,7 +38,8 @@
 								class="feature_option feature_option_checkbox">新商品
 									<div class="feature_option_checkbox_indicator"></div>
 							</label></li></a>
-						<a href="/search?category=HAA0000&amp;page=1&amp;usedType=Secondhand"><li><label
+						<a
+							href="/search?category=HAA0000&amp;page=1&amp;usedType=Secondhand"><li><label
 								class="feature_option feature_option_checkbox">中古
 									<div class="feature_option_checkbox_indicator"></div>
 							</label></li></a>
@@ -84,8 +90,8 @@
 					<a
 						href="https://l.hellomarket.com/?t=browser&amp;u=https%3A%2F%2Fwww.hellomarket.com%2Fpost%2F198970"
 						target="_blank" rel="noopener noreferrer"><img
-						src="../resources/img/b22.png"
-						class="main_item_img" alt="광고 배너 이미지"></a>
+						src="../resources/img/b22.png" class="main_item_img"
+						alt="광고 배너 이미지"></a>
 				</div>
 			</div>
 			<div class="tab_area biz_area item_tab_area">
@@ -94,7 +100,7 @@
 							class="hellopay_only_tab">
 							<label class="feature_option feature_option_checkbox"><span
 								class="hellopay_only_color">안전결제 전용</span><span>만 보기</span>
-							<div class="feature_option_checkbox_indicator"></div></label>
+								<div class="feature_option_checkbox_indicator"></div></label>
 						</div></a>
 					<div class="tab_type biz_type mobile_type">
 						<ul>
@@ -129,17 +135,12 @@
 						<div class="infinite-scroll-component "
 							style="height: auto; overflow: hidden auto;">
 							<ul class="mian_row general_mian_row">
+							<c:forEach var="list" items="${allList}" varStatus="i">
 								<li class="main_col_3" style="height: auto;"><div
 										class="item_wrapper_card">
 										<div class="dibs_card">
 											<button type="button">
-												<svg viewBox="0 0 24 24" fill="#484848" fill-opacity="0.5"
-													stroke="#ffffff" stroke-width="2" focusable="false"
-													aria-label="찜하기" role="img" stroke-linecap="round"
-													stroke-linejoin="round" class="dib_img">
-													<path
-														d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-														stroke-linejoin="round"></path></svg>
+												
 											</button>
 										</div>
 										<a class="card card_list"
@@ -148,84 +149,20 @@
 												<div class="image_wrapper">
 													<div class="image_outside">
 														<div class="image_centerbox">
-															<img
-																src="../resources/img/3333.png"
-																alt="히가시노게이고,추리소설" class="thumbnail_img"><label
-																data-index="0" style="display: none;">0</label>
+															<img src="../resources/img/3333.png" alt=""
+																class="thumbnail_img"><label data-index="0"
+																style="display: none;">0</label>
 														</div>
 													</div>
 												</div>
 												<div class="cont">
-													<div class="item_title">テスト</div>
-													<div class="item_price">1000円</div>
+													<div class="item_title">${list.name}</div>
+													<div class="item_price">${list.price}円</div>
 												</div>
 											</div></a>
 									</div></li>
-									<li class="main_col_3" style="height: auto;"><div
-										class="item_wrapper_card">
-										<div class="dibs_card">
-											<button type="button">
-												<svg viewBox="0 0 24 24" fill="#484848" fill-opacity="0.5"
-													stroke="#ffffff" stroke-width="2" focusable="false"
-													aria-label="찜하기" role="img" stroke-linecap="round"
-													stroke-linejoin="round" class="dib_img">
-													<path
-														d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-														stroke-linejoin="round"></path></svg>
-											</button>
-										</div>
-										<a class="card card_list"
-											href="/item/167448284?viewPath=search_list&amp;clickPath=search&amp;feedPosition=31"><div
-												class="card_box">
-												<div class="image_wrapper">
-													<div class="image_outside">
-														<div class="image_centerbox">
-															<img
-																src="../resources/img/3333.png"
-																alt="히가시노게이고,추리소설" class="thumbnail_img"><label
-																data-index="0" style="display: none;">0</label>
-														</div>
-													</div>
-												</div>
-												<div class="cont">
-													<div class="item_title">テスト</div>
-													<div class="item_price">1000円</div>
-												</div>
-											</div></a>
-									</div></li>
-									<li class="main_col_3" style="height: auto;"><div
-										class="item_wrapper_card">
-										<div class="dibs_card">
-											<button type="button">
-												<svg viewBox="0 0 24 24" fill="#484848" fill-opacity="0.5"
-													stroke="#ffffff" stroke-width="2" focusable="false"
-													aria-label="찜하기" role="img" stroke-linecap="round"
-													stroke-linejoin="round" class="dib_img">
-													<path
-														d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
-														stroke-linejoin="round"></path></svg>
-											</button>
-										</div>
-										<a class="card card_list"
-											href="/item/167448284?viewPath=search_list&amp;clickPath=search&amp;feedPosition=31"><div
-												class="card_box">
-												<div class="image_wrapper">
-													<div class="image_outside">
-														<div class="image_centerbox">
-															<img
-																src="../resources/img/3333.png"
-																alt="히가시노게이고,추리소설" class="thumbnail_img"><label
-																data-index="0" style="display: none;">0</label>
-														</div>
-													</div>
-												</div>
-												<div class="cont">
-													<div class="item_title">テスト</div>
-													<div class="item_price">1000円</div>
-												</div>
-											</div></a>
-									</div></li>
-									
+									</c:forEach>
+
 							</ul>
 						</div>
 					</div>
