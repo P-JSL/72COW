@@ -58,11 +58,21 @@ is
 sendto varchar(100) ;
 sendfrom varchar(100);
 msg varchar(2000);
+counter number;
 begin
- select cu.send_to into sendto from contact_user cu, contact_admin ca where cu.num != ca.user_num and cu.send_to = uid;
+select count(*) into counter from contact_admin ca where ca.send_to = uid;
+
+if counter != 0 then
+select cu.send_to into sendto from contact_user cu, contact_admin ca where cu.num != ca.user_num and cu.send_to = uid;
 select cu.send_from into sendfrom from contact_user cu, contact_admin ca where cu.num != ca.user_num and cu.send_to = uid;
 select cu.message into msg from contact_user cu, contact_admin ca where cu.num != ca.user_num and cu.send_to = uid;
 
+else 
+select cu.send_to into sendto from contact_user cu where cu.send_to = uid;
+select cu.send_from into sendfrom from contact_user cu  where cu.send_to = uid;
+select cu.message into msg from contact_user cu where  cu.send_to = uid;
+
+ end if;
 return ischar(sendto,sendfrom,msg);
 
 end;
