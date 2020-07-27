@@ -67,8 +67,8 @@
 										class="image_wrapper image_wrapper_main_col_1 deal_image_wrapper">
 										<div class="image_outside">
 											<div class="image_centerbox">
-												<c:forTokens items="${one }" delims="*" var="o" begin="4"
-													end="4">
+												<c:forTokens items="${one }" delims="*" var="o" begin="1"
+													end="1">
 													<img class="thumbnail_img" src="/upload/${o }"
 														alt="LG G패드4 8.0 블랙 32G 판매합니다!">
 												</c:forTokens>
