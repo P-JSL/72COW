@@ -34,13 +34,15 @@
 	 select B.* from(
 	 select rownum rn , A.* from(
 	 select search(users.userid) as o , concat(users.f_name,users.l_name) as F_name, concat(users.f_e_name,users.l_e_name) as L_name, count(users.userid) as count, users.userid , users.rdate 
-	 from users where users.userid in (select u.userid from users u, users_auth ua where u.userid = ua.userid and ua.auth != 'ADMIN')  ]]>
-    <include refid="criteria"></include>
+	 from users where
+	   ]]>
+<include refid="criteria"></include>    
 	 <![CDATA[
+	  users.userid in (select u.userid from users u, users_auth ua where u.userid = ua.userid and ua.auth != 'ADMIN') 
 	 group by  concat(users.f_name,users.l_name), users.f_name, users.l_name, 
 	 search(users.userid), users.f_name, users.l_name, users.f_name, users.l_name, 
 	 concat(users.f_e_name,users.l_e_name), users.f_e_name, users.l_e_name, users.f_e_name, users.l_e_name, 
-	 users.f_e_name, users.l_e_name, users.rdate, users.userid order by rdate desc) A where rownum < 10 ) B where rn >=1
+	 users.f_e_name, users.l_e_name, users.rdate, users.userid order by rdate desc) A where rownum < #{pageNum}*#{amount} ) B where rn >=(#{pageNum}-1)*#{amount}
 	]]>
 	</select>
 	

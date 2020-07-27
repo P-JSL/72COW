@@ -16,4 +16,7 @@ public class Contact_UserVO {
 	private String message;
 	private Date sdate;
 	
+	//
+	private String user_num;
+	
 }

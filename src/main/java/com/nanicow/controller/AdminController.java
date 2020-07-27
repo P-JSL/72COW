@@ -102,10 +102,11 @@ public class AdminController {
 	}
 
 	@GetMapping("/userRef")
-	public void admin_userref(Model model,@RequestParam("userid") String userid) {
+	public void admin_userref(Model model,@RequestParam("userid") String userid,@RequestParam("user_num") int num) {
 		log.info("welcome userref");
 		// 1) 문의하기 --> 유저에서 감
 		model.addAttribute("userid",userid);
+		model.addAttribute("num",num);
 	}
 	@PostMapping("/userRef")
 	public String admin_cont_send(Contact_UserVO cavo) {

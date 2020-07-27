@@ -14,6 +14,7 @@
 						<div class="card-body">
 							<h4 class="card-title">質問応答</h4>
 							<form class="forms-sample" action="/admin/userRef" method="post">
+							<input type="hidden" name="user_num" value="<%=request.getParameter("user_num")%>">
 								<div class="form-group">
 									<label for="exampleInputName1">TO</label> <input type="text"
 										class="form-control" name='send_to' placeholder="to" value="管理者" readonly>

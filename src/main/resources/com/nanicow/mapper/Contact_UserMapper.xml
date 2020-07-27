@@ -7,9 +7,9 @@
 	</select>
 	<insert id="insert">
 		insert into contact_admin (num,send_to, send_from,
-		message, sdate )
+		message, sdate, user_num )
 		values (seq_cont_admin.nextval, #{send_to},
-		#{send_from}, #{message}, sysdate)
+		#{send_from}, #{message}, sysdate,#{user_num})
 	</insert>
 	<select id="AllContList"
 		resultType="com.nanicow.domain.Contact_UserVO">
@@ -18,6 +18,6 @@
 	</select>
 	<select id="contusermsg" resultType="com.nanicow.domain.Contact_UserVO" parameterType="map">
 		select isfu(#{userid}).sendto as send_to, isfu(#{userid}).sendfrom as
-		send_from, isfu(#{userid}).msg as message from dual
+		send_from, isfu(#{userid}).msg as message, isfu(#{userid}).usernum as user_num from dual
 	</select>
 </mapper>

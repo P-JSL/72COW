@@ -125,7 +125,7 @@
 											<textarea readonly class="form-control" id="exampleTextarea1"
 												rows="4"></textarea>
 										</div>
-										<button type="button" class="btn btn-gradient-success"
+										<button type="button" class="btn btn-gradient-success" id="kaitou"
 											onclick="moveContact(this)">応答</button>
 										<button type="button" class="btn btn-gradient-danger"
 											id="close2">閉める</button>
@@ -151,10 +151,11 @@
 			var arion = $(".table tbody tr").find("#inquired");
 			var ari = $(".table tbody tr").find(".ari");
 			for (var i = 0; i < ari.length; i++) {
+				console.log(ari[i].innerText == '有');
 				if (ari[i].innerText == '有') {
 					$(ari[i]).css("cursor", "pointer");
 					$(ari[i]).children().css("cursor", "pointer");
-					$(arion).addClass("after");
+					$(arion[i]).addClass("after");
 					$(ari[i]).addClass("trigger");
 					$(ari[i]).css("background", "#f6e58d");
 				} else {
@@ -183,6 +184,7 @@
 											$("#username").text(res.otoi[0].send_to+ "様からのお問合せ");
 											$("#exampleInputName1").val(res.otoi[0].send_to);
 											$("#exampleTextarea1").val(res.otoi[0].message);
+											$("#kaitou").attr("data-num",res.otoi[0].user_num);
 										},
 										error : function(req,status,error) {
 											console.log(error);
@@ -203,7 +205,8 @@
 	<script type="text/javascript">
 			function moveContact(values) {
 				var To_user = $(values).parent().find("#exampleInputName1").val();
-					location.href = "/admin/userRef?userid="+To_user;
+				var usernum = $(values).attr("data-num");
+					location.href = "/admin/userRef?userid="+To_user+"&user_num="+usernum;
 			}
 	</script>
 </body>
