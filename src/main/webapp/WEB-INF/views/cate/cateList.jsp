@@ -135,33 +135,33 @@
 						<div class="infinite-scroll-component "
 							style="height: auto; overflow: hidden auto;">
 							<ul class="mian_row general_mian_row">
-							<c:forEach var="list" items="${allList}" varStatus="i">
-								<li class="main_col_3" style="height: auto;"><div
-										class="item_wrapper_card">
-										<div class="dibs_card">
-											<button type="button">
-												
-											</button>
-										</div>
-										<a class="card card_list"
-											href="/item/167448284?viewPath=search_list&amp;clickPath=search&amp;feedPosition=31"><div
-												class="card_box">
-												<div class="image_wrapper">
-													<div class="image_outside">
-														<div class="image_centerbox">
-															<img src="../resources/img/3333.png" alt=""
-																class="thumbnail_img"><label data-index="0"
-																style="display: none;">0</label>
+							<c:forEach items="${allList }" var="p">
+								<c:forTokens items="${p }" var="o" delims="*" begin="1" end="1">
+									<li class="main_col_4" style="height: auto;">
+										<div class="item_wrapper_card">
+											<a class="card card_list"
+												href="/productdetail?title=${p.title }&userid=${p.userid }&contents=${p.contents }&amount=${p.amount }&category=${p.category }&status=${p.status }&addr=${p.addr }&num=${p.num }&price=${p.price}&name=${p.name}&picture=${p.picture}">
+												<div class="card_box">
+													<div class="image_wrapper">
+														<div class="image_outside">
+															<div class="image_centerbox">
+																<img src="/upload/${o }" 
+																	class="thumbnail_img"><label data-index="4"
+																	style="display: none;">4</label>
+															</div>
 														</div>
 													</div>
+
+													<div class="cont">
+														<div class="item_title">${p.title }</div>
+														<div class="item_price">${p.price * p.amount}円</div>
+													</div>
 												</div>
-												<div class="cont">
-													<div class="item_title">${list.name}</div>
-													<div class="item_price">${list.price}円</div>
-												</div>
-											</div></a>
-									</div></li>
-									</c:forEach>
+											</a>
+										</div>
+									</li>
+								</c:forTokens>
+							</c:forEach>
 
 							</ul>
 						</div>

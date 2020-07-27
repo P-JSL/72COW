@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="resources/base.css">
 
 
- -->
+-->
 <link rel="preload" href="resources/index.js" as="script">
 <link rel="preload" href="resources/_app.js" as="script">
 <link rel="preload" href="resources/webpack.js" as="script">
@@ -71,14 +71,15 @@
 			<div class="log_box"
 				style="max-width: 115px; height: 28px; position: relative; top: -45px;">
 				<a href="/"><img src="resources/cowlogo.png" class="logo"
-					alt="헬로마켓"><img src="resources/nanicowlogo2.png" class="mobile_logo"
-					alt="헬로마켓"></a>
+					alt="헬로마켓"><img src="resources/nanicowlogo2.png"
+					class="mobile_logo" alt="헬로마켓"></a>
 			</div>
 			<div class="btn_box">
 				<a class="btn_login_box" href="/login"><button class="login_btn">ログイン</button></a>
-				<a class="btn_signup_box" href="/addmember"><button class="signup_btn">会員登録</button></a>
-				<a class="btn_signup_box" href="/admin/index"><button class="signup_btn">管理者</button></a>
-					<a href="/msearch"><div class="notification_box"></div></a>
+				<a class="btn_signup_box" href="/addmember"><button
+						class="signup_btn">会員登録</button></a> <a class="btn_signup_box"
+					href="/admin/index"><button class="signup_btn">管理者</button></a> <a
+					href="/msearch"><div class="notification_box"></div></a>
 			</div>
 			<div class="header_search" id="tebas">
 				<div class="com_search_box">
@@ -100,20 +101,20 @@
 			</div>
 		</div>
 	</section>
-	
-	
+
+
 	<section class="header_cat">
 		<div class="header_wrapper">
 			<div>
 				<div class="btn_box header_wrapper_sub active">
-					<input type="checkbox" class="cat_checkbox chkbox1">
-					<i class="arrow"></i>
-					<span for="cat_checkbox" class="selectbox">カテゴリー</span>
+					<input type="checkbox" class="cat_checkbox chkbox1"> <i
+						class="arrow"></i> <span for="cat_checkbox" class="selectbox">カテゴリー</span>
 					<div class="header_category active">
 						<div class="cat_list_box left_slidein">
 							<div class="mobile_login_wrapper">
 								<div class="btn_close_wrapper">
-									<input type="checkbox" class="close_checkbox chkbox1" id="btnClose" name="btnClose">
+									<input type="checkbox" class="close_checkbox chkbox1"
+										id="btnClose" name="btnClose">
 									<button type="button" class="btn_close" for="btnClose">
 										<i class="fa fa-times" aria-hidden="true"></i>
 									</button>
@@ -136,7 +137,7 @@
 										<li><a>近い順 &gt;</a></li>
 									</ul>
 								</div>
-									<nav>
+								<nav>
 									<ul class="cat_list mobile_cat_list_none">
 										<li class="cat_space"></li>
 										<li class="cat_space"></li>
@@ -202,13 +203,11 @@
 			</div>
 			<div class="sellimg_sub_box header_wrapper_sub">
 				<div class="selling_bot">
-				<a href="/sellproduct">
-					<img
+					<a href="/sellproduct"> <img
 						src="https://ccimage.hellomarket.com/web/2019/header/ico_sell_camera_x2.png"
-						alt="판매하기 이미지" class="selling_bot_img"
-						><span
+						alt="판매하기 이미지" class="selling_bot_img"><span
 						class="selling_bot_text">出品</span>
-						</a>
+					</a>
 				</div>
 			</div>
 			<div class="link_box header_wrapper_sub">
@@ -225,15 +224,15 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-var modals ="";
-$(function() {
-   $(".header_wrapper_sub").removeClass("active");
-   $(".header_category").removeClass("active");
-   //header_category active
-    modals= $(".w_search_modal").html();
-    $(".w_search_modal").hide();
-   console.log(modals);
-})
+	var modals = "";
+	$(function() {
+		$(".header_wrapper_sub").removeClass("active");
+		$(".header_category").removeClass("active");
+		//header_category active
+		modals = $(".w_search_modal").html();
+		$(".w_search_modal").hide();
+		console.log(modals);
+	})
 
 	$(".selectbox").on("click", function() {
 		var category = $(".header_category").attr("class");
@@ -269,217 +268,37 @@ $(function() {
 					<div class="infinite-scroll-component "
 						style="height: auto; overflow: hidden auto;">
 						<ul class="mian_row ">
+							<c:forEach items="${allList }" var="p">
+								<c:forTokens items="${p }" var="o" delims="*" begin="1" end="1">
+									<li class="main_col_4" style="height: auto;">
+										<div class="item_wrapper_card">
+											<a class="card card_list"
+												href="/productdetail?title=${p.title }&userid=${p.userid }&contents=${p.contents }&amount=${p.amount }&category=${p.category }&status=${p.status }&addr=${p.addr }&num=${p.num }&price=${p.price}&name=${p.name}&picture=${p.picture}">
+												<div class="card_box">
+													<div class="image_wrapper">
+														<div class="image_outside">
+															<div class="image_centerbox">
+																<img src="/upload/${o }" 
+																	class="thumbnail_img"><label data-index="4"
+																	style="display: none;">4</label>
+															</div>
+														</div>
+													</div>
 
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list" href="/productdetail">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
+													<div class="cont">
+														<div class="item_title">${p.title }</div>
+														<div class="item_price">${p.price * p.amount}円</div>
 													</div>
 												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
+											</a>
 										</div>
-									</a>
-								</div>
-							</li>
-
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list"
-										href="/item/167478262?viewPath=main_feed&amp;clickPath=home&amp;feedType=ranking&amp;featuredFeedType=RankingItem&amp;escrowType=common&amp;feedPosition=6">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-
-
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list"
-										href="/item/167478262?viewPath=main_feed&amp;clickPath=home&amp;feedType=ranking&amp;featuredFeedType=RankingItem&amp;escrowType=common&amp;feedPosition=6">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-
-
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list"
-										href="/item/167478262?viewPath=main_feed&amp;clickPath=home&amp;feedType=ranking&amp;featuredFeedType=RankingItem&amp;escrowType=common&amp;feedPosition=6">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list"
-										href="/item/167478262?viewPath=main_feed&amp;clickPath=home&amp;feedType=ranking&amp;featuredFeedType=RankingItem&amp;escrowType=common&amp;feedPosition=6">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-
-
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list"
-										href="/item/167478262?viewPath=main_feed&amp;clickPath=home&amp;feedType=ranking&amp;featuredFeedType=RankingItem&amp;escrowType=common&amp;feedPosition=6">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-
-
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list"
-										href="/item/167478262?viewPath=main_feed&amp;clickPath=home&amp;feedType=ranking&amp;featuredFeedType=RankingItem&amp;escrowType=common&amp;feedPosition=6">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-
-
-							<li class="main_col_4" style="height: auto;">
-								<div class="item_wrapper_card">
-									<a class="card card_list"
-										href="/item/167478262?viewPath=main_feed&amp;clickPath=home&amp;feedType=ranking&amp;featuredFeedType=RankingItem&amp;escrowType=common&amp;feedPosition=6">
-										<div class="card_box">
-											<div class="image_wrapper">
-												<div class="image_outside">
-													<div class="image_centerbox">
-														<img
-															src="/resources/img/3333.png"
-															alt="에어팟 3세대 프로" class="thumbnail_img"><label
-															data-index="4" style="display: none;">4</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="cont">
-												<div class="item_title">商品A</div>
-												<div class="item_price">21,000円</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-
-
-
+									</li>
+								</c:forTokens>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
-<
+				<
 				<div class="ad_banner_absolute" style="top: -207px;">
 					<div class="ad_banner">
 						<a href="https://ad.hellomarket.com/direct/content"
@@ -488,9 +307,7 @@ $(function() {
 							alt="회원직접광고 배너 이미지"></a>
 					</div>
 				</div>
-				<div class="police_banner_absolute" style="top: 30px;">
-				
-				</div>
+				<div class="police_banner_absolute" style="top: 30px;"></div>
 			</div>
 		</div>
 	</div>
@@ -537,15 +354,13 @@ $(function() {
 							alt="hellomarket">
 					</div>
 					<ul class="footer_company_info">
-						<li><span>（株） 72COW（神田雑貨店） | </span>
-						<span>東京都千代田区丸の内</span></li>
+						<li><span>（株） 72COW（神田雑貨店） | </span> <span>東京都千代田区丸の内</span></li>
 						<li><span>事業番号 : 105-87-56305</span><span>ああああ <a
-								href="#"
-								class="link_info" target="_blank" rel="noopener noreferrer"
-								style="text-decoration: underline;">123123123</a>
+								href="#" class="link_info" target="_blank"
+								rel="noopener noreferrer" style="text-decoration: underline;">123123123</a>
 						</span></li>
-						<li><span>問い合わせ: 080-324-4090</span><span>(平日
-								10~16時) | ファックス : 08-3141-4090</span></li>
+						<li><span>問い合わせ: 080-324-4090</span><span>(平日 10~16時)
+								| ファックス : 08-3141-4090</span></li>
 						<li><span>申告センター: <a
 								href="https://www.hellomarket.com/help/inquiry/form.hm"
 								target="_blank" rel="noopener noreferrer"
@@ -556,8 +371,7 @@ $(function() {
 								style="text-decoration: underline;">제휴문의</a>
 						</span></li>
 						<br>
-						<li><span>(株)72COWは～～～～～～～～～
-						72COWは～～～～～～～～～～</span></li>
+						<li><span>(株)72COWは～～～～～～～～～ 72COWは～～～～～～～～～～</span></li>
 						<li><span>©(株)72COW . All rights reserved.</span></li>
 					</ul>
 				</div>

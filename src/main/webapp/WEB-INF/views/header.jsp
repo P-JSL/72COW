@@ -175,12 +175,18 @@
 
 
 
+
+
 %
 {
 -webkit-transform
 
 
+
+
 :
+
+
 
 
 
@@ -190,7 +196,11 @@ rotate
 
 
 
+
+
 (
+
+
 
 
 
@@ -200,12 +210,18 @@ rotate
 
 
 
+
+
 deg
 
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -223,12 +239,18 @@ deg
 
 
 
+
+
 %
 {
 -webkit-transform
 
 
+
+
 :
+
+
 
 
 
@@ -238,7 +260,11 @@ rotate
 
 
 
+
+
 (
+
+
 
 
 
@@ -248,12 +274,18 @@ rotate
 
 
 
+
+
 deg
 
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -262,7 +294,11 @@ deg
 
 
 
+
+
 :
+
+
 
 
 
@@ -272,12 +308,18 @@ rotate
 
 
 
+
+
 (
 
 
 
 
+
+
 360
+
+
 
 
 
@@ -295,7 +337,11 @@ deg
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -312,7 +358,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -336,12 +386,18 @@ rotate
 
 
 
+
+
 (
 
 
 
 
+
+
 360
+
+
 
 
 
@@ -359,7 +415,11 @@ deg
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -376,9 +436,13 @@ keyframes nprogress-spinner { 0%{
 
 
 
+
+
 %
 {
 -webkit-transform
+
+
 
 
 
@@ -404,7 +468,11 @@ keyframes nprogress-spinner { 0%{
 
 
 
+
+
 rotate
+
+
 
 
 
@@ -420,7 +488,11 @@ rotate
 
 
 
+
+
 360
+
+
 
 
 
@@ -438,11 +510,17 @@ deg
 
 
 
+
+
 )
+
+
 
 
 ;
 -ms-transform
+
+
 
 
 
@@ -468,7 +546,11 @@ deg
 
 
 
+
+
 rotate
+
+
 
 
 
@@ -476,14 +558,22 @@ rotate
 (
 
 
+
+
 360deg
+
+
 
 
 )
 
 
+
+
 ;
 transform
+
+
 
 
 :rotate
@@ -491,13 +581,21 @@ transform
 
 
 
+
+
 (
+
+
 
 
 360deg
 
 
+
+
 )
+
+
 
 
 ;
@@ -577,9 +675,13 @@ transform
 
 
 
+
+
 %
 {
 -webkit-transform
+
+
 
 
 
@@ -605,7 +707,11 @@ transform
 
 
 
+
+
 rotate
+
+
 
 
 
@@ -621,7 +727,11 @@ rotate
 
 
 
+
+
 360
+
+
 
 
 
@@ -639,7 +749,11 @@ deg
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -657,9 +771,13 @@ deg
 
 
 
+
+
 %
 {
 -webkit-transform
+
+
 
 
 
@@ -685,7 +803,11 @@ deg
 
 
 
+
+
 rotate
+
+
 
 
 
@@ -701,7 +823,11 @@ rotate
 
 
 
+
+
 360
+
+
 
 
 
@@ -719,7 +845,11 @@ deg
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -736,7 +866,11 @@ deg
 
 
 
+
+
 :
+
+
 
 
 
@@ -760,12 +894,18 @@ rotate
 
 
 
+
+
 (
 
 
 
 
+
+
 360
+
+
 
 
 
@@ -783,7 +923,11 @@ deg
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -800,7 +944,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -824,12 +972,18 @@ rotate
 
 
 
+
+
 (
 
 
 
 
+
+
 360
+
+
 
 
 
@@ -847,7 +1001,11 @@ deg
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -862,53 +1020,81 @@ keyframes nprogress-spinner { 0%{
 100
 
 
+
+
 %
 {
 -webkit-transform
 
 
+
+
 :
+
+
 
 
 rotate
 
 
+
+
 (
+
+
 
 
 360deg
 
 
+
+
 )
+
+
 ;
-
-
 -ms-transform
 
 
+
+
 :
 
 
+
+
 rotate
+
+
 (
+
+
 
 
 360deg
 
 
+
+
 )
+
+
 ;
-
-
 transformrotate
 
 
+
+
 (
+
+
 360deg
+
+
 )
+
+
 ;
-
-
 }
 }
 </style>
@@ -1012,23 +1198,22 @@ transformrotate
 				<div class="com_search_box">
 					<div>
 						<div>
-							<form action="">
-								<input id="search" type="text" class="com_search"
-									placeholder="どんな商品をお探しですか?" value=""
-									style="border-bottom: 1px solid rgb(158, 164, 170);">
-							</form>
-							<div class="search_icon_box search_engine_icon">
+							<form id="searchForm" action="/search" method="get">
+								<input id="search" name="search" type="text" class="com_search"
+									placeholder="どんな商品をお探しですか?">
+									</form>
+									<div class="search_icon_box search_engine_icon">
 								<div class="search_icon">
 									<div class="search_circle"
 										style="border-color: rgb(158, 164, 170);"></div>
 									<div class="search_rectangle"
 										style="border-color: rgb(158, 164, 170); background-color: rgb(158, 164, 170);"></div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		</div>
 		</div>
 	</section>
 	<section class="header_cat">
