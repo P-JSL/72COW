@@ -437,13 +437,13 @@ var Allprice;
 		var point = $("#point").text();
 		var comm = $("#comm").text();
 		var fee = 1000;
-
+		console.log(comm);
 		$(".totpri")
 				.text(
 						numberWithCommas(price + fee + parseInt(point)
-								+ parseInt(comm))
+								+ parseInt(removeComma(comm)))
 								+ "円");
-		Allprice = parseInt(price) + +parseInt(point) + parseInt(comm)
+		Allprice = parseInt(price) + +parseInt(point) + parseInt(removeComma(comm))
 				+ parseInt(fee);
 		console.log(Allprice);
 		$("input[name='agree']").prop("checked", false);
@@ -451,6 +451,10 @@ var Allprice;
 		
 		
 	})
+	function removeComma(str){
+		n = parseInt(str.replace(/,/g,""));
+		return n;
+	}
 	function numberWithCommas(x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
