@@ -28,10 +28,10 @@
 												<div class="card_box">
 													<div class="image_wrapper">
 														<div class="image_outside">
-															<c:forTokens items="${p.picture }" delims="*" var="ip">
+															<c:forTokens items="${p.picture }" delims="*" var="ip" begin="1" end="1">
 																<c:forEach items="${ip }" var="s">
 																	<div class="image_centerbox">
-																		<img src="/upload/${s}" alt="에어팟 3세대 프로"
+																		<img src="/upload/${s}" alt="에어팟 3세대 프로" height="100%" width="100%"
 																			class="thumbnail_img"><label data-index="4"
 																			style="display: none;">4</label>
 																	</div>
