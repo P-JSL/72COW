@@ -55,6 +55,14 @@
 								placeholder="商品名を入力してください" value="">
 							<ul class="item_recommend_box"></ul>
 						</dd>
+						<dt>
+							<label style="color: rgb(51, 51, 51);">数量</label>
+						</dt>
+						<dd>
+							<input type="text" name="amount" class="title_input"
+								placeholder="数量を書いてください。" value="">
+							<ul class="item_recommend_box"></ul>
+						</dd>
 					</dl>
 					<dl id="content">
 						<dt>
@@ -77,66 +85,84 @@
 						<dd>
 							<ul class="image_list">
 								<div>
-								<input type="file" id="image" accept="image/*" name="uploadfile"
-									onchange="setThumbnail(event,this);" ; style="display: none;">
+									<input type="file" id="image" accept="image/*"
+										name="uploadfile" onchange="setThumbnail(event,this);"
+										; style="display: none;">
 									<li>
-										<div class="up_img_box button"  onclick="onclick=document.all.image.click()">
-											<div id="image_container" id="thumbnailImg" class="item_img" style="width: 146px;"
+										<div class="up_img_box button"
+											onclick="onclick=document.all.image.click()">
+											<div id="image_container" id="thumbnailImg" class="item_img"
+												style="width: 146px;"
 												src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png"></div>
 										</div>
 									</li>
 								</div>
-								
+
 								<div>
-								<input type="file" id="image2" accept="image/*" name="uploadfile"
-									onchange="setThumbnail(event,this);" ; style="display: none;">
+									<input type="file" id="image2" accept="image/*"
+										name="uploadfile" onchange="setThumbnail(event,this);"
+										; style="display: none;">
 									<li>
-										<div class="up_img_box button"  onclick="onclick=document.all.image2.click()">
-											<div id="image_container" id="thumbnailImg" class="item_img" style="width: 146px;"
+										<div class="up_img_box button"
+											onclick="onclick=document.all.image2.click()">
+											<div id="image_container" id="thumbnailImg" class="item_img"
+												style="width: 146px;"
 												src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png"></div>
 										</div>
 									</li>
 								</div>
-								
+
 								<div>
-								<input type="file" id="image3" accept="image/*" name="uploadfile"
-									onchange="setThumbnail(event,this);"; style="display: none;">
+									<input type="file" id="image3" accept="image/*"
+										name="uploadfile" onchange="setThumbnail(event,this);"
+										; style="display: none;">
 									<li>
-										<div class="up_img_box button"  onclick="onclick=document.all.image3.click()">
-											<div id="image_container" id="thumbnailImg" class="item_img" style="width: 146px;"
+										<div class="up_img_box button"
+											onclick="onclick=document.all.image3.click()">
+											<div id="image_container" id="thumbnailImg" class="item_img"
+												style="width: 146px;"
 												src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png"></div>
 										</div>
 									</li>
 								</div>
-								
+
 								<div>
-								<input type="file" id="image4" accept="image/*"name="uploadfile"
-									onchange="setThumbnail(event,this);" ; style="display: none;">
+									<input type="file" id="image4" accept="image/*"
+										name="uploadfile" onchange="setThumbnail(event,this);"
+										; style="display: none;">
 									<li>
-										<div class="up_img_box button"  onclick="onclick=document.all.image4.click()">
-											<div id="image_container" id="thumbnailImg" class="item_img" style="width: 146px;"
+										<div class="up_img_box button"
+											onclick="onclick=document.all.image4.click()">
+											<div id="image_container" id="thumbnailImg" class="item_img"
+												style="width: 146px;"
 												src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png"></div>
 										</div>
 									</li>
 								</div>
-								
+
 								<div>
-								<input type="file" id="image5" accept="image/*"name="uploadfile"
-									onchange="setThumbnail(event,this);" ; style="display: none;">
+									<input type="file" id="image5" accept="image/*"
+										name="uploadfile" onchange="setThumbnail(event,this);"
+										; style="display: none;">
 									<li>
-										<div class="up_img_box button"  onclick="onclick=document.all.image5.click()">
-											<div id="image_container" id="thumbnailImg" class="item_img" style="width: 146px;"
+										<div class="up_img_box button"
+											onclick="onclick=document.all.image5.click()">
+											<div id="image_container" id="thumbnailImg" class="item_img"
+												style="width: 146px;"
 												src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png"></div>
 										</div>
 									</li>
 								</div>
-								
+
 								<div>
-								<input type="file" id="image6" accept="image/*"name="uploadfile"
-									onchange="setThumbnail(event,this);" ; style="display: none;">
+									<input type="file" id="image6" accept="image/*"
+										name="uploadfile" onchange="setThumbnail(event,this);"
+										; style="display: none;">
 									<li>
-										<div class="up_img_box button"  onclick="onclick=document.all.image6.click()">
-											<div id="image_container" id="thumbnailImg" class="item_img" style="width: 146px;"
+										<div class="up_img_box button"
+											onclick="onclick=document.all.image6.click()">
+											<div id="image_container" id="thumbnailImg" class="item_img"
+												style="width: 146px;"
 												src="https://ccimage.hellomarket.com/web/2018/auto/img_car_pic_basic.png"></div>
 										</div>
 									</li>
@@ -241,8 +267,7 @@
 						</dt>
 						<dd class="map_box">
 							<input type="text" class="my_location_input item_location_input"
-								placeholder="都道府県入力" id="address" name="addr" value=""
-								readonly>
+								placeholder="都道府県入力" id="address" name="addr" value="" readonly>
 							<div class="close_button item_close_button" id="clear"></div>
 							<div class="my_location_map trigger">
 								<span>検索</span>
