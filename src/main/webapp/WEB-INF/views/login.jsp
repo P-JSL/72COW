@@ -12,8 +12,7 @@
 				<h3 class="error" style="text-align: center;">${error }</h3>
 				<div class="write_form">
 					<div class="write_view login_view">
-						<form method="post" name="form" id="form"
-							 action="/login">
+						<form method="post" name="form" id="form" action="/login">
 							<input type="text" name="userid" size="20" tabindex="1" value=""
 								placeholder="IDを入力してください。"> <input type="password"
 								name="password" size="20" tabindex="2"
@@ -32,7 +31,9 @@
 										class="link">パスワードを検索</a>
 								</div>
 							</div>
-							<input type="submit" class="btn_type1" value="ログイン"><span class="txt_type"></span>
+							<input type="submit" class="btn_type1" value="ログイン"
+								style="font-size: 20px; background: transparent; color: blue;"><span
+								class="txt_type"></span>
 						</form>
 						<a href="/signup" class="btn_type2 btn_member"><span
 							class="txt_type">会員登録</span></a>

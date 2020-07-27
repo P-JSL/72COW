@@ -173,28 +173,42 @@
 100
 
 
+
+
 %
 {
 -webkit-transform
+
+
 :
+
+
 
 
 rotate
 
 
+
+
 (
+
+
 
 
 360
 
 
+
+
 deg
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -207,41 +221,65 @@ deg
 100
 
 
+
+
 %
 {
 -webkit-transform
+
+
 :
+
+
 
 
 rotate
 
 
+
+
 (
+
+
 
 
 360
 
 
+
+
 deg
 
 
+
+
 )
+
+
 ;
-
-
 -ms-transform
 
 
+
+
 :
+
+
 
 
 rotate
 
 
+
+
 (
 
 
+
+
 360
+
+
 
 
 deg
@@ -255,10 +293,12 @@ deg
 
 
 
+
+
 )
+
+
 ;
-
-
 transform
 
 
@@ -270,7 +310,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -290,10 +334,16 @@ rotate
 
 
 
+
+
 (
 
 
+
+
 360
+
+
 
 
 deg
@@ -307,10 +357,12 @@ deg
 
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -322,6 +374,8 @@ keyframes nprogress-spinner { 0%{
 100
 
 
+
+
 %
 {
 -webkit-transform
@@ -335,7 +389,11 @@ keyframes nprogress-spinner { 0%{
 
 
 
+
+
 :
+
+
 
 
 
@@ -355,10 +413,16 @@ rotate
 
 
 
+
+
 (
 
 
+
+
 360
+
+
 
 
 deg
@@ -372,11 +436,15 @@ deg
 
 
 
+
+
 )
+
+
 ;
-
-
 -ms-transform
+
+
 
 
 
@@ -398,25 +466,41 @@ deg
 
 
 
+
+
 rotate
 
 
+
+
 (
+
+
 360deg
+
+
 )
+
+
 ;
-
-
 transform
+
+
 :rotate
 
 
+
+
 (
+
+
 360deg
+
+
 )
+
+
 ;
-
-
 }
 }
 </style>
@@ -491,9 +575,13 @@ transform
 100
 
 
+
+
 %
 {
 -webkit-transform
+
+
 
 
 
@@ -515,7 +603,11 @@ transform
 
 
 
+
+
 rotate
+
+
 
 
 
@@ -527,7 +619,11 @@ rotate
 (
 
 
+
+
 360
+
+
 
 
 deg
@@ -541,10 +637,12 @@ deg
 
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -557,6 +655,8 @@ deg
 100
 
 
+
+
 %
 {
 -webkit-transform
@@ -570,7 +670,11 @@ deg
 
 
 
+
+
 :
+
+
 
 
 
@@ -590,10 +694,16 @@ rotate
 
 
 
+
+
 (
 
 
+
+
 360
+
+
 
 
 deg
@@ -607,10 +717,12 @@ deg
 
 
 
+
+
 )
+
+
 ;
-
-
 -ms-transform
 
 
@@ -622,7 +734,11 @@ deg
 
 
 
+
+
 :
+
+
 
 
 
@@ -642,10 +758,16 @@ rotate
 
 
 
+
+
 (
 
 
+
+
 360
+
+
 
 
 deg
@@ -659,10 +781,12 @@ deg
 
 
 
+
+
 )
+
+
 ;
-
-
 transform
 
 
@@ -674,7 +798,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -694,10 +822,16 @@ rotate
 
 
 
+
+
 (
 
 
+
+
 360
+
+
 
 
 deg
@@ -711,10 +845,12 @@ deg
 
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -724,21 +860,55 @@ keyframes nprogress-spinner { 0%{
 	transform: rotate(0deg);
 }
 100
+
+
 %
 {
 -webkit-transform
+
+
 :
+
+
+rotate
+
+
+(
+
+
+360deg
+
+
+)
+;
+
+
+-ms-transform
+
+
+:
+
+
 rotate
 (
+
+
 360deg
-);
--ms-transform
-:
-rotate(
-360deg
-);
+
+
+)
+;
+
+
 transformrotate
-(360deg);
+
+
+(
+360deg
+)
+;
+
+
 }
 }
 </style>
@@ -842,8 +1012,11 @@ transformrotate
 				<div class="com_search_box">
 					<div>
 						<div>
-							<input type="text" class="com_search" placeholder="どんな商品をお探しですか?"
-								value="" style="border-bottom: 1px solid rgb(158, 164, 170);">
+							<form action="">
+								<input id="search" type="text" class="com_search"
+									placeholder="どんな商品をお探しですか?" value=""
+									style="border-bottom: 1px solid rgb(158, 164, 170);">
+							</form>
 							<div class="search_icon_box search_engine_icon">
 								<div class="search_icon">
 									<div class="search_circle"

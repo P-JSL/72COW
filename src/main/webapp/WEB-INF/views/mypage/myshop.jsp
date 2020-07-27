@@ -35,8 +35,14 @@
 							</div>
 							<div class="my_profile_nick">${userlist.userid }</div>
 							<div class="my_profile_shop_created">
-								<div class="my_profile_start_mobile"><fmt:formatDate value="${userlist.rdate}" pattern="yy-MM-dd"/>始まる</div>
-								<div class="my_profile_start"><fmt:formatDate value="${userlist.rdate}" pattern="yy-MM-dd"/>始まる</div>
+								<div class="my_profile_start_mobile">
+									<fmt:formatDate value="${userlist.rdate}" pattern="yy-MM-dd" />
+									始まる
+								</div>
+								<div class="my_profile_start">
+									<fmt:formatDate value="${userlist.rdate}" pattern="yy-MM-dd" />
+									始まる
+								</div>
 							</div>
 							<div class="my_profile_shop_created">
 								<div class="my_profile_start_mobile">${userlist.email}</div>
@@ -68,7 +74,8 @@
 												alt="프로필 별점 없는 이미지 5">
 										</div></a></li>
 								<li><a href="/mypage/outmember?userid=${userlist.userid}"><span>会員退会</span></a></li>
-								<li><a href="/mypage/profileModify?userid=${userlist.userid}"><span>会員情報設定</span></a></li>
+								<li><a
+									href="/mypage/profileModify?userid=${userlist.userid}"><span>会員情報設定</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -77,8 +84,10 @@
 						<div class="tab_content">
 							<div class="my_profile_item_menu">
 								<ul>
-									<li class="active"><a class="active" href="/mypage/myshop?userid=${userlist.userid }">販売商品</a></li>
-									<li class=""><a class="" href="/mypage/soldout?userid=${userlist.userid }">販売完了商品</a></li>
+									<li class="active"><a class="active"
+										href="/mypage/myshop?userid=${userlist.userid }">販売商品</a></li>
+									<li class=""><a class=""
+										href="/mypage/soldout?userid=${userlist.userid }">販売完了商品</a></li>
 								</ul>
 							</div>
 							<div class="cat_box">
@@ -91,29 +100,36 @@
 									<div>
 										<ul class="mian_row general_mian_row">
 											<c:forEach var="glist" items="${goodslist}">
-												<li class="main_col_3" style="height: auto;">
-												<div class="item_wrapper_card">
-														<a class="card card_list"
-															href="../resources/img/${glist.picture}">
-															<div class="card_box">
-															
-																<div class="image_wrapper">
-																	<div class="image_outside">
-																		<div class="image_centerbox">
-																			<img src="../resources/img/${glist.picture}"
-																				alt="히가시노게이고,추리소설" class="thumbnail_img"><label
-																				data-index="0" style="display: none;">0</label>
+												<c:forTokens items="${glist }" delims="*" var="i" begin="1"
+													end="1">
+													<li class="main_col_3" style="height: auto;">
+														<div class="item_wrapper_card">
+															<a class="card card_list"
+																href="/productdetail?title=${p.title }&userid=${p.userid }&contents=${p.contents }&amount=${p.amount }&category=${p.category }&status=${p.status }&addr=${p.addr }&num=${p.num }&price=${p.price}&name=${p.name}&picture=${p.picture}">
+																>
+																<div class="card_box">
+																	<div class="image_wrapper">
+																		<div class="image_outside">
+																			<div class="image_centerbox">
+																				<img src="/upload/${i }" alt="히가시노게이고,추리소설"
+																					class="thumbnail_img"><label data-index="0"
+																					style="display: none;">0</label>
+																			</div>
 																		</div>
 																	</div>
+																	<div class="cont">
+																		<div class="item_title">${glist.title }</div>
+																		<a class="label label-danger" style="float: right;"
+																			href="/mypage/GoodsDelete?num=${glist.num}&userid=${userlist.userid }">
+																			<i class="fa fa-trash-o" aria-hidden="true"
+																			style="font-size: x-large; color: white;"></i>
+																		</a>
+																	</div>
 																</div>
-																<div class="cont">
-																	<div class="item_title">${glist.title }</div>
-																	<a class="label label-danger" style="float: right;" href="/mypage/GoodsDelete?num=${glist.num}&userid=${userlist.userid }">
-																	<i class="fa fa-trash-o" aria-hidden="true" style="font-size: x-large; color: white;" ></i>
-																	</a>
-																</div>
-															</div></a>
-													</div></li>
+															</a>
+														</div>
+													</li>
+												</c:forTokens>
 											</c:forEach>
 										</ul>
 									</div>
