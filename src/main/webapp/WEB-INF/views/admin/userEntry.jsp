@@ -66,7 +66,6 @@
 						<div class="card"
 							style="box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);">
 							<div class="card-body">
-								<c:forEach items="${seller }" var="p">
 									<table class="table table-hover">
 										<thead>
 											<tr style="text-align: center;">
@@ -78,6 +77,7 @@
 										</thead>
 										<tbody>
 
+								<c:forEach items="${seller }" var="p">
 											<tr style="text-align: center;">
 												<td><a href="#" id="trigger" onclick="openmodal(this);"
 													style="border: 0; margin: 0;">${p.userid}</a></td>
@@ -86,9 +86,9 @@
 												<td><label class="badge badge-danger"><fmt:formatDate
 															value="${p.rdate }" pattern="YYYY年MM月dd日" /></label></td>
 											</tr>
+								</c:forEach>
 										</tbody>
 									</table>
-								</c:forEach>
 							</div>
 						</div>
 					</div>

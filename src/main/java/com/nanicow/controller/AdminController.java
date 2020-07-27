@@ -48,7 +48,7 @@ public class AdminController {
 		// 1), 2) 는 AJAX에서 해결
 		
 		// 3) 모든 회원가입한 인원 ( 자기 제외 )
-		model.addAttribute("usercount",user.UserCount());
+		model.addAttribute("usercount",user.UserCount()-1);
 		// 4) 그래프 : 하루마다의 매상 
 		List<FeesVO> fvo= fser.list();
 		Gson gson = new Gson();

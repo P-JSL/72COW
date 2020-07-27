@@ -16,7 +16,7 @@
 	</select>
 	<select id="SellerList" resultType="com.nanicow.domain.UsersVO">
 		select distinct
-		us.userid,us.f_name,us.l_name, us.rdate,us.email from users us , product pt  where us.userid = pt.userid 
+		us.userid,us.f_name,us.l_name, us.rdate,us.email from users us , fees pt  where us.userid = pt.userid 
 	</select>
 	<select id="productcount" resultType="int">
 		select count(*) from

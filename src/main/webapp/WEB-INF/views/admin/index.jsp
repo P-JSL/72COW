@@ -75,8 +75,7 @@
 							<div class="card">
 								<div class="card-body">
 									<div class="clearfix">
-										<h4 class="card-title float-left">Visit And Sales
-											Statistics</h4>
+										<h4 class="card-title float-left">日時・価格</h4>
 										<div id="chartdiv"
 											class="rounded-legend legend-horizontal legend-top-right float-right"></div>
 									</div>
@@ -104,14 +103,7 @@
 										</div>
 									</c:forTokens>
 									</c:forEach>
-									<c:forEach items="${plist }" var="p" begin="2" step="1" end="4">
-										<div class="col-6 pl-1">
-											<img src="/resources/assets/images/dashboard/img_2.jpg"
-												class="mb-2 mw-100 w-100 rounded" alt="image"> <img
-												src="/resources/assets/images/dashboard/img_3.jpg"
-												class="mw-100 w-100 rounded" alt="image">
-										</div>
-									</c:forEach>
+								
 									</div>
 								</div>
 							</div>
@@ -231,12 +223,15 @@
 	<!-- Chart code -->
 	<script>
 	var Data = ${data}
+	console.log(Data);
 	var date = new Array();
 	var price = new Array();
 	for(var i=0; i<Data.length; i++){
 		date[i] = Data[i].tdate;
 		price[i] = Data[i].sum_price;
 	}
+	console.log(date);
+	console.log(price);
 		am4core
 				.ready(function() {
 
@@ -245,13 +240,13 @@
 					// Themes end
 
 					var chart = am4core.create("chartdiv", am4charts.XYChart);
-					chart.paddingRight = 20;
+					chart.paddingRight = 10;
 					var data = [];
-					var visits = 10;
+					var visits = 5;
 					var previousValue;
 
-					for (var i = 0; i < 100; i++) {
-						visits += price[i]; //visit 데이터
+					for (var i = 0; i < 30; i++) {
+						visits = price[i]; //visit 데이터
 
 						if (i > 0) {
 							// add color to previous data item depending on whether current value is less or more than previous value
@@ -263,8 +258,8 @@
 						}
 
 						data.push({
-							date : new Date(years(),mon(),i),
-							value : price
+							date : new Date(years(),mon(), 0+i),
+							value : price[i]
 						}); // 날짜
 						previousValue = visits;
 					}
