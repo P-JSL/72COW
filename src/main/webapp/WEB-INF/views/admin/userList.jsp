@@ -116,17 +116,17 @@
 									<h4 class="card-title" id="username"></h4>
 									<form class="forms-sample">
 										<div class="form-group">
-											<label for="exampleInputName1">Name</label> <input
+											<label for="exampleInputName1">ID</label> <input
 												type="text" class="form-control" id="exampleInputName1"
 												placeholder="Name" readonly>
 										</div>
 										<div class="form-group">
-											<label for="exampleTextarea1">Textarea</label>
+											<label for="exampleTextarea1">内容</label>
 											<textarea readonly class="form-control" id="exampleTextarea1"
 												rows="4"></textarea>
 										</div>
 										<button type="button" class="btn btn-gradient-success" id="kaitou"
-											onclick="moveContact(this)">応答</button>
+											onclick="moveContact(this)">回答</button>
 										<button type="button" class="btn btn-gradient-danger"
 											id="close2">閉める</button>
 									</form>

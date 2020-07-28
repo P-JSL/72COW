@@ -8,7 +8,7 @@
   
    <select id="getgoods" resultType="com.nanicow.domain.FeesVO" >
    <![CDATA[
- 	select * from fees where userid=#{userid} and many>0 order by rownum
+ 	select * from fees where userid=#{userid} and many>0 and separate=0 order by rownum
    ]]>
   </select>
   

@@ -60,7 +60,7 @@ td {
 											</div>
 										</div>
 									</div>
-									<c:forTokens items="${p.picture }" delims="*" var="pt" begin="1" end="1">
+									<c:forTokens items="${p.picture }" delims="*" var="pt" >
 									<img src="/upload/${pt }"
 										style="margin-top: 15px; width: 100%;">
 									</c:forTokens>

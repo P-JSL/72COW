@@ -96,7 +96,7 @@
 									</div>
 									<div class="row mt-3">
 									<c:forEach items="${plist }" var="p">
-									<c:forTokens items="${p.picture }" delims="*" var="i" begin="1" end="1">
+									<c:forTokens items="${p.picture }" delims="*" var="i">
 										<div class="col-6 pr-1">
 											<img src="/upload/${i }" width="200px" height="300px"
 												class="mb-2 mw-100 w-100 rounded"> 
@@ -165,15 +165,19 @@
 				contentType : "application/json; charset=UTF-8",
 				processData : false,
 				success : function(res) {
-					console.log(res);
+					console.log("res : " + res);
 					if(res.price0 == 0 || res.price0 ==null){
 						$("#price").text(0);
+					}else{
+						
+					$("#price").text(numberWithCommas(res.price0));
 					}
 					if(res.price1 == 0 || res.price1 ==null){
 						$("#comm").text(0);
-					}
-					$("#price").text(numberWithCommas(res.price0));
+					}else{
+						
 					$("#comm").text(numberWithCommas(Math.floor(res.price1*0.1)));
+					}
 				},
 				error : function(req, status, error) {
 					console.log(error);
@@ -223,17 +227,15 @@
 			return now().getDate();
 		}
 	}
-	var Data = ${data}
-	console.log(Data);
+	var Data = ${data};
 	var dated = new Array();
 	var price = new Array();
 	for(var i=0; i<Data.length; i++){
 		dated[i] = Data[i].tdate;
 		price[i] = Data[i].sum_price;
 	}
-	console.log(dated);
-	console.log(price);
-		am4core
+
+	am4core
 				.ready(function() {
 
 					// Themes begin
@@ -246,7 +248,8 @@
 					var visits = 5;
 					var previousValue;
 
-					for (var i = 0; i < 30; i++) {
+					for (var i = 0; i < dated.length; i++) {
+
 						visits = price[i]; //visit 데이터
 
 						if (i > 0) {
@@ -259,7 +262,7 @@
 						}
 
 						data.push({
-							date : dated[i],
+							date : new Date(dated[i]),
 							value : price[i]
 						}); // 날짜
 						previousValue = visits;

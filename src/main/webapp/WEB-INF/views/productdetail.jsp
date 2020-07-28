@@ -120,7 +120,7 @@
 								<div class="item_hello_box">
 									<div class="item_hello_box_pay item_hello_box_chat_pay"
 										style="float: left; width: 100%; padding: 15px 0;">
-										<a href="/buyproduct?num=${pdto.num }&userid=<%=request.getParameter("userid")%>">
+										<a href="/buyproduct?num=${pdto.num }&userid=${user.userid}">
 											<button type="button" class="hello_pay_btn">購入</button>
 										</a>
 									</div>

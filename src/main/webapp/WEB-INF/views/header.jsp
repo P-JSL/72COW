@@ -1199,9 +1199,10 @@ transformrotate
 					<div>
 						<div>
 							<form id="searchForm" action="/search" method="get">
-								<input id="search" name="search" type="text" class="com_search"
-									placeholder="どんな商品をお探しですか?">
-									</form>
+                     <input id="search" name="search" type="text" class="com_search" placeholder="どんな商品をお探しですか?"
+                        value="" style="border-bottom: 1px solid rgb(158, 164, 170);">
+                        <!--  <input type="submit" value="search">-->
+                        </form>
 									<div class="search_icon_box search_engine_icon">
 								<div class="search_icon">
 									<div class="search_circle"

@@ -3,7 +3,7 @@
 <mapper namespace="com.nanicow.mapper.FeesMapper">
 	<select id="list" resultType="com.nanicow.domain.FeesVO">
 		select /*+index_desc(fees
-		fees_pk)*/ sum_price, tdate from fees where separate = 1 order by
+		fees_pk)*/ sum_price, tdate from fees order by
 		tdate
 	</select>
 	<select id="SalesComm" parameterType="map"

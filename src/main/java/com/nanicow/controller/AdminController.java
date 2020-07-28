@@ -1,5 +1,7 @@
 package com.nanicow.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,8 @@ public class AdminController {
 		model.addAttribute("usercount",user.UserCount()-1);
 		// 4) 그래프 : 하루마다의 매상 
 		List<FeesVO> fvo= fser.list();
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+		
 		Gson gson = new Gson();
 		String jel = gson.toJson(fvo);
 		model.addAttribute("data",jel);

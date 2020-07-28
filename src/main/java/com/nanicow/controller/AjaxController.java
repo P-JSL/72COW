@@ -130,10 +130,10 @@ public class AjaxController {
 		List<FeesVO> fvo = service.SalesComm(map);
 		Map<String, Object> hmap = new HashMap<String, Object>();
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < fvo.size(); i++) {
 			hmap.put("price" + i, fvo.get(i).getSum_price());
 		}
-
+			log.info("hamp : " + map);
 		return new ResponseEntity<>(hmap, HttpStatus.OK);
 	}
 

@@ -99,28 +99,25 @@
 								<div class="default_message" style="margin: auto;">
 									<div>
 										<ul class="mian_row general_mian_row">
-											<c:forEach var="glist" items="${goodslist}">
-												<c:forTokens items="${glist }" delims="*" var="i" begin="1"
-													end="1">
+											<c:forEach var="p" items="${goodslist}">
 													<li class="main_col_3" style="height: auto;">
 														<div class="item_wrapper_card">
 															<a class="card card_list"
-																href="/productdetail?title=${p.title }&userid=${p.userid }&contents=${p.contents }&amount=${p.amount }&category=${p.category }&status=${p.status }&addr=${p.addr }&num=${p.num }&price=${p.price}&name=${p.name}&picture=${p.picture}">
-																>
+																href="/productdetail?userid=${p.userid }&amount=${p.many }&category=${p.category }&&num=${p.num }&price=${p.price}&picture=${p.picture}">
+																
 																<div class="card_box">
 																	<div class="image_wrapper">
 																		<div class="image_outside">
 																			<div class="image_centerbox">
-																				<img src="/upload/${i }" alt="히가시노게이고,추리소설"
+																				<img src="${p.picture }" alt="히가시노게이고,추리소설" 
 																					class="thumbnail_img"><label data-index="0"
-																					style="display: none;">0</label>
+																					style="display: none;padding: 0;">0</label>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="cont">
-																		<div class="item_title">${glist.title }</div>
 																		<a class="label label-danger" style="float: right;"
-																			href="/mypage/GoodsDelete?num=${glist.num}&userid=${userlist.userid }">
+																			href="/mypage/GoodsDelete?num=${p.num}&userid=${userlist.userid }">
 																			<i class="fa fa-trash-o" aria-hidden="true"
 																			style="font-size: x-large; color: white;"></i>
 																		</a>
@@ -129,7 +126,6 @@
 															</a>
 														</div>
 													</li>
-												</c:forTokens>
 											</c:forEach>
 										</ul>
 									</div>

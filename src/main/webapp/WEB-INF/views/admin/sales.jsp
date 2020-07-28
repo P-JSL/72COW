@@ -103,13 +103,17 @@
 			success : function(res) {
 				console.log(res);
 				if(res.price0 == 0 || res.price0 ==null){
-					$("#price").text(0);
+					$("#price").text("￥ "+0);
+				}else{
+					
+				$("#price").text(numberWithCommas("￥ "+res.price0));
 				}
 				if(res.price1 == 0 || res.price1 ==null){
-					$("#comm").text(0);
+					$("#comm").text("￥ "+0);
+				}else{
+					
+				$("#comm").text(numberWithCommas("￥ "+Math.floor(res.price1*0.1)));
 				}
-				$("#price").text("￥ "+numberWithCommas(res.price0));
-				$("#comm").text("￥ "+numberWithCommas(Math.floor(res.price1*0.1)));
 			},
 			error : function(req, status, error) {
 				console.log(error);

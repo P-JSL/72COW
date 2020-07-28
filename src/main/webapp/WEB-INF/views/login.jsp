@@ -18,18 +18,7 @@
 								name="password" size="20" tabindex="2"
 								placeholder="パスワードを入力してください。">
 							<div class="checkbox_save">
-								<label class="label_checkbox checked"> <input
-									type="checkbox" id="chk_security" name="chk_security" value="y"
-									checked="checked"
-									onchange="if( this.checked){$(this).parent().addClass('checked')}else{$(this).parent().removeClass('checked')} ">
-									IDを保存
-								</label>
-
-								<div class="login_search">
-									<a href="/shop/member/find_id.php" class="link">IDを検索</a> <span
-										class="bar"></span> <a href="/shop/member/find_pwd.php"
-										class="link">パスワードを検索</a>
-								</div>
+								
 							</div>
 							<input type="submit" class="btn_type1" value="ログイン"
 								style="font-size: 20px; background: transparent; color: blue;"><span

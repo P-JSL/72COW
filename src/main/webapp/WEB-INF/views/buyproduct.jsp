@@ -32,14 +32,15 @@
 						<li><dl>
 								<dt>お名前</dt>
 								<dd class="order_member_name">
-									<input type="text" class="w_10" name="sname"
-										placeholder="名前入力" value="">
+									<input type="text" class="w_10" name="sname" placeholder="名前入力"
+										value="">
 								</dd>
 							</dl></li>
 						<li><dl>
 								<dt>連絡先</dt>
 								<dd class="order_member_phone">
-									<input type="number" name="phone" class="w_10" placeholder="数字のみ入力" value="">
+									<input type="number" name="phone" class="w_10"
+										placeholder="数字のみ入力" value="">
 								</dd>
 							</dl></li>
 						<li><dl>
@@ -67,7 +68,8 @@
 										class="image_wrapper image_wrapper_main_col_1 deal_image_wrapper">
 										<div class="image_outside">
 											<div class="image_centerbox">
-												<c:forTokens items="${one }" delims="*" var="o" >
+												<c:forTokens items="${one }" delims="*" var="o" begin="1"
+													end="1">
 													<img class="thumbnail_img" src="/upload/${o }"
 														alt="LG G패드4 8.0 블랙 32G 판매합니다!">
 												</c:forTokens>
@@ -98,8 +100,9 @@
 											<div class="description">適用1本 | 保有 1本</div>
 											<div class="coupon_btn">ミルク使用</div>
 										</div>
-										<div class="price">
-											${user.point eq null ? '0' : user.point }<span>円</span>
+										<div class="price"
+											data-point="${user.point eq null ? '0' : user.point }">
+											${user.point eq null ? '0' : user.point }<span>ミルク</span>
 										</div>
 									</div>
 								</div>
@@ -318,13 +321,11 @@
 		name="category"> <input type="hidden" name="sum_price">
 	<input type="hidden" name="price"> <input type="hidden"
 		name="many" value="1"> <input type="hidden" name="separate"
-		value="0"><input type="hidden" name="picture"
-		value="">
-		<input type="hidden" name="sname">
-		<input type="hidden" name="num">
-		<input type="hidden" name="phone">
-		<input type="hidden" name="address1">
-		<input type="hidden" name="address2">
+		value="0"><input type="hidden" name="picture" value="">
+	<input type="hidden" name="sname"> <input type="hidden"
+		name="num"> <input type="hidden" name="phone"> <input
+		type="hidden" name="address1"> <input type="hidden"
+		name="address2">
 </form>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
@@ -430,28 +431,38 @@
 	});
 </script>
 <script type="text/javascript">
-var Allprice;
+	var Allprice;
 	$(function() {
+		var point = 0;
+		$(".coupon_btn").on(
+				"click",
+				function() {
+					point = $(".price").attr("data-point");
+					console.log("point : " + point);
+					$("#point").text("-" + point);
+					$(".totpri").text(
+							numberWithCommas(price + fee - point
+									+ parseInt(removeComma(comm)))
+									+ "円");
+
+					$(".coupon_btn").addClass("onmilk");
+				})
+
 		var price = ${one.price};
-		var point = $("#point").text();
 		var comm = $("#comm").text();
 		var fee = 1000;
 		console.log(comm);
-		$(".totpri")
-				.text(
-						numberWithCommas(price + fee + parseInt(point)
-								+ parseInt(removeComma(comm)))
-								+ "円");
-		Allprice = parseInt(price) + +parseInt(point) + parseInt(removeComma(comm))
-				+ parseInt(fee);
+		$(".totpri").text(
+				numberWithCommas(price + fee + parseInt(removeComma(comm)))
+						+ "円");
+		Allprice = parseInt(price) + +parseInt(point)
+				+ parseInt(removeComma(comm)) + parseInt(fee);
 		console.log(Allprice);
 		$("input[name='agree']").prop("checked", false);
-		
-		
-		
+
 	})
-	function removeComma(str){
-		n = parseInt(str.replace(/,/g,""));
+	function removeComma(str) {
+		n = parseInt(str.replace(/,/g, ""));
 		return n;
 	}
 	function numberWithCommas(x) {
@@ -466,30 +477,37 @@ var Allprice;
 		if ($("input[name='agree']").prop("checked")) {
 			$(".success_btn_box div p").prop("disabled", false);
 			$(".success_btn_box div p").attr("data-price", Allprice);
-			} else {
+		} else {
 			$(".success_btn_box div p").removeAttr("data-price");
 			$(".success_btn_box div p").prop("disabled", true);
 		}
 	})
-	$(".success_btn_box div p").on("click",function(){
-			var price = $(this).attr("data-price");
-			var pic = $(".thumbnail_img").attr("src");
-			var num = <%=request.getParameter("num")%>;
-			//넘겨야 할 요소 : 아이디, 총합 가격, 카테고리, many = 1, price = Sum_price,separate = 0;
-			var form = $("#form_buy");
-			var id = '${userid}';
-			 $(form).find("input[name='userid']").val(id);
-			$(form).find("input[name='sum_price']").val(Number(price));
-			$(form).find("input[name='price']").val(Number(price));			 
-			$(form).find("input[name='category']").val('${one.category}');
-			$(form).find("input[name='picture']").val(pic);
-			$(form).find("input[name='sname']").val($("input[name='sname']").val());
-			$(form).find("input[name='num']").val(num);
-			$(form).find("input[name='phone']").val($("input[name='phone']").val());
-			$(form).find("input[name='address1']").val($("input[name='address1']").val());
-			$(form).find("input[name='address2']").val($("input[name='address2']").val());
-			form.submit();
-	})
-	
+
+	$(".success_btn_box div p").on(
+			"click",
+			function() {
+				var price = $(this).attr("data-price");
+				var pic = $(".thumbnail_img").attr("src");
+				var num =<%=request.getParameter("num")%>;
+				//넘겨야 할 요소 : 아이디, 총합 가격, 카테고리, many = 1, price = Sum_price,separate = 0;
+				var form = $("#form_buy");
+				var id = '${userid}';
+				$(form).find("input[name='point']").val(point);
+				$(form).find("input[name='userid']").val(id);
+				$(form).find("input[name='sum_price']").val(Number(price));
+				$(form).find("input[name='price']").val(Number(price));
+				$(form).find("input[name='category']").val('${one.category}');
+				$(form).find("input[name='picture']").val(pic);
+				$(form).find("input[name='sname']").val(
+						$("input[name='sname']").val());
+				$(form).find("input[name='num']").val(num);
+				$(form).find("input[name='phone']").val(
+						$("input[name='phone']").val());
+				$(form).find("input[name='address1']").val(
+						$("input[name='address1']").val());
+				$(form).find("input[name='address2']").val(
+						$("input[name='address2']").val());
+				form.submit();
+			})
 </script>
 <%@ include file="footer.jsp"%>

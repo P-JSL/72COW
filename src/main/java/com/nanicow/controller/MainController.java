@@ -126,6 +126,7 @@ public class MainController {
 	}
 	@PostMapping("/buyproduct")
 	public String bpro(FeesVO fvo,Send_addr sdvo ,RedirectAttributes rttr) {
+		log.info(fvo);
 		fser.insertFee(fvo);
 		fser.insertAddr(sdvo);
 		rttr.addAttribute("userid",fvo.getUserid());
@@ -178,7 +179,7 @@ public class MainController {
 	@RequestMapping("/search")
 	public String Search(@RequestParam(required = false) String search, Model model) {
 		List<ProductVO> allList = pser.getSearchList(search);
-		model.addAttribute("allList", allList);
+		model.addAttribute("list", allList);
 		return "/home";
 	}
 
