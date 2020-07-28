@@ -11,6 +11,19 @@
 			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="row">
+			
+			<!-- 수수료 -->
+					<div class="col-lg-12 stretch-card"
+						style="margin-bottom: 1rem; margin-left: auto; margin-right: auto;">
+						<div class="card"
+							style="box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);">
+							<div class="card-body"
+								style="text-align: center; padding: 0.5rem;">
+								<h4 class="card-title"
+									style="font-size: 2rem; font-weight: bold; margin-bottom: 0;">管理者の商品と売り上げなど</h4>
+							</div>
+						</div>
+					</div>
 						<div class="col-md-6 stretch-card grid-margin">
 							<div class="card bg-gradient-danger card-img-holder text-white">
 								<div class="card-body">

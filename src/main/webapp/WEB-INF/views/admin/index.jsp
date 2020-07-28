@@ -153,46 +153,7 @@
 	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
 	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 	<script type="text/javascript">
-		//날짜 관련 함수
-		function distributeDate(day) {
-			let year = day.substring(0, 4);
-			let month = day.substring(5, 7);
-			let days = day.substring(8);
-			if (day != null || day != "") {
-				return new Date(year, month, days);
-			} else {
-				return new Date(null);
-			}
-		}
-		function transNowDate(year, month, day) {
-			return new Date(year, month, day);
-		}
-
-		function now() {
-			return new Date();
-		}
-		function years() {
-			if (now().getFullYear() < 10) {
-				return "0" + now().getFullYear();
-			} else {
-
-				return now().getFullYear();
-			}
-		}
-		function mon() {
-			if (now().getMonth() < 10) {
-				return "0" + (now().getMonth() + 1);
-			} else {
-				return (now().getMonth() + 1);
-			}
-		}
-		function date() {
-			if (now().getDate() < 10) {
-				return "0" + now().getDate();
-			} else {
-				return now().getDate();
-			}
-		}
+		
 		function numberWithCommas(x) {
 		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		}
@@ -222,15 +183,55 @@
 	</script>
 	<!-- Chart code -->
 	<script>
+	//날짜 관련 함수
+	function distributeDate(day) {
+		let year = day.substring(0, 4);
+		let month = day.substring(5, 7);
+		let days = day.substring(8);
+		if (day != null || day != "") {
+			return new Date(year, month, days);
+		} else {
+			return new Date(null);
+		}
+	}
+	function transNowDate(year, month, day) {
+		return new Date(year, month, day);
+	}
+
+	function now() {
+		return new Date();
+	}
+	function years() {
+		if (now().getFullYear() < 10) {
+			return "0" + now().getFullYear();
+		} else {
+
+			return now().getFullYear();
+		}
+	}
+	function mon() {
+		if (now().getMonth() < 10) {
+			return "0" + (now().getMonth() + 1);
+		} else {
+			return (now().getMonth() + 1);
+		}
+	}
+	function date() {
+		if (now().getDate() < 10) {
+			return "0" + now().getDate();
+		} else {
+			return now().getDate();
+		}
+	}
 	var Data = ${data}
 	console.log(Data);
-	var date = new Array();
+	var dated = new Array();
 	var price = new Array();
 	for(var i=0; i<Data.length; i++){
-		date[i] = Data[i].tdate;
+		dated[i] = Data[i].tdate;
 		price[i] = Data[i].sum_price;
 	}
-	console.log(date);
+	console.log(dated);
 	console.log(price);
 		am4core
 				.ready(function() {
@@ -258,7 +259,7 @@
 						}
 
 						data.push({
-							date : new Date(years(),mon(), 0+i),
+							date : dated[i],
 							value : price[i]
 						}); // 날짜
 						previousValue = visits;
@@ -281,7 +282,7 @@
 					series.dataFields.dateX = "date"; //날짜 X측 변수
 					series.dataFields.valueY = "value"; //Y축 값
 					series.strokeWidth = 2;
-					series.tooltipText = "金額: {valueY}";
+					series.tooltipText = "金額: {valueY}￥,日: {date}";
 
 					// set stroke property field
 					series.propertyFields.stroke = "color";

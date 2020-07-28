@@ -44,7 +44,7 @@
 										<div class="form-group">
 											<select class="form-control form-control-lg" id="selected" name="type">
 												<option>選択</option>
-												<option value="i">コード</option>
+												<option value="i">ユーザーID</option>
 												<option value="n">お名前</option>
 											</select>
 										</div>
