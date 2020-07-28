@@ -41,7 +41,7 @@
 	</select>
 
 	<!-- 유저측 -->
-	<select id="list2" resultType="com.nanicow.domain.ProductVO">
+	<select id="list2" resultType="com.nanicow.domain.FeesVO">
 		<![CDATA[
 		select title,price from product where num > 0  order by num desc
 		]]>

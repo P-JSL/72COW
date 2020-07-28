@@ -119,8 +119,9 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/buyproduct", method = RequestMethod.GET)
-	public String buyproduct(int num,Model model) {
+	public String buyproduct(int num,String userid,Model model) {
 		model.addAttribute("one",pser.oneList(num));
+		model.addAttribute("userid",userid);
 		return "buyproduct";
 	}
 	@PostMapping("/buyproduct")

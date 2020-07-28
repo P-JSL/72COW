@@ -6,9 +6,9 @@
  	select * from users where userid=#{userid}
   </select>
   
-   <select id="getgoods" resultType="com.nanicow.domain.ProductVO" >
+   <select id="getgoods" resultType="com.nanicow.domain.FeesVO" >
    <![CDATA[
- 	select * from product where userid=#{userid} and amount>0 order by rownum
+ 	select * from fees where userid=#{userid} and many>0 order by rownum
    ]]>
   </select>
   
