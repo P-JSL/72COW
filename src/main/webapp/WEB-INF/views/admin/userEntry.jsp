@@ -28,7 +28,7 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h4 class="font-weight-normal mb-3">
-										登録品の総価格 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+										出品者売り上げ <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
 									<h2 id="sales"></h2>
 									<a href="#" class="btn trigger" style="padding: 0;"><button
@@ -116,7 +116,7 @@
 									<img src="/resources/assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image" />
 									<h2 style="display: inline-block;">
-										<strong>総予想手数料：</strong>￥<span id="comms"></span>
+										<strong>出品者手数料：</strong>￥<span id="comms"></span>
 									</h2>
 									<i class="mdi mdi-chart-line mdi-24px float-right"></i>
 								</div>

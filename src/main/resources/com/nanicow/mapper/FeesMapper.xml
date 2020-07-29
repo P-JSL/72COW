@@ -42,7 +42,7 @@
 	 group by  concat(users.f_name,users.l_name), users.f_name, users.l_name, 
 	 search(users.userid), users.f_name, users.l_name, users.f_name, users.l_name, 
 	 concat(users.f_e_name,users.l_e_name), users.f_e_name, users.l_e_name, users.f_e_name, users.l_e_name, 
-	 users.f_e_name, users.l_e_name, users.rdate, users.userid order by rdate desc) A where rownum < #{pageNum}*#{amount} ) B where rn >=(#{pageNum}-1)*#{amount}
+	 users.f_e_name, users.l_e_name, users.rdate, users.userid order by rdate desc) A ) B 
 	]]>
 	</select>
 	

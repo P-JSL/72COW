@@ -64,7 +64,7 @@
 										会員数 <i
 											class="mdi mdi-account-multiple-plus mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">${usercount }名</h2>
+									<h2 class="mb-5">${usercount}名</h2>
 									<h6 class="card-text">前月に比べ 5%増</h6>
 								</div>
 							</div>

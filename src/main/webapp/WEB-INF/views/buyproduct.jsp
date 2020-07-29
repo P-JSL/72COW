@@ -216,7 +216,7 @@
 								<dl>
 									<dt>ミルク使用</dt>
 									<dd>
-										<span id="point">-${user.point eq null ?'0':user.point}</span>円
+										<span id="point"></span>円
 									</dd>
 								</dl>
 								<dl class="final_order_price_margin">
