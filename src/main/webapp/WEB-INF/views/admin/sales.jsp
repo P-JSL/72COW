@@ -70,11 +70,11 @@
 												<tr>
 												<!-- 상품 상세 화면으로 이동 링크 -->
 													<td><a href="#">${p.name }</a></td>
-													<td><fmt:formatNumber pattern="##,###" value="${p.price }"/>￥</td>
+													<td>￥<fmt:formatNumber pattern="##,###" value="${p.price }"/></td>
 													<td><label class="badge badge-gradient-success">${p.amount !=0 ? '販売中' : '在庫無し'}</label>
 													</td>
 													<td>${p.category}</td>
-													<td><fmt:formatDate value="${p.pdate }" pattern="YY/MM/dd"/></td>
+													<td><fmt:formatDate value="${p.pdate }" pattern="YYYY-MM-dd"/></td>
 												</tr>
 												</c:forEach>
 											</tbody>

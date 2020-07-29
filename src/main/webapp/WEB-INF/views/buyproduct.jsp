@@ -39,7 +39,7 @@
 						<li><dl>
 								<dt>連絡先</dt>
 								<dd class="order_member_phone">
-									<input type="number" name="phone" class="w_10"
+									<input type="number" name="phone" id="phone" class="w_10"
 										placeholder="数字のみ入力" value="">
 								</dd>
 							</dl></li>
@@ -232,13 +232,7 @@
 												value="${one.price *0.032}" pattern="###,###" /></span>円
 									</dd>
 								</dl>
-								<dl
-									class="final_order_price_border_bottom final_order_price_padding">
-									<dt>安全取引手数料</dt>
-									<dd>
-										<span id="fee">1,000円</span>
-									</dd>
-								</dl>
+								
 							</div>
 							<dl class="order_total_price">
 								<dt class="title" style="display: inline-block;">最終決済金額</dt>
@@ -504,8 +498,7 @@
 				$(form).find("input[name='sname']").val(
 						$("input[name='sname']").val());
 				$(form).find("input[name='num']").val(num);
-				$(form).find("input[name='phone']").val(
-						$("input[name='phone']").val());
+				$(form).find("input[name='phone']").val($("#phone").val());
 				$(form).find("input[name='address1']").val(
 						$("input[name='address1']").val());
 				$(form).find("input[name='address2']").val(

@@ -17,7 +17,7 @@
   </select>
   
    <select id="Mcount" resultType="int" >
- 	SELECT COUNT(num) FROM product where amount>0 and userid=#{userid}
+ 	SELECT COUNT(num) FROM fees where many>0 and userid=#{userid} and separate = 0
   </select>
   
   <select id="Scount" resultType="int" >
