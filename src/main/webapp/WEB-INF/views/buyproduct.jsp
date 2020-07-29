@@ -325,7 +325,8 @@
 	<input type="hidden" name="sname"> <input type="hidden"
 		name="num"> <input type="hidden" name="phone"> <input
 		type="hidden" name="address1"> <input type="hidden"
-		name="address2">
+		name="address2"><input type="hidden"
+		name="point">
 </form>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
@@ -432,8 +433,9 @@
 </script>
 <script type="text/javascript">
 	var Allprice;
+	var point ;
 	$(function() {
-		var point = 0;
+		point = 0;
 		$(".coupon_btn").on(
 				"click",
 				function() {
@@ -492,6 +494,7 @@
 				//넘겨야 할 요소 : 아이디, 총합 가격, 카테고리, many = 1, price = Sum_price,separate = 0;
 				var form = $("#form_buy");
 				var id = '${userid}';
+				
 				$(form).find("input[name='point']").val(point);
 				$(form).find("input[name='userid']").val(id);
 				$(form).find("input[name='sum_price']").val(Number(price));

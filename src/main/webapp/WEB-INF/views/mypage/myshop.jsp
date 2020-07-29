@@ -107,9 +107,9 @@
 																
 																<div class="card_box">
 																	<div class="image_wrapper">
-																		<div class="image_outside">
-																			<div class="image_centerbox">
-																				<img src="${p.picture }" alt="히가시노게이고,추리소설" 
+																		<div class="image_outside" >
+																			<div class="image_centerbox" >
+																				<img src="${p.picture }" alt="히가시노게이고,추리소설" style="padding: 0;background: transparent;" 
 																					class="thumbnail_img"><label data-index="0"
 																					style="display: none;padding: 0;">0</label>
 																			</div>

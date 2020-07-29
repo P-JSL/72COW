@@ -24,6 +24,7 @@
 		<id property="email" column="email" />
 		<id property="phone" column="phone" />
 		<id property="address" column="address" />
+		<id property="point" column="point"/>
 		<collection property="authlist" resultMap="authMap"></collection>
 	</resultMap>
 
@@ -36,7 +37,7 @@
 	<select id="read" resultMap="UserMap">
 		select
 		users.userid,
-		f_name,l_name,f_e_name,l_e_name,password,email,phone,address, auth
+		f_name,l_name,f_e_name,l_e_name,password,email,phone,address, point, auth
 		from users users left outer join users_auth auth on users.userid =
 		auth.userid
 		where users.userid = #{userid}
