@@ -58,7 +58,7 @@
 							userid like '%' || #{keyword} || '%'
 						</when>
 						<when test="type == 'n'.toString()">
-							f_name like '%' || substr('中村 一郎',0,instr('中村 一郎',' ')) || '%'  or l_name like '%' || trim(substr('中村 一郎',instr('中村 一郎',' ')+1))|| '%'
+							f_name like '%' || substr(#{keyword},0,instr(#{keyword},' ')) || '%'  or l_name like '%' || trim(substr(#{keyword},instr(#{keyword},' ')+1))|| '%'
 						</when>
 					</choose>
 				</trim>
